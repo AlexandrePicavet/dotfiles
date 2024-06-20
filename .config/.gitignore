@@ -3,3 +3,4 @@
 !.gitignore
 !starship.toml
 !/zsh
+!/nvim
