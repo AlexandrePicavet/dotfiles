@@ -1,3 +1,5 @@
+vim.opt.expandtab = false
+
 local home = os.getenv("HOME")
 local nvim_dir = home .. "/.local/share/nvim"
 local workspace_path = nvim_dir .. "/jdtls-workspace/"

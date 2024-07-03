@@ -7,9 +7,12 @@ vim.g.editorconfig = false
 vim.opt.exrc = true
 vim.opt.secure = true
 
+-- Use tab for indentation
 vim.opt.expandtab = false
 vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
+vim.opt.softtabstop = 0
+
 vim.opt.fileformats = { "unix" }
 
 vim.opt.colorcolumn = { 80, 95, 105, 120 }
