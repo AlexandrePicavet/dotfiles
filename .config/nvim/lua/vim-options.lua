@@ -1,5 +1,7 @@
 vim.opt.number = true
 vim.opt.relativenumber = true
+vim.opt.signcolumn = "yes"
+
 vim.opt.smartindent = false
 vim.g.mapleader = " "
 vim.g.editorconfig = false
