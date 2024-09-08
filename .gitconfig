@@ -19,3 +19,6 @@
 	light = false
 	side-by-side = true
 	line-numbers = true
+	true-colors = always
+	hyperlinks = true
+	tabs = 2
