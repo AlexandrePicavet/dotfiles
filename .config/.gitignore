@@ -4,3 +4,5 @@
 !starship.toml
 !/zsh
 !/nvim
+!/bat
+!/delta
