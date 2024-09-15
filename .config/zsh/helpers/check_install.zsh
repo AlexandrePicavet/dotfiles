@@ -1,11 +1,24 @@
-check_install() {
-	readonly package="$1"
+declare -aU MISSING_PACKAGES;
+MISSING_PACKAGES=()
 
-	if which "$1" &>/dev/null
+check_install() {
+	readonly package="${1}"
+
+	if which "${package}" &>/dev/null
 	then
 		return 0
 	else
-		echo "${TEXT[reset]}Please install the ${TEXT[bred]}$1${TEXT[reset]} package"
+		MISSING_PACKAGES+="${package}"
 		return 1
 	fi
+}
+
+print_missing_packages() {
+	readonly packages_to_install=${MISSING_PACKAGES:|IGNORED_MISSING_PACKAGES}
+
+	if [ ${#packages_to_install[@]} -eq 0 ]; then
+		return
+	fi
+
+	echo "${TEXT[reset]}Please install the next packages: ${TEXT[bred]}${packages_to_install}${TEXT[reset]}"
 }

@@ -15,8 +15,10 @@ bindkey '^[[3;5~' delete-word
 # Vim
 bindkey -r '^[' # Unbind vi normal mode key bind
 
-# Sudo
-# TODO needs improvements:
-# should sudo previous command if the current line is empty: https://superuser.com/a/1738638
-# should prepend sudo to the current line if it is not empty
-bindkey -s '\e\e' '^usudo !!^M^M'
+if check_install sudo; then
+	# Sudo
+	# TODO needs improvements:
+	# should sudo previous command if the current line is empty: https://superuser.com/a/1738638
+	# should prepend sudo to the current line if it is not empty
+	bindkey -s '\e\e' '^usudo !!^M^M'
+fi

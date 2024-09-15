@@ -18,7 +18,6 @@ source "${ZDOTDIR}/plugins/plugins-manager.zsh"
 
 source "${ZDOTDIR}/aliases/aliases.zsh"
 
+print_missing_packages
 unset_text_helper
 
-# Removes empty lines
-clear
