@@ -1,6 +1,6 @@
 [include]
 	path = .config/delta/theme.gitconfig
-	path = .gitconfig-personal
+	path = .user.gitconfig
 [core]
 	pager = delta
 [commit]
