@@ -21,4 +21,4 @@ require("commander").add({
 	},
 })
 
-vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]])
+vim.keymap.set("t", "<C-Space>", [[<C-\><C-n>]])
