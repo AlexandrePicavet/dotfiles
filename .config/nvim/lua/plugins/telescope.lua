@@ -54,7 +54,7 @@ return {
 				},
 				{
 					desc = "Find file in project",
-					cmd = "<Cmd>Telescope find_files<CR>",
+					cmd = "<Cmd>Telescope find_files hidden=true<CR>",
 					keys = { "n", "<leader>pf", { noremap = true } },
 				},
 			})
