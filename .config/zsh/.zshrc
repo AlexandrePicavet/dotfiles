@@ -21,3 +21,6 @@ source "${ZDOTDIR}/aliases/aliases.zsh"
 print_missing_packages
 unset_text_helper
 
+if [ -f "${HOME}/.user.zshrc" ]; then
+	source "${HOME}/.user.zshrc"
+fi
