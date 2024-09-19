@@ -12,6 +12,7 @@ return {
 				"cucumber_language_server",
 				"rust_analyzer",
 				"ts_ls",
+				"angularls",
 				"eslint",
 				"ast_grep",
 				"html",
@@ -59,6 +60,9 @@ return {
 			})
 
 			lspconfig.nil_ls.setup({})
+
+			lspconfig.ts_ls.setup({})
+			lspconfig.angularls.setup({})
 
 			require("commander").add({
 				{
