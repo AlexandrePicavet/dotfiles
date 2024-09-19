@@ -11,14 +11,25 @@ return {
 				"jdtls",
 				"cucumber_language_server",
 				"rust_analyzer",
-				"tsserver",
+				"ts_ls",
+				"eslint",
+				"ast_grep",
+				"html",
 				"nil_ls",
 			},
 		},
 		config = true,
 	},
+	{ "mfussenegger/nvim-jdtls" },
+	{ "Bilal2453/luvit-meta", lazy = true },
 	{
-		"mfussenegger/nvim-jdtls",
+		"folke/lazydev.nvim",
+		ft = "lua",
+		opts = {
+			library = {
+				{ path = "luvit-meta/library", words = { "vim%.uv" } },
+			},
+		},
 	},
 	{
 		"neovim/nvim-lspconfig",
@@ -48,8 +59,6 @@ return {
 			})
 
 			lspconfig.nil_ls.setup({})
-
-			lspconfig.tsserver.setup({})
 
 			require("commander").add({
 				{

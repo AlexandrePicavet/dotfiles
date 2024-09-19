@@ -1,7 +1,6 @@
 return {
 	"nvim-treesitter/nvim-treesitter",
 	build = ":TSUpdate",
-	tag = "v0.9.2",
 	opts = {
 		ensure_installed = {
 			"bash",
@@ -19,12 +18,16 @@ return {
 			"json5",
 			"jsonc",
 			"lua",
-			-- "tmux",
+			"tmux",
 			"toml",
 			"vim",
 			"xml",
 			"yaml",
 			"nix",
+			"html",
+			"javascript",
+			"typescript",
+			"svelte",
 		},
 		highlight = { enable = true },
 		indent = { enable = true },
