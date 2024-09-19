@@ -11,11 +11,14 @@ return {
 				"jdtls",
 				"cucumber_language_server",
 				"rust_analyzer",
+				"html",
+				"cssls",
+				"css_variables",
+				"somesass_ls",
 				"ts_ls",
 				"angularls",
 				"eslint",
 				"ast_grep",
-				"html",
 				"nil_ls",
 			},
 		},
@@ -60,6 +63,12 @@ return {
 			})
 
 			lspconfig.nil_ls.setup({})
+
+			local cssCapabilities = vim.lsp.protocol.make_client_capabilities()
+			capabilities.textDocument.completion.completionItem.snippetSupport = true
+			lspconfig.css_variables.setup({})
+			lspconfig.cssls.setup({ capabilities = cssCapabilities })
+			lspconfig.somesass_ls.setup({})
 
 			lspconfig.ts_ls.setup({})
 			lspconfig.angularls.setup({})
