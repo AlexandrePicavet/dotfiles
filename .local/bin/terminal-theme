@@ -1,0 +1,10 @@
+#!/bin/bash
+
+set -e
+
+declare THEME
+THEME="${1}"
+readonly THEME
+
+starship-theme "${THEME}"
+alacritty-theme "${THEME}"
