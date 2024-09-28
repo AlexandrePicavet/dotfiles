@@ -4,6 +4,7 @@
 !.gitignore
 !.gitconfig
 !/.config
+!/.local
 
 !.tmux.conf
 !.zshenv
