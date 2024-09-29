@@ -13,10 +13,12 @@ source "${ZDOTDIR}/history.zsh"
 source "${ZDOTDIR}/binds.zsh"
 source "${ZDOTDIR}/completion.zsh"
 source "${ZDOTDIR}/starship.zsh"
+source "${ZDOTDIR}/fzf.zsh"
 
 source "${ZDOTDIR}/plugins/plugins-manager.zsh"
 
 source "${ZDOTDIR}/aliases/aliases.zsh"
+source "${ZDOTDIR}/functions/functions.zsh"
 
 print_missing_packages
 unset_text_helper

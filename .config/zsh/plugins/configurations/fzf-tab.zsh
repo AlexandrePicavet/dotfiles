@@ -5,6 +5,8 @@ if check_install fzf; then
 	zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 	zstyle ':completion:*' menu no
 	zstyle ':fzf-tab:*' switch-group '<' '>'
+	zstyle ':fzf-tab:*' fzf-flags --color="${FZF_COLOR}" --multi
+
 	if check_install tmux; then
 		zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
 		zstyle ':fzf-tab:*' popup-min-size 100 10
