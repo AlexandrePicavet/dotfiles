@@ -3,9 +3,10 @@ function terminal-theme() {
 	THEME="${1}"
 	readonly THEME
 
+	alacritty-theme "${THEME}"
+	kitty-theme "${THEME}"
 	tmux-theme "${THEME}"
 	starship-theme "${THEME}"
 	fzf-theme "${THEME}"
-	alacritty-theme "${THEME}"
-	kitty-theme "${THEME}"
+	git-delta-theme "${THEME}"
 }
