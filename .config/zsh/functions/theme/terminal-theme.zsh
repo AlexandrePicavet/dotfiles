@@ -5,6 +5,7 @@ function terminal-theme() {
 
 	tmux-theme "${THEME}"
 	starship-theme "${THEME}"
-	alacritty-theme "${THEME}"
 	fzf-theme "${THEME}"
+	alacritty-theme "${THEME}"
+	kitty-theme "${THEME}"
 }
