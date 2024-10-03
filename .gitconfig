@@ -23,4 +23,5 @@
 	line-numbers = true
 	true-colors = always
 	hyperlinks = true
+	hyperlinks-file-link-format = "file:///{path}"
 	tabs = 2

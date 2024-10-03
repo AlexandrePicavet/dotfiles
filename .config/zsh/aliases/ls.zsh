@@ -1,5 +1,5 @@
 if check_install eza; then
-	alias ls='eza'
+	alias ls='eza --hyperlink'
 fi
 
 alias l='ls -l'
