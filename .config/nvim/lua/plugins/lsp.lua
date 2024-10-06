@@ -20,6 +20,7 @@ return {
 				"eslint",
 				"ast_grep",
 				"nil_ls",
+				"bashls",
 			},
 		},
 		config = true,
@@ -63,6 +64,10 @@ return {
 			})
 
 			lspconfig.nil_ls.setup({})
+
+			lspconfig.bashls.setup({
+				filetypes = { "sh", "zsh" },
+			})
 
 			local cssCapabilities = vim.lsp.protocol.make_client_capabilities()
 			capabilities.textDocument.completion.completionItem.snippetSupport = true
