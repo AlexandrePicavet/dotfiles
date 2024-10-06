@@ -10,6 +10,6 @@ function fzf-theme() {
 	_theme_helper "${CONFIG_FILE}" "${LIGHT_THEME_MATCH}" "${DARK_THEME_MATCH}" "${THEME}"
 
 	source ${CONFIG_FILE}
-	source ~/.config/zsh/plugins/configurations/fzf-tab.zsh
+	source "${ZDOTDIR}/plugins/configurations/fzf-tab.zsh"
 }
 

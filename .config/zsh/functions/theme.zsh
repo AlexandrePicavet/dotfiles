@@ -8,9 +8,9 @@ function _theme_helper() {
 
 
 	if [[ "${THEME}" == 'light' ]]; then
-		sed -i "s/${DARK_THEME_MATCH}/${LIGHT_THEME_MATCH}/" ${CONFIG_FILE}
+		sed -i "s/${DARK_THEME_MATCH}/${LIGHT_THEME_MATCH}/" "${CONFIG_FILE}"
 	elif [[ "${THEME}" == 'dark' ]]; then
-		sed -i "s/${LIGHT_THEME_MATCH}/${DARK_THEME_MATCH}/" ${CONFIG_FILE}
+		sed -i "s/${LIGHT_THEME_MATCH}/${DARK_THEME_MATCH}/" "${CONFIG_FILE}"
 	else
 		# Message for the final user (not the calling function)
 		echo "Expecting first argument to be 'light' or 'dark' but got: '${THEME}'" >&2
