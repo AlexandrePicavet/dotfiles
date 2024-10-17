@@ -3,7 +3,7 @@
 palette = "catppuccin_macchiato"
 
 format = '''
-$java$nodejs$fill$gcloud
+$java$nodejs$fill$kubernetes
 $git_state$git_branch $git_commit$git_status$fill$time
 $directory$character
 '''
@@ -54,9 +54,11 @@ renamed = '[»$count](blue) '
 deleted = '[✘$count](maroon) '
 untracked = '[?$count](subtext0) '
 
-[gcloud]
-format = ' [$symbol$account(@$domain)(\($region\))]($style)'
-symbol = ' '
+[kubernetes]
+disabled = false
+symbol = '⎈ '
+format = '[$symbol$context (\($namespace\))]($style)'
+
 
 [java]
 format = '[$symbol($version)]($style) '
