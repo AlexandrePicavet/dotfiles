@@ -21,6 +21,7 @@ return {
 				"ast_grep",
 				"nil_ls",
 				"bashls",
+				"hyprls",
 			},
 		},
 		config = true,
@@ -68,6 +69,8 @@ return {
 			lspconfig.bashls.setup({
 				filetypes = { "sh", "zsh" },
 			})
+
+			lspconfig.hyprls.setup({})
 
 			local cssCapabilities = vim.lsp.protocol.make_client_capabilities()
 			capabilities.textDocument.completion.completionItem.snippetSupport = true

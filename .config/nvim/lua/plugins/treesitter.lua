@@ -28,11 +28,20 @@ return {
 			"javascript",
 			"typescript",
 			"svelte",
+			"hyprlang",
 		},
 		highlight = { enable = true },
 		indent = { enable = true },
 	},
 	config = function(_, opts)
+		vim.filetype.add({
+			extension = { rasi = "rasi" },
+			pattern = {
+				[".*/kitty/*.conf"] = "bash",
+				[".*/hypr/.*%.conf"] = "hyprlang",
+			},
+		})
+
 		local configs = require("nvim-treesitter.configs")
 		configs.setup(opts)
 	end,
