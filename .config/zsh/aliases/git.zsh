@@ -15,7 +15,7 @@ if check_install git; then
 	alias gcm='gc -m'
 	alias gcp='gc && gp'
 	alias gcpf='gc && gpf'
-	alias gd='g diff'
+	alias gd='g diff --color=always'
 	alias gdh='gd HEAD'
 	alias gf='g fetch'
 	alias gfr='gf && gr'
