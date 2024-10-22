@@ -1,5 +1,5 @@
 if check_install systemctl; then
-	alias sysctl='/usr/bin/systemctl'
+	alias sysctl='systemctl'
 
 	alias syssus='sysctl suspend'
 	alias syshib='sysctl hibernate'
