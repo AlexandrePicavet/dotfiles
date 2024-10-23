@@ -22,3 +22,6 @@ require("commander").add({
 })
 
 vim.keymap.set("t", "<C-Space>", [[<C-\><C-n>]])
+-- Disable help mapping
+vim.keymap.set("n", "<F1>", "<NOP>")
+vim.keymap.set("i", "<F1>", "<NOP>")
