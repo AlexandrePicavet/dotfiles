@@ -4,7 +4,7 @@ palette = "catppuccin_macchiato"
 
 format = '''
 $java$nodejs$fill$kubernetes
-$git_state$git_branch $git_commit$git_status$fill$time
+$git_state$git_branch $git_commit$git_status$fill$time $battery
 $directory$character
 '''
 
@@ -68,6 +68,70 @@ version_format = 'v$raw'
 disabled = false
 format = '[$symbol($version$engines_version)]($style) '
 version_format = 'v$raw'
+
+[battery]
+disabled = false
+format = '[$symbol$percentage]($style)'
+
+[[battery.display]]
+threshold = 10
+charging_symbol = '󰢜 '
+discharging_symbol = '󰁺 '
+style = 'bold mauve'
+
+[[battery.display]]
+threshold = 20
+charging_symbol = '󰂆 '
+discharging_symbol = '󰁻 '
+style = 'bold red'
+
+[[battery.display]]
+threshold = 30
+charging_symbol = '󰂇 '
+discharging_symbol = '󰁼 '
+style = 'bold maroon'
+
+[[battery.display]]
+threshold = 40
+charging_symbol = '󰂈 '
+discharging_symbol = '󰁽 '
+style = 'bold peach'
+
+[[battery.display]]
+threshold = 50
+charging_symbol = '󰢝 '
+discharging_symbol = '󰁾 '
+style = 'bold yellow'
+
+[[battery.display]]
+threshold = 60
+charging_symbol = '󰂉 '
+discharging_symbol = '󰁿 '
+style = 'bold green'
+
+[[battery.display]]
+threshold = 70
+charging_symbol = '󰢞 '
+discharging_symbol = '󰂀 '
+style = 'bold teal'
+
+[[battery.display]]
+threshold = 80
+charging_symbol = '󰂊 '
+discharging_symbol = '󰂁 '
+style = 'bold sky'
+
+[[battery.display]]
+threshold = 90
+charging_symbol = '󰂋 '
+discharging_symbol = '󰂂 '
+style = 'bold sapphire'
+
+[[battery.display]]
+threshold = 100
+charging_symbol = '󰂅 '
+discharging_symbol = '󰁹 '
+style = 'bold blue'
 
 [palettes.catppuccin_macchiato]
 rosewater = "#f4dbd6"
