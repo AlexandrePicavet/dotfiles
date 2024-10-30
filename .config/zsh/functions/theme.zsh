@@ -19,8 +19,6 @@ function _theme_helper() {
 }
 
 for theme_file in "${THEME_DIR}"/*; do
-	[[ "${theme_file}" == "$0" ]] && continue
-
 	source "${theme_file}"
 done
 
