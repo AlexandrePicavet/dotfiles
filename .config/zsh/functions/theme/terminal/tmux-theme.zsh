@@ -9,5 +9,5 @@ function tmux-theme() {
 
 	_theme_helper "${CONFIG_FILE}" "${LIGHT_THEME_MATCH}" "${DARK_THEME_MATCH}" "${THEME}"
 
-	tmux source ${CONFIG_FILE}
+	tmux source ${CONFIG_FILE} &> /dev/null
 }
