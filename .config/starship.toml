@@ -4,7 +4,7 @@ palette = 'catppuccin_macchiato'
 
 format = '''
 $username$java$nodejs$fill$memory_usage$kubernetes
-$git_state$git_branch $git_commit$git_status$fill$time $battery
+$git_state$git_branch $git_commit$git_status$fill$time$cmd_duration$battery
 $directory $character
 '''
 
@@ -38,8 +38,14 @@ disabled = true
 [time]
 disabled = false
 time_format = '%F %T'
-format = ' [ $time]($style)'
+format = ' [ $time]($style) '
 style = 'bold text'
+
+[cmd_duration]
+disabled = false
+min_time = 1_500
+show_milliseconds = true
+format = '[ $duration]($style) '
 
 [git_branch]
 format = '[$symbol$branch(:$remote_branch)]($style)'
