@@ -1,7 +1,7 @@
 function hyprland-theme() {
 	which hyprctl &>/dev/null || return 0
 
-	local -r CONFIG_FILE=~/.config/hypr/hyprland.conf
+	local -r CONFIG_FILE=~/.config/hypr/theme.conf
 	local -r LIGHT_THEME_MATCH='$THEME = light'
 	local -r DARK_THEME_MATCH='$THEME = dark'
 
