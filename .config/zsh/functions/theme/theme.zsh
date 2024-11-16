@@ -5,4 +5,5 @@ function theme() {
 
 	terminal-theme "${THEME}"
 	hyprland-theme "${THEME}"
+	dunst-theme "${THEME}"
 }
