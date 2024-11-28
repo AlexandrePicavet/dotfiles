@@ -3,8 +3,12 @@ return {
 	dependencies = {
 		"nvim-telescope/telescope.nvim",
 	},
-	keys = {
-		{ "<C-p>", "<Cmd>Telescope commander<CR>" },
+	commander = {
+		{
+			desc = "List keymaps",
+			cmd = "<Cmd>Telescope commander<CR>",
+			keys = { "n", "<C-p>", { noremap = true } },
+		},
 	},
 	opts = {
 		components = {
@@ -21,6 +25,7 @@ return {
 		integration = {
 			telescope = {
 				enable = true,
+				theme = require("telescope.themes").commander,
 			},
 			lazy = {
 				enable = true,
@@ -28,10 +33,4 @@ return {
 			},
 		},
 	},
-	config = function(_, opts)
-		opts["integration"]["telescope"]["theme"] = require("telescope.themes").commander
-
-		local commander = require("commander")
-		commander.setup(opts)
-	end,
 }
