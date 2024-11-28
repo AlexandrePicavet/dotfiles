@@ -4,16 +4,17 @@ return {
 		"neovim/nvim-lspconfig",
 	},
 	config = function()
-		local lsp_lines = require("lsp_lines")
-		lsp_lines.setup()
-		vim.diagnostic.config({ virtual_text = false })
+		require("lsp_lines").setup()
 
-		require("commander").add({
-			{
-				desc = "Toggle LSP Lines",
-				cmd = lsp_lines.toggle,
-				keys = { "n", "<leader>lds", { noremap = true } },
-			},
-		})
+		vim.diagnostic.config({ virtual_text = false })
 	end,
+	commander = {
+		{
+			desc = "Toggle LSP Lines",
+			cmd = function()
+				require("lsp_lines").toggle()
+			end,
+			keys = { "n", "<LEADER>lds", { noremap = true } },
+		},
+	},
 }

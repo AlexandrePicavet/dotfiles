@@ -20,15 +20,14 @@ return {
 					require("none-ls.code_actions.eslint_d"),
 				},
 			})
-
-			require("commander").add({
+		end,
+		commander = {
 				{
 					desc = "Format File",
 					cmd = vim.lsp.buf.format,
-					keys = { "n", "<leader>ff", { noremap = true } },
+					keys = { "n", "<LEADER>ff", { noremap = true } },
 				},
-			})
-		end,
+			}
 	},
 	{
 		"jay-babu/mason-null-ls.nvim",

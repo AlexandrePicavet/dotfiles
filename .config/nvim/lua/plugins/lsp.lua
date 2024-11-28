@@ -80,65 +80,58 @@ return {
 
 			lspconfig.ts_ls.setup({})
 			lspconfig.angularls.setup({})
-
-			require("commander").add({
-				{
-					desc = "Go to declaration",
-					cmd = vim.lsp.buf.declaration,
-					keys = { "n", "<leader>gd", { noremap = true } },
-				},
-				{
-					desc = "Go to definition",
-					cmd = vim.lsp.buf.definition,
-					keys = { "n", "<leader>gD", { noremap = true } },
-				},
-				{
-					desc = "Go to type definition",
-					cmd = vim.lsp.buf.type_definition,
-					keys = { "n", "<leader>gt", { noremap = true } },
-				},
-				{
-					desc = "Go to implementation",
-					cmd = vim.lsp.buf.implementation,
-					keys = { "n", "<leader>gi", { noremap = true } },
-				},
-				{
-					desc = "Find references / usage",
-					cmd = function()
-						require("telescope.builtin").lsp_references()
-					end,
-					keys = {
-						{ "n", "<leader>fr", { noremap = true } },
-						{ "n", "<leader>fu", { noremap = true } },
-					},
-				},
-				{
-					desc = "Rename",
-					cmd = vim.lsp.buf.rename,
-					keys = { "n", "<leader>rn", { noremap = true } },
-				},
-				{
-					desc = "List code actions",
-					cmd = vim.lsp.buf.code_action,
-					keys = { "n", "<leader>ca", { noremap = true } },
-				},
-				{
-					desc = "List document diagnostics",
-					cmd = "<Cmd>Telescope diagnostics bufnr=0<CR>",
-					keys = { "n", "<leader>ldd", { noremap = true } },
-				},
-				{
-					desc = "List workspace diagnostics",
-					cmd = "<Cmd>Telescope diagnostics<CR>",
-					keys = { "n", "<leader>ldw", { noremap = true } },
-				},
-				--[[{
-					desc = "Show line diagnostics",
-					cmd = vim.diagnostic.open_float,
-					keys = { "n", "<leader>lds", { noremap = true } },
-				}]]
-				--,
-			})
 		end,
+		commander = {
+			{
+				desc = "Go to declaration",
+				cmd = vim.lsp.buf.declaration,
+				keys = { "n", "<LEADER>gd", { noremap = true } },
+			},
+			{
+				desc = "Go to definition",
+				cmd = vim.lsp.buf.definition,
+				keys = { "n", "<LEADER>gD", { noremap = true } },
+			},
+			{
+				desc = "Go to type definition",
+				cmd = vim.lsp.buf.type_definition,
+				keys = { "n", "<LEADER>gt", { noremap = true } },
+			},
+			{
+				desc = "Go to implementation",
+				cmd = vim.lsp.buf.implementation,
+				keys = { "n", "<LEADER>gi", { noremap = true } },
+			},
+			{
+				desc = "Find references / usage",
+				cmd = function()
+					require("telescope.builtin").lsp_references()
+				end,
+				keys = {
+					{ "n", "<LEADER>fr", { noremap = true } },
+					{ "n", "<LEADER>fu", { noremap = true } },
+				},
+			},
+			{
+				desc = "Rename",
+				cmd = vim.lsp.buf.rename,
+				keys = { "n", "<LEADER>rn", { noremap = true } },
+			},
+			{
+				desc = "List code actions",
+				cmd = vim.lsp.buf.code_action,
+				keys = { "n", "<LEADER>ca", { noremap = true } },
+			},
+			{
+				desc = "List document diagnostics",
+				cmd = "<CMD>Telescope diagnostics bufnr=0<CR>",
+				keys = { "n", "<LEADER>ldd", { noremap = true } },
+			},
+			{
+				desc = "List workspace diagnostics",
+				cmd = "<CMD>Telescope diagnostics<CR>",
+				keys = { "n", "<LEADER>ldw", { noremap = true } },
+			},
+		},
 	},
 }

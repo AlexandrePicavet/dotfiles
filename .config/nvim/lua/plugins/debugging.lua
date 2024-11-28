@@ -17,20 +17,23 @@ return {
 			dap.listeners.before.event_exited.dapui_config = function()
 				dapui.close()
 			end
-
-			require("commander").add({
-				{
-					desc = "Toggle breakpoint",
-					cmd = dap.toggle_breakpoint,
-					keys = { "n", "<leader>tb", { noremap = true } },
-				},
-				{
-					desc = "Debugger - Continue",
-					cmd = dap.continue,
-					keys = { "n", "<leader>dc", { noremap = true } },
-				},
-			})
 		end,
+		commander = {
+			{
+				desc = "Toggle breakpoint",
+				cmd = function()
+					require("dap").toggle_breakpoint()
+				end,
+				keys = { "n", "<leader>tb", { noremap = true } },
+			},
+			{
+				desc = "Debugger - Continue",
+				cmd = function()
+					require("dap").continue()
+				end,
+				keys = { "n", "<leader>dc", { noremap = true } },
+			},
+		},
 	},
 	{
 		"rcarriga/nvim-dap-ui",

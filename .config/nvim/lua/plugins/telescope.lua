@@ -25,45 +25,44 @@ return {
 				require("telescope.themes").get_dropdown({}),
 			}
 			require("telescope").setup(opts)
-
-			require("commander").add({
-				{
-					desc = "List commands",
-					cmd = "<Cmd>Telescope commands<CR>",
-					keys = { "n", "<leader>lc", { noremap = true } },
-				},
-				{
-					desc = "List help tags",
-					cmd = "<Cmd>Telescope help_tags<CR>",
-					keys = { "n", "<leader>lh", { noremap = true } },
-				},
-				{
-					desc = "List buffers",
-					cmd = "<Cmd>Telescope buffers<CR>",
-					keys = { "n", "<leader>pb", { noremap = true } },
-				},
-				{
-					desc = "List registers",
-					cmd = "<Cmd>Telescope registers<CR>",
-					keys = { "n", "<leader>pr", { noremap = true } },
-				},
-				{
-					desc = "Find in project",
-					cmd = "<Cmd>Telescope live_grep<CR>",
-					keys = { "n", "<leader>pg", { noremap = true } },
-				},
-				{
-					desc = "Find file in project",
-					cmd = "<Cmd>Telescope find_files<CR>",
-					keys = { "n", "<leader>pf", { noremap = true } },
-				},
-				{
-					desc = "Find file in project, including hidden",
-					cmd = "<Cmd>Telescope find_files hidden=true<CR>",
-					keys = { "n", "<leader>pF", { noremap = true } },
-				},
-			})
 		end,
+		commander = {
+			{
+				desc = "List commands",
+				cmd = "<CMD>Telescope commands<CR>",
+				keys = { "n", "<LEADER>lc", { noremap = true } },
+			},
+			{
+				desc = "List help tags",
+				cmd = "<CMD>Telescope help_tags<CR>",
+				keys = { "n", "<LEADER>lh", { noremap = true } },
+			},
+			{
+				desc = "List buffers",
+				cmd = "<CMD>Telescope buffers<CR>",
+				keys = { "n", "<LEADER>pb", { noremap = true } },
+			},
+			{
+				desc = "List registers",
+				cmd = "<CMD>Telescope registers<CR>",
+				keys = { "n", "<LEADER>pr", { noremap = true } },
+			},
+			{
+				desc = "Find in project",
+				cmd = "<CMD>Telescope live_grep<CR>",
+				keys = { "n", "<LEADER>pg", { noremap = true } },
+			},
+			{
+				desc = "Find file in project",
+				cmd = "<CMD>Telescope find_files<CR>",
+				keys = { "n", "<LEADER>pf", { noremap = true } },
+			},
+			{
+				desc = "Find file in project, including hidden",
+				cmd = "<CMD>Telescope find_files hidden=true<CR>",
+				keys = { "n", "<LEADER>pF", { noremap = true } },
+			},
+		},
 	},
 	{
 		"nvim-telescope/telescope-ui-select.nvim",

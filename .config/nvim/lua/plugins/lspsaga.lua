@@ -10,25 +10,22 @@ return {
 			enable = false,
 		},
 	},
-	config = function(_, opts)
-		require("lspsaga").setup(opts)
-
-		require("commander").add({
+	config = true,
+	commander = {
 			{
 				desc = "Peek definition",
-				cmd = "<Cmd>Lspsaga peek_definition<CR>",
-				keys = { "n", "<leader>pD", { noremap = true } },
+				cmd = "<CMD>Lspsaga peek_definition<CR>",
+				keys = { "n", "<LEADER>pD", { noremap = true } },
 			},
 			{
 				desc = "List incoming calls",
-				cmd = "<Cmd>Lspsaga incoming_calls<CR>",
-				keys = { "n", "<leader>lic", { noremap = true } },
+				cmd = "<CMD>Lspsaga incoming_calls<CR>",
+				keys = { "n", "<LEADER>lic", { noremap = true } },
 			},
 			{
 				desc = "List outgoing calls",
-				cmd = "<Cmd>Lspsaga outgoing_calls<CR>",
-				keys = { "n", "<leader>loc", { noremap = true } },
+				cmd = "<CMD>Lspsaga outgoing_calls<CR>",
+				keys = { "n", "<LEADER>loc", { noremap = true } },
 			},
-		})
-	end,
+		}
 }

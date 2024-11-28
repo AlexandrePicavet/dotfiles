@@ -3,13 +3,6 @@ return {
 	dependencies = {
 		"nvim-telescope/telescope.nvim",
 	},
-	commander = {
-		{
-			desc = "List keymaps",
-			cmd = "<Cmd>Telescope commander<CR>",
-			keys = { "n", "<C-p>", { noremap = true } },
-		},
-	},
 	opts = {
 		components = {
 			"DESC",
@@ -31,6 +24,13 @@ return {
 				enable = true,
 				set_plugin_name_as_cat = true,
 			},
+		},
+	},
+	commander = {
+		{
+			desc = "List keymaps",
+			cmd = "<CMD>Telescope commander<CR>",
+			keys = { "n", "<C-p>", { noremap = true } },
 		},
 	},
 }

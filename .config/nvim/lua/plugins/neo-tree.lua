@@ -14,15 +14,12 @@ return {
 		},
 		use_libuv_file_watcher = true,
 	},
-	config = function(_, opts)
-		require("neo-tree").setup(opts)
-
-		require("commander").add({
+	config = true,
+	commander = {
 			{
 				desc = "Toggle file tree (Left)",
-				cmd = "<Cmd>Neotree filesystem toggle left<CR>",
-				keys = { "n", "<leader><C-e>", { noremap = true } },
+				cmd = "<CMD>Neotree filesystem toggle left<CR>",
+				keys = { "n", "<LEADER><C-e>", { noremap = true } },
 			},
-		})
-	end,
+		}
 }

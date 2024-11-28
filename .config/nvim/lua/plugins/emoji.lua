@@ -5,13 +5,12 @@ return {
 	},
 	config = function()
 		require("telescope").load_extension("emoji")
-
-		require("commander").add({
-			{
-				desc = "Insert emoji",
-				cmd = "<Cmd>Telescope emoji<CR>",
-				keys = { "n", "<leader>pe", { noremap = true } },
-			},
-		})
 	end,
+	commander = {
+		{
+			desc = "Insert emoji",
+			cmd = "<CMD>Telescope emoji<CR>",
+			keys = { "n", "<LEADER>pe", { noremap = true } },
+		},
+	},
 }
