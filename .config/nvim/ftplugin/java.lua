@@ -1,3 +1,5 @@
+-- https://github.com/mfussenegger/nvim-dap/wiki/java
+-- https://sookocheff.com/post/vim/nevim-java-ide/
 vim.opt.expandtab = false
 
 local home = os.getenv("HOME")
@@ -10,6 +12,9 @@ local jdtls = require("jdtls")
 local jdtls_dir = nvim_dir .. "/mason/packages/jdtls"
 local jdtls_launcher = vim.fn.glob(jdtls_dir .. "/plugins/org.eclipse.equinox.launcher_*jar")
 local jdtls_configuration = jdtls_dir .. "/config_linux"
+local java_debug_adapter_path = nvim_dir .. "/mason/share/java-debug-adapter/com.microsoft.java.debug.plugin.jar"
+
+local dap = require("dap")
 
 local config = {
 	cmd = {
@@ -58,8 +63,26 @@ local config = {
 		},
 	},
 	init_options = {
-		bundles = {},
+		bundles = {
+			java_debug_adapter_path,
+		},
 	},
+	on_attach = function(_, _)
+		require("jdtls").setup_dap({
+			hotcodereplace = "auto",
+			config_overrides = {},
+		})
+	end,
 }
 
 jdtls.start_or_attach(config)
+
+dap.configurations.java = {
+	{
+		type = "java",
+		request = "attach",
+		name = "Debug (Attach) - Remote",
+		hostName = "127.0.0.1",
+		port = 5005,
+	},
+}
