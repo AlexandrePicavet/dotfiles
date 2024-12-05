@@ -19,6 +19,15 @@ require("commander").add({
 		cmd = "<CMD>split term://zsh<CR>",
 		keys = { "n", '<C-w>t"', { noremap = true, silent = true } },
 	},
+	{
+		desc = "Copy filepath to clipboard",
+		cmd = function()
+			local filepath = vim.fn.expand("%")
+			vim.fn.setreg("+", filepath)
+			print("Filepath copied to clipboard: " .. filepath)
+		end,
+		keys = { "n", "<leader>fp", { noremap = true } },
+	},
 })
 
 vim.keymap.set("t", "<C-Space>", [[<C-\><C-n>]])
