@@ -23,5 +23,56 @@ return {
 				},
 			}
 		end,
+		commander = {
+			{
+				desc = "Tests - Summary",
+				cmd = function()
+					require("neotest").summary.toggle()
+				end,
+				keys = { "n", "<leader>ts", { noremap = true } },
+			},
+			{
+				desc = "Tests - Run",
+				cmd = function()
+					require("neotest").run.run()
+				end,
+				keys = { "n", "<leader>tr", { noremap = true } },
+			},
+			{
+				desc = "Tests - Stop",
+				cmd = function()
+					require("neotest").run.stop({interactive = true})
+				end,
+				keys = { "n", "<leader>tx", { noremap = true } },
+			},
+			{
+				desc = "Tests - Watch",
+				cmd = function()
+					require("neotest").watch.watch()
+				end,
+				keys = { "n", "<leader>tw", { noremap = true } },
+			},
+			{
+				desc = "Tests - Watch stop",
+				cmd = function()
+					require("neotest").watch.stop()
+				end,
+				keys = { "n", "<leader>tx", { noremap = true } },
+			},
+			{
+				desc = "Tests - File run",
+				cmd = function()
+					require("neotest").run.run(vim.fn.expand("%"))
+				end,
+				keys = { "n", "<leader>tfr", { noremap = true } },
+			},
+			{
+				desc = "Tests - File watch",
+				cmd = function()
+					require("neotest").watch.watch(vim.fn.expand("%"))
+				end,
+				keys = { "n", "<leader>tfw", { noremap = true } },
+			},
+		},
 	},
 }
