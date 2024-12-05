@@ -2,6 +2,7 @@ check_install delta
 if check_install git; then
 	alias g='git'
 	alias ga='git add'
+	alias gap='ga -p'
 	alias gA='ga -A'
 	alias gAcanepf='gA && gcane && gpf'
 	alias gAcapf='gA && gca && gpf'

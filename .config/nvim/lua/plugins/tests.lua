@@ -21,6 +21,10 @@ return {
 				consumers = {
 					playwright = require("neotest-playwright.consumers").consumers,
 				},
+				summary = {
+					follow = true,
+					count = true
+				}
 			}
 		end,
 		commander = {
