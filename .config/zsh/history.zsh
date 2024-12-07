@@ -1,16 +1,19 @@
-# TODO
-# https://unix.stackexchange.com/a/626223
-# https://jdhao.github.io/2021/03/24/zsh_history_setup/
-
+# The file where the history is saved
 HISTFILE="$HOME/.zsh_history"
-HISTSIZE=10000
+# Number of commands to be saved in memory for the current zsh session
+HISTSIZE=9223372036854775807
+# Number of commands to be saved in the history file
 SAVEHIST=9223372036854775807
-setopt INC_APPEND_HISTORY
-setopt SHARE_HISTORY
-setopt HIST_EXPIRE_DUPS_FIRST
-setopt HIST_IGNORE_DUPS
-setopt HIST_IGNORE_SPACE
-setopt HIST_REDUCE_BLANKS
-setopt HIST_VERIFY
-setopt HIST_BEEP
 
+# Includes timestamp
+setopt EXTENDED_HISTORY
+# Beeps if attempting to access a history entry which isn't there
+setopt HIST_BEEP
+# Does not save if line starts with space
+setopt HIST_IGNORE_SPACE
+# Strips superfluous blanks
+setopt HIST_REDUCE_BLANKS
+# Expands the line without executing it
+setopt HIST_VERIFY
+# Imports and appends new commands from and to the history
+setopt SHARE_HISTORY
