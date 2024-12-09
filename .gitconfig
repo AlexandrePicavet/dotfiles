@@ -11,6 +11,9 @@
 	autoSetupRemote = true
 [merge]
 	conflictstyle = diff3
+	tool = nvimdiff
+[mergetool]
+	prompe = false
 [diff]
 	colorMoved = default
 [interactive]
