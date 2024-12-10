@@ -4,11 +4,25 @@ return {
 		tag = "0.1.6",
 		dependencies = {
 			"nvim-lua/plenary.nvim",
+			{
+				"nvim-telescope/telescope-fzf-native.nvim",
+				build = "make",
+			},
 		},
 		opts = {
 			defaults = {
 				path_display = {
 					truncate = 1,
+				},
+				layout_strategy = 'vertical',
+				layout_config = {
+					vertical = {
+						width = 0.9,
+						height = 0.9,
+						prompt_position = "bottom",
+						preview_width = 0.9,
+						preview_height = 0.6,
+					},
 				},
 			},
 			extensions = {
@@ -17,6 +31,12 @@ return {
 						vim.fn.setreg("*", emoji.value)
 						vim.api.nvim_put({ emoji.value }, "c", false, true)
 					end,
+				},
+				fzf = {
+					fuzzy = true,
+					override_generic_sorter = true,
+					override_file_sorter = true,
+					case_mode = "smart_case",
 				},
 			},
 		},
