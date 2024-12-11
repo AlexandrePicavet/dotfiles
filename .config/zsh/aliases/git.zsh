@@ -21,6 +21,7 @@ if check_install git; then
 	alias gf='g fetch'
 	alias gfr='gf && gr'
 	alias gl='g log --show-signature'
+	alias glf='gl --name-only'
 	alias gm='g merge'
 	alias gma='gm --abort'
 	alias gmc='gm --continue'
