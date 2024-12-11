@@ -7,6 +7,13 @@ return {
 			"antoinemadec/FixCursorHold.nvim",
 			"nvim-treesitter/nvim-treesitter",
 			"thenbe/neotest-playwright",
+			{
+				"rcasia/neotest-java",
+				ft = "java",
+				dependencies = {
+					"mfussenegger/nvim-jdtls",
+				},
+			},
 		},
 		opts = function()
 			return {
@@ -17,14 +24,18 @@ return {
 							enable_dynamic_test_discovery = true,
 						},
 					}),
+					require("neotest-java")({
+						incremental_build = true,
+						ignore_wrapper = true,
+					}),
 				},
 				consumers = {
 					playwright = require("neotest-playwright.consumers").consumers,
 				},
 				summary = {
 					follow = true,
-					count = true
-				}
+					count = true,
+				},
 			}
 		end,
 		commander = {
@@ -45,7 +56,7 @@ return {
 			{
 				desc = "Tests - Stop",
 				cmd = function()
-					require("neotest").run.stop({interactive = true})
+					require("neotest").run.stop({ interactive = true })
 				end,
 				keys = { "n", "<leader>tx", { noremap = true } },
 			},
