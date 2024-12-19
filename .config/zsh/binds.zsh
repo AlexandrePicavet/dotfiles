@@ -1,3 +1,5 @@
+# https://www.justus.pw/posts/2023-03-10-useful-zsh-shortcuts.html
+
 # Navigation
 bindkey '^[[1;5C' forward-word
 bindkey '^[[1;5D' backward-word
@@ -15,3 +17,5 @@ bindkey '^[[3;5~' delete-word
 # Vim
 bindkey -r '^[' # Unbind vi normal mode key bind
 
+# Pet
+# TODO https://github.com/knqyf263/pet?tab=readme-ov-file#zsh
