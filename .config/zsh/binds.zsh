@@ -13,6 +13,9 @@ bindkey '^[[4~' end-of-line
 # Edition
 bindkey '^[[3~' delete-char
 bindkey '^[[3;5~' delete-word
+bindkey '^K' kill-line
+bindkey '^H' backward-kill-line
+bindkey '^U' kill-whole-line
 
 # Vim
 bindkey -r '^[' # Unbind vi normal mode key bind
