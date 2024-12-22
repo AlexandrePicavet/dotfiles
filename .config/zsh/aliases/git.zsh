@@ -4,6 +4,7 @@ if check_install git; then
 	alias ga='git add'
 	alias gap='ga -p'
 	alias gA='ga -A'
+	alias gAca='gA && gca'
 	alias gAcanepf='gA && gcane && gpf'
 	alias gAcapf='gA && gca && gpf'
 	alias gb='g branch'
