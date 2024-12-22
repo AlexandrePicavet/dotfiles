@@ -6,26 +6,29 @@ return {
 		"nvim-tree/nvim-web-devicons",
 	},
 	opts = {
+		symbol_in_winbar = {
+			enable = false,
+		},
 		lightbulb = {
 			enable = false,
 		},
 	},
 	config = true,
 	commander = {
-			{
-				desc = "Peek definition",
-				cmd = "<CMD>Lspsaga peek_definition<CR>",
-				keys = { "n", "<LEADER>pD", { noremap = true } },
-			},
-			{
-				desc = "List incoming calls",
-				cmd = "<CMD>Lspsaga incoming_calls<CR>",
-				keys = { "n", "<LEADER>lic", { noremap = true } },
-			},
-			{
-				desc = "List outgoing calls",
-				cmd = "<CMD>Lspsaga outgoing_calls<CR>",
-				keys = { "n", "<LEADER>loc", { noremap = true } },
-			},
-		}
+		{
+			desc = "Peek definition",
+			cmd = "<CMD>Lspsaga peek_definition<CR>",
+			keys = { "n", "<LEADER>pD", { noremap = true } },
+		},
+		{
+			desc = "List incoming calls",
+			cmd = "<CMD>Lspsaga incoming_calls<CR>",
+			keys = { "n", "<LEADER>lic", { noremap = true } },
+		},
+		{
+			desc = "List outgoing calls",
+			cmd = "<CMD>Lspsaga outgoing_calls<CR>",
+			keys = { "n", "<LEADER>loc", { noremap = true } },
+		},
+	},
 }
