@@ -28,3 +28,5 @@ vim.opt.scrolloff = 5 -- Minimal number of lines to keep above and bellow the cu
 
 vim.opt.splitbelow = true
 vim.opt.splitright = true
+
+vim.opt.laststatus = 3
