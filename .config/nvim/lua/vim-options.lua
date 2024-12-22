@@ -24,7 +24,7 @@ vim.opt.list = true
 vim.opt.listchars = "space:·,tab:→ ,trail:◼,nbsp:▢"
 
 vim.opt.inccommand = 'split'
-vim.opt.scrolloff = 10 -- Minimal number of lines to keep above and bellow the cursor.
+vim.opt.scrolloff = 5 -- Minimal number of lines to keep above and bellow the cursor.
 
 vim.opt.splitbelow = true
 vim.opt.splitright = true
