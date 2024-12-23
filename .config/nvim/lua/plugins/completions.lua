@@ -1,49 +1,51 @@
 return {
 	{
-		"hrsh7th/cmp-nvim-lsp",
-	},
-	{
-		"L3MON4D3/LuaSnip",
+		"saghen/blink.cmp",
 		dependencies = {
-			"saadparwaiz1/cmp_luasnip",
 			"rafamadriz/friendly-snippets",
+			{
+				"L3MON4D3/LuaSnip",
+				version = "v2.*",
+			},
 		},
-	},
-	{
-		"hrsh7th/nvim-cmp",
-		config = function()
-			require("luasnip.loaders.from_vscode").lazy_load()
-			local cmp = require("cmp")
-			local cmp_autopairs = require("nvim-autopairs.completion.cmp")
-
-			cmp.setup({
-				snippet = {
-					expand = function(args)
-						require("luasnip").lsp_expand(args.body)
-					end,
+		version = "*",
+		---@module 'blink.cmp'
+		---@type blink.cmp.Config
+		opts = {
+			keymap = { preset = "default" },
+			appearance = {
+				nerd_font_variant = "mono",
+			},
+			completion = {
+				documentation = {
+					auto_show = true,
+					auto_show_delay_ms = 0,
 				},
-				window = {
-					completion = cmp.config.window.bordered(),
-					documentation = cmp.config.window.bordered(),
+				ghost_text = {
+					enabled = true,
 				},
-				mapping = cmp.mapping.preset.insert({
-					["<C-b>"] = cmp.mapping.scroll_docs(-4),
-					["<C-f>"] = cmp.mapping.scroll_docs(4),
-					["<C-Space>"] = cmp.mapping.complete(),
-					["<C-e>"] = cmp.mapping.abort(),
-					["<CR>"] = cmp.mapping.confirm({ select = true }),
-				}),
-				sources = cmp.config.sources({
-					{ name = "lazydev" },
-				}, {
-					{ name = "nvim_lsp" },
-					{ name = "luasnip" },
-				}, {
-					{ name = "buffer" },
-				}),
-			})
-
-			cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
-		end,
+			},
+			snippets = {
+				expand = function(snippet)
+					require("luasnip").lsp_expand(snippet)
+				end,
+				active = function(filter)
+					if filter and filter.direction then
+						return require("luasnip").jumpable(filter.direction)
+					end
+					return require("luasnip").in_snippet()
+				end,
+				jump = function(direction)
+					require("luasnip").jump(direction)
+				end,
+			},
+			sources = {
+				default = { "lsp", "path", "luasnip", "buffer" },
+			},
+			signature = {
+				enabled = true,
+			},
+		},
+		opts_extend = { "sources.default" },
 	},
 }

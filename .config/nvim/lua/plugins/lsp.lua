@@ -27,21 +27,23 @@ return {
 		config = true,
 	},
 	{ "mfussenegger/nvim-jdtls" },
-	{ "Bilal2453/luvit-meta", lazy = true },
-	{
-		"folke/lazydev.nvim",
-		ft = "lua",
-		opts = {
-			library = {
-				{ path = "luvit-meta/library", words = { "vim%.uv" } },
-			},
-		},
-	},
+	{ "Bilal2453/luvit-meta",   lazy = true },
 	{
 		"neovim/nvim-lspconfig",
-		dependencies = {},
+		dependencies = {
+			"saghen/blink.cmp",
+			{
+				"folke/lazydev.nvim",
+				ft = "lua",
+				opts = {
+					library = {
+						{ path = "luvit-meta/library", words = { "vim%.uv" } },
+					},
+				},
+			},
+		},
 		config = function()
-			local capabilities = require("cmp_nvim_lsp").default_capabilities()
+			local capabilities = require("blink.cmp").get_lsp_capabilities()
 
 			local lspconfig = require("lspconfig")
 
@@ -52,7 +54,9 @@ return {
 			lspconfig.cucumber_language_server.setup({
 				cmd = { "cucumber-language-server", "--stdio" },
 				filetypes = { "cucumber", "feature" },
-				root_dir = require("lspconfig").util.find_git_ancestor,
+				root_dir = function(fname)
+					return vim.fs.dirname(vim.fs.find(".git", { path = fname, upward = true })[1])
+				end,
 				settings = {},
 				capabilities = capabilities,
 			})

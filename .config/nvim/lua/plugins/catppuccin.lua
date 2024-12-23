@@ -26,6 +26,7 @@ return {
 				dim_context = true,
 				alt_background = true,
 			},
+			blink_cmp = true
 		},
 	},
 	config = true,
