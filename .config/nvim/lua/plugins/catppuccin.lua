@@ -11,7 +11,7 @@ return {
 			light = "latte",
 			dark = "macchiato",
 		},
-		transparent_background = false,
+		transparent_background = true,
 		dim_inactive = {
 			enabled = true,
 			share = "dark",
