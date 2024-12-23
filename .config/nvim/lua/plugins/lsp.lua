@@ -27,7 +27,7 @@ return {
 		config = true,
 	},
 	{ "mfussenegger/nvim-jdtls" },
-	{ "Bilal2453/luvit-meta",   lazy = true },
+	{ "Bilal2453/luvit-meta", lazy = true },
 	{
 		"neovim/nvim-lspconfig",
 		dependencies = {
@@ -98,13 +98,19 @@ return {
 			},
 			{
 				desc = "Go to type definition",
-				cmd = vim.lsp.buf.type_definition,
+				cmd = function ()
+					require('telescope.builtin').lsp_type_definitions()
+				end,
 				keys = { "n", "<LEADER>gt", { noremap = true } },
 			},
 			{
-				desc = "Go to implementation",
-				cmd = vim.lsp.buf.implementation,
-				keys = { "n", "<LEADER>gi", { noremap = true } },
+				desc = "Find implementations",
+				cmd = function()
+					require("telescope.builtin").lsp_implementations()
+				end,
+				keys = {
+					{ "n", "<LEADER>fi", { noremap = true } },
+				},
 			},
 			{
 				desc = "Find references / usage",
