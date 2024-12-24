@@ -14,7 +14,7 @@ return {
 				path_display = {
 					truncate = 1,
 				},
-				layout_strategy = 'vertical',
+				layout_strategy = "vertical",
 				layout_config = {
 					vertical = {
 						width = 0.9,
@@ -81,6 +81,11 @@ return {
 				desc = "Find file in project, including hidden",
 				cmd = "<CMD>Telescope find_files hidden=true<CR>",
 				keys = { "n", "<LEADER>pF", { noremap = true } },
+			},
+			{
+				desc = "Change buffer type",
+				cmd = "<CMD>Telescope filetypes<CR>",
+				keys = { "n", "<LEADER>bt", { noremap = true } },
 			},
 		},
 	},
