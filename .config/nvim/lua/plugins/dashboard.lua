@@ -45,6 +45,13 @@ return {
 					key = "m",
 				},
 				{
+					icon = " ",
+					desc = "Empty Buffer",
+					group = "DashboardShortCut",
+					action = "enew",
+					key = "n",
+				},
+				{
 					icon = " ",
 					desc = "Quit",
 					group = "DashboardShortCut",
