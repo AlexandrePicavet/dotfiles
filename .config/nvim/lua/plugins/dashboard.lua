@@ -19,42 +19,42 @@ return {
 				{
 					icon = " ",
 					desc = "Search Files",
-					group = "Label",
+					group = "Statement",
 					action = "Telescope find_files",
 					key = "f",
 				},
 				{
 					icon = "󰺮 ",
 					desc = "Search Text",
-					group = "Label",
+					group = "@define",
 					action = "Telescope live_grep",
 					key = "g",
 				},
 				{
+					icon = " ",
+					desc = "New Buffer",
+					group = "Added",
+					action = "enew",
+					key = "n",
+				},
+				{
 					icon = "󰒲 ",
 					desc = "Lazy",
-					group = "@property",
+					group = "Changed",
 					action = "Lazy",
 					key = "l",
 				},
 				{
 					icon = " ",
 					desc = "Mason",
-					group = "@property",
+					group = "Changed",
 					action = "Mason",
 					key = "m",
 				},
 				{
-					icon = " ",
-					desc = "Empty Buffer",
-					group = "DashboardShortCut",
-					action = "enew",
-					key = "n",
-				},
-				{
 					icon = " ",
 					desc = "Quit",
-					group = "DashboardShortCut",
+					group = "@text.strong",
 					action = "q",
 					key = "q",
 				},
@@ -89,7 +89,11 @@ return {
 			file_width = true,
 		},
 	},
-	config = true,
+	config = function(_, opts)
+		require("dashboard").setup(opts)
+
+		vim.api.nvim_set_hl(0, "DashboardHeader", { link = "@markup.heading.3.markdown" })
+	end,
 	commander = {
 		{
 			desc = "Project Dashboard",
