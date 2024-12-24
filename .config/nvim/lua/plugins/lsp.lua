@@ -22,12 +22,13 @@ return {
 				"nil_ls",
 				"bashls",
 				"hyprls",
+				"sqls",
 			},
 		},
 		config = true,
 	},
 	{ "mfussenegger/nvim-jdtls" },
-	{ "Bilal2453/luvit-meta", lazy = true },
+	{ "Bilal2453/luvit-meta",   lazy = true },
 	{
 		"neovim/nvim-lspconfig",
 		dependencies = {
@@ -84,6 +85,7 @@ return {
 
 			lspconfig.ts_ls.setup({})
 			lspconfig.angularls.setup({})
+			lspconfig.sqls.setup({})
 		end,
 		commander = {
 			{
@@ -98,8 +100,8 @@ return {
 			},
 			{
 				desc = "Go to type definition",
-				cmd = function ()
-					require('telescope.builtin').lsp_type_definitions()
+				cmd = function()
+					require("telescope.builtin").lsp_type_definitions()
 				end,
 				keys = { "n", "<LEADER>gt", { noremap = true } },
 			},

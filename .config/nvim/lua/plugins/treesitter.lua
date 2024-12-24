@@ -29,6 +29,7 @@ return {
 			"typescript",
 			"svelte",
 			"hyprlang",
+			"sql",
 		},
 		highlight = { enable = true },
 		indent = { enable = true },
