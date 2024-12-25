@@ -24,7 +24,7 @@ return {
 				dim_dirname = true,
 				bold_basename = true,
 				dim_context = true,
-				alt_background = true,
+				alt_background = false,
 			},
 			blink_cmp = true
 		},
