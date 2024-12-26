@@ -30,6 +30,7 @@ return {
 			"svelte",
 			"hyprlang",
 			"sql",
+			"yuck",
 		},
 		highlight = { enable = true },
 		indent = { enable = true },
