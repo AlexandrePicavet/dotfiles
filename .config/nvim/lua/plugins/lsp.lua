@@ -1,7 +1,51 @@
 return {
 	{
 		"williamboman/mason.nvim",
-		config = true,
+		opts = {
+			-- Custom option
+			ensure_installed = {},
+		},
+		config = function(_, opts)
+			local mason = require("mason")
+			mason.setup({})
+
+			local registry = require("mason-registry")
+			local installed_packages = registry.get_installed_package_names()
+
+			for _, check_installed in ipairs(opts.ensure_installed) do
+				local is_installed = false
+				for _, installed_package in ipairs(installed_packages) do
+					if check_installed == installed_package then
+						is_installed = true
+						break
+					end
+				end
+
+				if is_installed == false then
+					registry.get_package(check_installed):install()
+				end
+			end
+
+			registry
+				:on(
+					"package:install:handle",
+					vim.schedule_wrap(function(pkg)
+						print(string.format("Installing %s", pkg.name))
+					end)
+				)
+				:on(
+					"package:install:success",
+					vim.schedule_wrap(function(pkg)
+						print(string.format("Successfully installed %s", pkg.name))
+					end)
+				)
+				:on(
+					"package:install:failed",
+					vim.schedule_wrap(function(pkg)
+						print(string.format("Failed to install %s", pkg.name))
+					end)
+				)
+		end,
 	},
 	{
 		"williamboman/mason-lspconfig.nvim",
@@ -28,7 +72,7 @@ return {
 		config = true,
 	},
 	{ "mfussenegger/nvim-jdtls" },
-	{ "Bilal2453/luvit-meta",   lazy = true },
+	{ "Bilal2453/luvit-meta", lazy = true },
 	{
 		"neovim/nvim-lspconfig",
 		dependencies = {
