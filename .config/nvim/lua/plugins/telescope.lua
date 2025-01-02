@@ -83,9 +83,9 @@ return {
 				keys = { "n", "<LEADER>pF", { noremap = true } },
 			},
 			{
-				desc = "Change buffer type",
+				desc = "Change buffer filetype",
 				cmd = "<CMD>Telescope filetypes<CR>",
-				keys = { "n", "<LEADER>bt", { noremap = true } },
+				keys = { "n", "<LEADER>bf", { noremap = true } },
 			},
 		},
 	},
