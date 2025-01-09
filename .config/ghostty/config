@@ -1,0 +1,23 @@
+theme = catppuccin-macchiato
+
+font-size = 11
+font-family = FiraCode Nerd Font Mono
+font-style = Regular
+font-family-bold = FiraCode Nerd Font Mono
+font-style-bold = SemiBold
+font-family-italic = Cascadia Code NF
+font-style-italic = Italic
+font-family-bold-italic = Cascadia Code NF
+font-style-bold-italic = SemiBold Italic
+
+window-decoration = false
+background-opacity = 0.95
+background-blur-radius = 20
+confirm-close-surface = false
+
+cursor-invert-fg-bg = true
+cursor-style = bar
+
+shell-integration = zsh
+shell-integration-features = cursor, sudo, title
+
