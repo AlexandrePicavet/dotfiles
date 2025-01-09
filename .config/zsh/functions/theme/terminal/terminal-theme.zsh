@@ -9,4 +9,5 @@ function terminal-theme() {
 	starship-theme "${THEME}"
 	fzf-theme "${THEME}"
 	git-delta-theme "${THEME}"
+	btop-theme "${THEME}"
 }
