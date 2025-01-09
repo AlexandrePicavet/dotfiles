@@ -53,6 +53,7 @@ return {
 			ensure_installed = {
 				"lua_ls",
 				"jdtls",
+				"kotlin_language_server",
 				"cucumber_language_server",
 				"rust_analyzer",
 				"html",
@@ -130,6 +131,7 @@ return {
 			lspconfig.ts_ls.setup({})
 			lspconfig.angularls.setup({})
 			lspconfig.sqls.setup({})
+			lspconfig.kotlin_language_server.setup({})
 		end,
 		commander = {
 			{
