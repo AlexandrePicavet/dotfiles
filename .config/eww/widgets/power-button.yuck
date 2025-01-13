@@ -1,0 +1,9 @@
+(defwidget power-button
+	[]
+	(button
+		:class "button_power"
+		:onclick "eww open powermenu"
+		""
+	)
+)
+
