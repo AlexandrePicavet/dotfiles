@@ -1,0 +1,7 @@
+; https://wiki.hyprland.org/Useful-Utilities/Status-Bars/#configewwyuck
+
+(deflisten hyprland_workspace_current
+	:initial "1"
+	"bash ~/.config/eww/scripts/hyprland/get-active-workspace.sh"
+)
+

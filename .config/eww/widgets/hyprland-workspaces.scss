@@ -1,0 +1,19 @@
+.hyprland-workspaces {
+  background-color: rgba($base, 0.9);
+  color: $text;
+  border-radius: 16px;
+  padding: 8px 16px;
+
+  .hyprland-workspace-entry {
+    border-radius: 16px;
+    background-color: $text;
+
+    &.hyprland-workspace-current.hyprland-workspace-current {
+      background-color: $yellow;
+    }
+
+    &.hyprland-workspace-occupied {
+      background-color: $blue;
+    }
+  }
+}
