@@ -1,6 +1,6 @@
 ; https://wiki.hyprland.org/Useful-Utilities/Status-Bars/#configewwewwyuck
 
 (deflisten window
-	:initial "..."
+	:initial ""
 	"sh ~/.config/eww/scripts/hyprland/get-window-title.sh"
 )

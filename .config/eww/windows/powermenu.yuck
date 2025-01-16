@@ -1,5 +1,5 @@
-(defwindow powermenu
-	:monitor 0
+(defwindow powermenu [monitor]
+	:monitor monitor
 	:stacking "fg"
 	:exclusive false
 	:focusable true
@@ -22,22 +22,22 @@
 			:spacing 6
 			(button
 				:class "powermenu__button_suspend"
-				:onclick "eww close powermenu; systemctl suspend"
+				:onclick "eww close 'powermenu-${monitor}'; systemctl suspend"
 				"󰤄  Suspend"
 			)
 			(button
 				:class "powermenu__button_hibernate"
-				:onclick "eww close powermenu; systemctl hibernate"
+				:onclick "eww close 'powermenu-${monitor}'; systemctl hibernate"
 				"󰒲  Hibernate"
 			)
 			(button
 				:class "powermenu__button_shutdown"
-				:onclick "eww close powermenu; systemctl poweroff"
+				:onclick "eww close 'powermenu-${monitor}'; systemctl poweroff"
 				"  Shutdown"
 			)
 			(button
 				:class "powermenu__button_cancel"
-				:onclick "eww close powermenu"
+				:onclick "eww close powermenu-${monitor}"
 				"󰜺  Cancel"
 			)
 		)
