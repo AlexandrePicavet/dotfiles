@@ -13,6 +13,7 @@ if check_install git; then
 	alias gc='g commit'
 	alias gca='gc --amend'
 	alias gcane='gca --no-edit'
+	alias gcanepf='gcane && gpf'
 	alias gcapf='gca && gpf'
 	alias gcl='g clone'
 	alias gcm='gc -m'
