@@ -1,12 +1,12 @@
-(include "./widgets/power-button.yuck")
+(include "./widgets/hyprland-workspaces.yuck")
 (include "./widgets/date.yuck")
+(include "./widgets/power-button.yuck")
 
 (defwindow topbar
 	:monitor 0
 	:stacking "fg"
 	:exclusive true
 	:focusable false
-	:class "topbar"
 	:geometry (geometry
 		:anchor "top center"
 		:x 0
@@ -14,9 +14,11 @@
 		:width "100%"
 	)
 	(box
+		:class "window_topbar"
 		:orientation "horizontal"
 		(box
 			:halign "start"
+			(hyprland-workspaces)
 		)
 		(box
 			:halign "center"

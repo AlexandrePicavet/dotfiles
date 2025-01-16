@@ -1,0 +1,6 @@
+; https://wiki.hyprland.org/Useful-Utilities/Status-Bars/#configewwyuck
+
+(deflisten hyprland_workspaces
+	:initial "[]"
+	"bash ~/.config/eww/scripts/hyprland/get-workspaces.sh"
+)
