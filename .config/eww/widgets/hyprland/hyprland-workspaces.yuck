@@ -3,7 +3,8 @@
 (include "./utils/hyprland/hyprland-workspaces.yuck");
 (include "./utils/hyprland/hyprland-workspace-current.yuck");
 
-(defwidget hyprland-workspaces []
+(defwidget hyprland-workspaces
+	[]
 	(eventbox
 		:onscroll "bash ~/.config/eww/scripts/hyprland/change-active-workspace.sh {} ${hyprland_workspace_current}"
 		(box
@@ -20,7 +21,7 @@
 						:onclick "hyprctl dispatch workspace ${workspace.id}"
 							(box
 								:width 10
-								:class " hyprland-workspace-entry ${workspace.id == hyprland_workspace_current ? "hyprland-workspace-current" : ""} ${workspace.windows > 0 ? "hyprland-workspace-occupied" : ""}"
+								:class " hyprland-workspace-entry ${workspace.id == hyprland_workspace_current ? "hyprland-workspace--current" : ""} ${workspace.windows > 0 ? "hyprland-workspace--occupied" : ""}"
 							)
 					)
 				)

@@ -1,4 +1,5 @@
 (include "./widgets/hyprland/hyprland-workspaces.yuck")
+(include "./widgets/hyprland/hyprland-window-title.yuck")
 (include "./widgets/date.yuck")
 (include "./widgets/power-button.yuck")
 
@@ -13,12 +14,15 @@
 		:y 0
 		:width "100%"
 	)
-	(box
+	(centerbox
 		:class "window_topbar"
 		:orientation "horizontal"
 		(box
 			:halign "start"
+			:spacing 5
+			:space-evenly false
 			(hyprland-workspaces)
+			(hyprland-window-title)
 		)
 		(box
 			:halign "center"

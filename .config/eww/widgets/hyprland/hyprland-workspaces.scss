@@ -8,11 +8,11 @@
     border-radius: 16px;
     background-color: $text;
 
-    &.hyprland-workspace-current.hyprland-workspace-current {
+    &.hyprland-workspace--current.hyprland-workspace--current {
       background-color: $yellow;
     }
 
-    &.hyprland-workspace-occupied {
+    &.hyprland-workspace--occupied {
       background-color: $blue;
     }
   }

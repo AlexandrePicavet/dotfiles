@@ -1,10 +1,11 @@
 @import "widgets/hyprland/hyprland-workspaces";
+@import "widgets/hyprland/hyprland-window-title";
 @import "widgets/date";
 @import "widgets/power-button";
 
 .window_topbar {
   font-size: 16px;
   font-family: FiraCode Nerd Font Mono;
-  margin: 5px 10px 0px 10px;
+  margin: 5px 5px 0px 5px;
 }
 

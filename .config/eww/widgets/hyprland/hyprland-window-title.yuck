@@ -1,0 +1,14 @@
+; https://wiki.hyprland.org/Useful-Utilities/Status-Bars/#configewwewwyuck
+
+(include "./utils/hyprland/hyprland-window-title.yuck")
+
+(defwidget hyprland-window-title
+	[]
+	(box
+		(label
+	:class "hyprland-window-title ${window == "" ? "hyprland-window-title--empty" : ""}"
+			:text "${strlength(window) <= 50 ? window : "${substring(window, 0, 47)}..."}"
+			:tooltip window
+		)
+	)
+)

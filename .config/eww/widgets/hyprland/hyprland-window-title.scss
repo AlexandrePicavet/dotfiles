@@ -1,0 +1,12 @@
+.hyprland-window-title {
+  background-color: rgba($yellow, 0.9);
+  color: $crust;
+  font-weight: 500;
+  border-radius: 16px;
+  padding: 0 16px;
+  font-family: FiraCode Nerd Font Regular;
+
+  &.hyprland-window-title--empty {
+    background-color: transparent;
+  }
+}
