@@ -1,0 +1,10 @@
+(include "./utils/date-time.yuck")
+
+(defwidget date
+	[]
+	(button
+		:class "button_date"
+		:onclick ""
+		date-time
+	)
+)
