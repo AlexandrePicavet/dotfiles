@@ -1,8 +1,7 @@
-(defwidget power-button
-	[]
+(defwidget power-button [monitor]
 	(button
 		:class "button_power"
-		:onclick "eww open powermenu"
+		:onclick "eww open powermenu --id 'powermenu-${monitor}' --arg 'monitor=${monitor}'"
 		""
 	)
 )

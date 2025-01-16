@@ -3,8 +3,8 @@
 (include "./widgets/date.yuck")
 (include "./widgets/power-button.yuck")
 
-(defwindow topbar
-	:monitor 0
+(defwindow topbar [monitor]
+	:monitor monitor
 	:stacking "fg"
 	:exclusive true
 	:focusable false
@@ -30,7 +30,9 @@
 		)
 		(box
 			:halign "end"
-			(power-button)
+			(power-button
+				:monitor monitor
+			)
 		)
 	)
 )
