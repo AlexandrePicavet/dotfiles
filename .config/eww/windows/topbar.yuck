@@ -1,4 +1,4 @@
-(include "./widgets/hyprland-workspaces.yuck")
+(include "./widgets/hyprland/hyprland-workspaces.yuck")
 (include "./widgets/date.yuck")
 (include "./widgets/power-button.yuck")
 
