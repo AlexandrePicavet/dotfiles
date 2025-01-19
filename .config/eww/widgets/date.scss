@@ -1,7 +1,24 @@
+$date-parts: (
+  "year": $red,
+  "month": $peach,
+  "day": $yellow,
+  "hour": $green,
+  "minute": $blue,
+  "second": $mauve,
+);
+
 .button_date {
   background-color: rgba($base, 0.9);
-  color: $text;
+  color: $subtext0;
   border-radius: 16px;
   font-weight: 500;
   padding: 1px 16px 0px 16px;
+
+  .date-- {
+    @each $part, $color in $date-parts {
+      &#{$part} {
+        color: $color;
+      }
+    }
+  }
 }
