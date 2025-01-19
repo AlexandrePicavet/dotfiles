@@ -10,36 +10,46 @@
 		:width "100%"
 		:height "100%"
 	)
-	(box
-		:orientation "vertical"
-		:halign "fill"
-		:valign "fill"
-		:class "powermenu__window"
+	(eventbox
+		:onclick "eww close 'powermenu-${monitor}'"
 		(box
 			:orientation "vertical"
-			:halign "center"
-			:valign "center"
-			:spacing 6
-			(button
-				:class "powermenu__button_suspend"
-				:onclick "eww close 'powermenu-${monitor}'; systemctl suspend"
-				"󰤄  Suspend"
-			)
-			(button
-				:class "powermenu__button_hibernate"
-				:onclick "eww close 'powermenu-${monitor}'; systemctl hibernate"
-				"󰒲  Hibernate"
-			)
-			(button
-				:class "powermenu__button_shutdown"
-				:onclick "eww close 'powermenu-${monitor}'; systemctl poweroff"
-				"  Shutdown"
-			)
-			(button
-				:class "powermenu__button_cancel"
-				:onclick "eww close powermenu-${monitor}"
-				"󰜺  Cancel"
+			:halign "fill"
+			:valign "fill"
+			:class "powermenu__window"
+			(box
+				:orientation "vertical"
+				:halign "center"
+				:valign "center"
+				:spacing 6
+				(powermenu-action-button
+					:monitor monitor
+					:action "suspend"
+					:text "󰤄  Suspend"
+				)
+				(powermenu-action-button
+					:monitor monitor
+					:action "hibernate"
+					:text "󰒲  Hibernate"
+				)
+				(powermenu-action-button
+					:monitor monitor
+					:action "poweroff"
+					:text "  Shutdown"
+				)
+				(powermenu-action-button
+					:monitor monitor
+					:text "󰜺  Cancel"
+				)
 			)
 		)
+	)
+)
+
+(defwidget powermenu-action-button [monitor text ?action]
+	(button
+		:class "powermenu__button_${action?:'cancel'}"
+		:onclick "eww close powermenu-${monitor}${action != '' ? '; systemctl ${action}' : ''}"
+		"${text}"
 	)
 )
