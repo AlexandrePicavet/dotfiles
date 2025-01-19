@@ -1,10 +1,12 @@
 #!/bin/bash
 
+set -euo pipefail
+
 function open-topbar() {
 	declare -r monitor="${1}"
 	declare -r id="topbar-${monitor}"
 
-	eww open topbar --id "${id}" --arg "monitor=${monitor}"
+	eww open topbar --id "${id}" --arg "monitor=${monitor}" || true
 }
 
 while read -r monitor; do

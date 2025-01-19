@@ -2,6 +2,7 @@
 (include "./widgets/hyprland/hyprland-window-title.yuck")
 (include "./widgets/date.yuck")
 (include "./widgets/power-button.yuck")
+(include "./widgets/battery.yuck")
 
 (defwindow topbar [monitor]
 	:monitor monitor
@@ -30,6 +31,9 @@
 		)
 		(box
 			:halign "end"
+			:spacing 5
+			:space-evenly false
+			(battery)
 			(power-button
 				:monitor monitor
 			)

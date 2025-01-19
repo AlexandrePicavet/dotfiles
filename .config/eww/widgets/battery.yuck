@@ -1,0 +1,39 @@
+(defvar
+	battery-level
+	'.BAT1.capacity'
+)
+(defvar
+	battery-level-rounded
+	'.BAT1.capacity | tostring | .[:-1] + "0"'
+)
+(defvar
+	battery-icon
+	'.BAT1.capacity | tostring | .[:-1] | tonumber | ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"].[.]'
+)
+(defvar
+	battery-status-icon
+	'if .BAT1.status == "Charging" then "󱐋" else "" end'
+)
+
+(defwidget battery []
+	(box
+		:spacing 3
+		:space-evenly false
+		:class "battery level-${jq(EWW_BATTERY, battery-level-rounded, "r")}"
+		(box
+			:space-evenly false
+			(label
+				:class "icon--battery-status"
+				:text "${jq(EWW_BATTERY, battery-status-icon, "r")}"
+			)
+			(label
+				:class "icon--battery-level"
+				:text "${jq(EWW_BATTERY, battery-icon, "r")}"
+			)
+		)
+		(label
+			:class "text--battery-level"
+			:text "${jq(EWW_BATTERY, battery-level)}%"
+		)
+	)
+)
