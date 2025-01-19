@@ -1,6 +1,7 @@
 @import "widgets/hyprland/hyprland-workspaces";
 @import "widgets/hyprland/hyprland-window-title";
 @import "widgets/date";
+@import "widgets/battery";
 @import "widgets/power-button";
 
 .window_topbar {
@@ -9,3 +10,14 @@
   margin: 5px 5px 0px 5px;
 }
 
+tooltip.background {
+  background-color: $base;
+  font-size: 16px;
+  border-radius: 16px;
+  color: $text;
+}
+
+tooltip label {
+  font-weight: bold;
+  margin: 0 8px;
+}

@@ -7,8 +7,11 @@
 	(box
 		(label
 			:class "hyprland-window-title ${window == "" ? "hyprland-window-title--empty" : ""}"
-			:text "${strlength(window) <= 50 ? window : "${substring(window, 0, 47)}..."}"
-			:tooltip window
+			:truncate true
+			:show-truncated true
+			:limit-width 50
+			:text window
+			:tooltip "${strlength(window) > 50 ? window : ""}"
 		)
 	)
 )

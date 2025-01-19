@@ -22,6 +22,7 @@
 							(box
 								:width 10
 								:class " hyprland-workspace-entry ${workspace.id == hyprland_workspace_current ? "hyprland-workspace--current" : ""} ${workspace.windows > 0 ? "hyprland-workspace--occupied" : ""}"
+								:tooltip "${workspace.id}"
 							)
 					)
 				)
