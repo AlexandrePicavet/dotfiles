@@ -1,0 +1,75 @@
+#!/bin/bash
+
+set -euo pipefail
+
+if (( ${#} != 4 )); then
+	echo "
+4 arguments are needed:
+state: (enable | disable) Enable or disable router mode.
+internet_dev: (wlan0) Network interface which have access to the target network.
+net_dev: (enp1s0) Network interface to give access to the target network.
+net_dev_cidr: (10.0.0.1/24) Ip address & Mask to add to net_dev.
+
+Enable example:
+\$ router-mode enable wlan0 enp1s0 10.0.0.1/24
+
+Disable example:
+\$ router-mode disable wlan0 enp1s0 10.0.0.1/24
+	"
+
+	exit 1
+fi
+
+declare -r STATE="${1}"
+declare -r INTERNET_DEV="${2}"
+declare -r NET_DEV="${3}"
+declare -r NET_DEV_CIDR="${4}"
+
+if [ "${UID}" != 0 ]; then
+	echo -e "\nSuper user permissions needed."
+	exec sudo -- "${0}" "${@}"
+fi
+
+function enable() {
+	echo -e "\nEnabling Router Mode...\n"
+	
+	iptables -t nat -A POSTROUTING -o "${INTERNET_DEV}" -j MASQUERADE
+	iptables -A FORWARD -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
+	iptables -A FORWARD -i "${NET_DEV}" -o "${INTERNET_DEV}" -j ACCEPT
+	echo "Iptables updated."
+	
+	/usr/bin/sysctl net.ipv4.ip_forward=1
+	echo "Ip Forwarding enabled."
+
+	nmcli dev set "${NET_DEV}" managed no
+	echo "Network Manager management of ${NET_DEV} interface disabled."
+
+	ip addr add dev "${NET_DEV}" "${NET_DEV_CIDR}"
+	echo "Ip address '${NET_DEV_CIDR}' added to interface '${NET_DEV}'."
+
+	echo -e "\nRouter mode enabled."
+}
+
+function disable() {
+	echo -e "\nDisabling Router Mode...\n"
+
+	iptables -t nat -D POSTROUTING -o "${INTERNET_DEV}" -j MASQUERADE
+	iptables -D FORWARD -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
+	iptables -D FORWARD -i "${NET_DEV}" -o "${INTERNET_DEV}" -j ACCEPT
+	echo "Iptables updated."
+
+	/usr/bin/sysctl net.ipv4.ip_forward=0
+	echo "Ip Forwarding disabled."
+
+	nmcli dev set "${NET_DEV}" managed no
+	echo "Network Manager management of ${NET_DEV} interface enabled."
+
+	ip addr del dev "${NET_DEV}" "${NET_DEV_CIDR}"
+	echo "Ip address '${NET_DEV_CIDR}' removed from interface '${NET_DEV}'."
+
+	echo -e "\nRouter mode disabled."
+}
+
+if [[ "${STATE}" =~ ^(enable|disable)$ ]]; then
+	"${STATE}"
+fi

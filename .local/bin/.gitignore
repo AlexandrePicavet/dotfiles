@@ -1,7 +1,4 @@
 /*
 
 !.gitignore
-!terminal-theme
-!alacritty-theme
-!starship-theme
-!tmux-theme
+!router-mode
