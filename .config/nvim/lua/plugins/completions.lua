@@ -1,12 +1,30 @@
 return {
 	{
+		"L3MON4D3/luaSnip",
+		version = "v2.*",
+		build = "make install_jsregexp",
+		config = function(_, _)
+			require("luasnip.loaders.from_lua").load({ paths = { "./snippets" } })
+
+			local ls = require("luasnip")
+			require("commander").add({
+				{
+					desc = "Change snippet choice",
+					cmd = function()
+						if ls.choice_active() then
+							ls.change_choice(1)
+						end
+					end,
+					keys = { { "i", "s" }, "<C-c>", { noremap = true, silent = true } },
+				},
+			})
+		end,
+	},
+	{
 		"saghen/blink.cmp",
 		dependencies = {
 			"rafamadriz/friendly-snippets",
-			{
-				"L3MON4D3/LuaSnip",
-				version = "v2.*",
-			},
+			{ "L3MON4D3/LuaSnip", version = "v2.*", },
 		},
 		version = "*",
 		---@module 'blink.cmp'
@@ -22,10 +40,11 @@ return {
 					auto_show_delay_ms = 0,
 				},
 				ghost_text = {
-					enabled = true,
+					enabled = false,
 				},
 			},
 			snippets = {
+				preset = "luasnip",
 				expand = function(snippet)
 					require("luasnip").lsp_expand(snippet)
 				end,
@@ -40,7 +59,7 @@ return {
 				end,
 			},
 			sources = {
-				default = { "lsp", "path", "luasnip", "buffer" },
+				default = { "lsp", "path", "snippets", "buffer" },
 			},
 			signature = {
 				enabled = true,
