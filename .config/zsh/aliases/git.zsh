@@ -33,6 +33,7 @@ if check_install git; then
 	alias gr='g rebase'
 	alias gra='gr --abort'
 	alias grc='gr --continue'
+	alias grcne='grc --no-edit'
 	alias gri='gr -i'
 	alias grest='g restore'
 	alias grst='g reset'
