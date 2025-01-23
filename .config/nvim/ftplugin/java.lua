@@ -40,14 +40,34 @@ local config = {
 	},
 	root_dir = require("jdtls.setup").find_root({ ".git", "mvnw", "gradlew", "pom.xml", "build.gradle" }),
 	settings = {
+		capabilities = require('blink.cmp').get_lsp_capabilities(),
 		java = {
+			eclipse = {
+				downloadSources = true
+			},
+			recommendataions = {
+				dependency = {
+					analytics = {
+						show = true;
+					}
+				}
+			},
+			symbols = {
+				includeSourceMethodDeclarations = true
+			},
+			format = {
+				enable = true,
+				commends = {
+					enabled = false
+				},
+				onType = {
+					enabled = false
+				}
+			},
 			signatureHelp = { enabled = true },
 			extendedClientCapabilities = jdtls.extendedClientCapabilities,
 			maven = {
 				downloadSources = true,
-			},
-			referencesCodeLens = {
-				enabled = true,
 			},
 			references = {
 				includeDecompiledSources = true,
@@ -57,8 +77,51 @@ local config = {
 					enabled = "all",
 				},
 			},
-			format = {
-				enabled = false,
+			referencesCodeLens = {
+				enabled = true
+			},
+			implementationsCodeLens = {
+				enabled = true
+			},
+			completion = {
+				enabled = true,
+				chain = { enabled = true },
+				overwrite = false,
+				guessMethodArguments = "insertBestGuessedArguments",
+				matchCase = "off"
+			},
+			compile = {
+				nullAnalysis = {
+					enabled = true,
+					mode = "automatic"
+				}
+			},
+			configuration = {
+				updateBuildConfiguration = "automatic",
+				runtimes = {
+					{
+						name = "JAVASE-11",
+						-- path = "/usr/lib/jvm/java-11-openjdk/",
+						-- sources = "/usr/share/licenses/openjdk11-src/",
+						javadoc = "https://docs.oracle.com/en/java/javase/11/docs/api",
+					},
+					{
+						name = "JAVASE-17",
+						-- path = "/usr/lib/jvm/java-17-openjdk/",
+						-- sources = "/usr/share/licenses/openjdk17-src/",
+						javadoc = "https://docs.oracle.com/en/java/javase/17/docs/api",
+					},
+					{
+						name = "JavaSE-21",
+						-- path = "/usr/lib/jvm/java-21-openjdk/",
+						-- sources = "/usr/share/licenses/openjdk21-src/",
+						javadoc = "https://docs.oracle.com/en/java/javase/21/docs/api",
+						default = true,
+					},
+				},
+				maven = {
+					downloadSources = true,
+				},
 			},
 		},
 	},
