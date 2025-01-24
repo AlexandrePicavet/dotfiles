@@ -68,6 +68,7 @@ return {
 				"bashls",
 				"hyprls",
 				"sqls",
+				"astro",
 			},
 		},
 		config = true,
@@ -132,6 +133,15 @@ return {
 			lspconfig.angularls.setup({})
 			lspconfig.sqls.setup({})
 			lspconfig.kotlin_language_server.setup({})
+			lspconfig.astro.setup({
+				init_options = {
+					typescript = {
+						tsdk = vim.fn.expand(
+							"~/.local/share/nvim/mason/packages/typescript-language-server/node_modules/typescript/lib/"
+						),
+					},
+				},
+			})
 		end,
 		commander = {
 			{

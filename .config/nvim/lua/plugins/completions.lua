@@ -3,8 +3,12 @@ return {
 		"L3MON4D3/luaSnip",
 		version = "v2.*",
 		build = "make install_jsregexp",
+		dependencies = {
+			"rafamadriz/friendly-snippets",
+		},
 		config = function(_, _)
 			require("luasnip.loaders.from_lua").load({ paths = { "./snippets" } })
+			require("luasnip.loaders.from_vscode").load({})
 
 			local ls = require("luasnip")
 			require("commander").add({
@@ -24,7 +28,7 @@ return {
 		"saghen/blink.cmp",
 		dependencies = {
 			"rafamadriz/friendly-snippets",
-			{ "L3MON4D3/LuaSnip", version = "v2.*", },
+			{ "L3MON4D3/LuaSnip", version = "v2.*" },
 		},
 		version = "*",
 		---@module 'blink.cmp'
