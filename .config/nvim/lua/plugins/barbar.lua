@@ -37,6 +37,11 @@ return {
 			keys = { "n", "<LEADER>bc", { noremap = true } },
 		},
 		{
+			desc = "Close Buffer ignore changes",
+			cmd = "<CMD>BufferClose!<CR>",
+			keys = { "n", "<LEADER>bC", { noremap = true } },
+		},
+		{
 			desc = "Restore buffer",
 			cmd = "<CMD>BufferRestore<CR>",
 			keys = { "n", "<LEADER>br", { noremap = true } },

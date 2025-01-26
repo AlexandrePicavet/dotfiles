@@ -4,30 +4,49 @@ return {
 		dependencies = {
 			"nvimtools/none-ls-extras.nvim",
 		},
-		config = function()
+		opts = function()
 			local null_ls = require("null-ls")
-			null_ls.setup({
+
+			local formatting = null_ls.builtins.formatting
+			local diagnostics = null_ls.builtins.diagnostics
+			local code_actions = null_ls.builtins.code_actions
+
+			local function has_eslint_config(params)
+				-- https://eslint.org/docs/latest/use/configure/configuration-files#configuration-file
+				return params.root_has_file({
+					"eslint.config.cjs",
+					"eslint.config.js",
+					"eslint.config.mjs",
+					"eslint.config.cts",
+					"eslint.config.ts",
+					"eslint.config.mts",
+				})
+			end
+
+			return {
+				debug = true,
 				sources = {
-					null_ls.builtins.formatting.stylua,
-					null_ls.builtins.formatting.prettier,
-					null_ls.builtins.formatting.nixpkgs_fmt,
-					null_ls.builtins.formatting.shfmt,
-					null_ls.builtins.diagnostics.deadnix,
-					null_ls.builtins.diagnostics.statix,
-					null_ls.builtins.code_actions.statix,
-					require("none-ls.diagnostics.eslint_d"),
-					require("none-ls.formatting.eslint_d"),
-					require("none-ls.code_actions.eslint_d"),
-				},
-			})
-		end,
-		commander = {
-				{
-					desc = "Format File",
-					cmd = vim.lsp.buf.format,
-					keys = { "n", "<LEADER>ff", { noremap = true } },
+					formatting.stylua,
+					formatting.prettier,
+					formatting.nixpkgs_fmt,
+					formatting.shfmt,
+					diagnostics.deadnix,
+					diagnostics.statix,
+					code_actions.statix,
+					require("none-ls.diagnostics.eslint_d").with({ condition = has_eslint_config }),
+					require("none-ls.formatting.eslint_d").with({ condition = has_eslint_config }),
+					require("none-ls.code_actions.eslint_d").with({ condition = has_eslint_config }),
 				},
 			}
+		end,
+		config = true,
+		commander = {
+			{
+				desc = "Format File",
+				cmd = vim.lsp.buf.format,
+				keys = { "n", "<LEADER>ff", { noremap = true } },
+			},
+		},
 	},
 	{
 		"jay-babu/mason-null-ls.nvim",
