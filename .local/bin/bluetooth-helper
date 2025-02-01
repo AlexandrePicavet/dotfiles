@@ -1,0 +1,31 @@
+#!/bin/bash
+
+set -euo pipefail
+
+declare -ar REQUIRED_PACKAGES=(sudo systemctl bluetoothctl)
+function check() {
+	local -a missing_packages
+	missing_packages=()
+
+	for package in "${REQUIRED_PACKAGES[@]}"; do
+		if ! which "${package}" &>/dev/null; then
+			missing_packages+=("${package}")
+		fi
+	done
+	readonly missing_packages
+
+	if [ ${#missing_packages[@]} -gt 0 ]; then
+		echo "Missing packages ${missing_packages[*]}. Stop execution."
+		return 1
+	fi
+}
+
+function start_service() {
+	sudo systemctl start bluetooth
+}
+
+function stop_service() {
+	sudo systemctl stop bluetooth
+}
+
+check && start_service && bluetoothctl && stop_service
