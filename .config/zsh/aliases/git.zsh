@@ -52,6 +52,7 @@ if check_install git; then
 	alias gstl='gst list'
 	alias gstp='gst pop'
 	alias gsts='gst show'
+	alias gstd='gsts --full-index'
 	alias gsw='g switch'
 	alias gswc='gfr;gsw -c'
 	alias gu='ga -u'
