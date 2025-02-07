@@ -30,6 +30,7 @@ disabled = false
 show_always = true
 
 [fill]
+symbol = '⋅'
 style = 'bold surface0'
 
 [line_break]
