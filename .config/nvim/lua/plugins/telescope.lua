@@ -4,10 +4,9 @@ return {
 		tag = "0.1.6",
 		dependencies = {
 			"nvim-lua/plenary.nvim",
-			{
-				"nvim-telescope/telescope-fzf-native.nvim",
-				build = "make",
-			},
+			"nvim-telescope/telescope-ui-select.nvim",
+			{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+			{ "nvim-telescope/telescope-live-grep-args.nvim", version = "^1.0.0" },
 		},
 		opts = {
 			defaults = {
@@ -44,7 +43,12 @@ return {
 			opts["extensions"]["ui-select"] = {
 				require("telescope.themes").get_dropdown({}),
 			}
-			require("telescope").setup(opts)
+
+			local telescope = require("telescope")
+			telescope.setup(opts)
+
+			telescope.load_extension("live_grep_args")
+			telescope.load_extension("ui-select")
 		end,
 		commander = {
 			{
@@ -69,7 +73,9 @@ return {
 			},
 			{
 				desc = "Find in project",
-				cmd = "<CMD>Telescope live_grep<CR>",
+				cmd = function ()
+					require("telescope").extensions.live_grep_args.live_grep_args()
+				end,
 				keys = { "n", "<LEADER>pg", { noremap = true } },
 			},
 			{
@@ -88,14 +94,6 @@ return {
 				keys = { "n", "<LEADER>bf", { noremap = true } },
 			},
 		},
-	},
-	{
-		"nvim-telescope/telescope-ui-select.nvim",
-		dependencies = {
-			"nvim-telescope/telescope.nvim",
-		},
-		config = function()
-			require("telescope").load_extension("ui-select")
-		end,
-	},
+	}
+	,
 }
