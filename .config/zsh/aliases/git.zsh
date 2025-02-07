@@ -28,6 +28,7 @@ if check_install git; then
 	alias gdh='gd HEAD'
 	alias gf='g fetch'
 	alias gfr='gf && gr'
+	alias gg='g log --graph --abbrev-commit --decorate --format=format:"%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(auto)%d%C(reset)%n""          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)"'
 	alias gl='g log --show-signature'
 	alias glf='gl --name-only'
 	alias gm='g merge'
