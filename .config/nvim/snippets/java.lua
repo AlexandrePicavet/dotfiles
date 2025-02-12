@@ -32,4 +32,23 @@ ls.add_snippets("java", {
 		text_node({ "", "" }),
 		text_node("}"),
 	}),
+	snippet("nfr", {
+		function_node(function(_, snip)
+			return "package "
+				.. snip.env.RELATIVE_FILEPATH
+					:gsub("^[a-zA-Z]+/[a-zA-Z]+/[a-zA-Z]+/(.+)/[a-zA-Z]+.java", "%1")
+					:gsub("/", ".")
+				.. ";"
+		end, {}),
+		text_node({ "", "", "" }),
+		text_node("public record"),
+		function_node(function(_, snip)
+			return " " .. snip.env.TM_FILENAME_BASE .. " ("
+		end, {}),
+		text_node({ "", "" }),
+		text_node("\t"),
+		insert_node(0),
+		text_node({ "", "" }),
+		text_node(") {}"),
+	}),
 })
