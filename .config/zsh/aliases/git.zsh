@@ -12,6 +12,8 @@ if check_install git; then
 	alias gAcap='gAca && gp'
 	alias gAcapf='gAca && gpf'
 	alias gAcm='gA && gcm'
+	alias gArc='gA && grc'
+	alias gArcne='gA && grcne'
 	alias gb='g branch'
 	alias gbm='gb -m'
 	alias gc='g commit'
@@ -64,4 +66,6 @@ if check_install git; then
 	alias gucap='guca && gp'
 	alias gucapf='guca && gpf'
 	alias gucm='gu && gcm'
+	alias gurc='gu && grc'
+	alias gurcne='gu && grcne'
 fi
