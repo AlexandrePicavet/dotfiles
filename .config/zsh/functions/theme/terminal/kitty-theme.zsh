@@ -1,5 +1,6 @@
 function kitty-theme() {
 	which kitty &>/dev/null || return 0
+	pgrep kitty &>/dev/null || return 0
 
 	local -r CONFIG_FILE=~/.config/kitty/kitty.conf
 	local -r LIGHT_THEME_MATCH='include themes\/catppuccin-latte.conf'

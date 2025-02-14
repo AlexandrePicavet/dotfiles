@@ -6,7 +6,7 @@ return {
 		vim.cmd.colorscheme("catppuccin")
 	end,
 	opts = {
-		flavour = "auto",
+		flavour = "macchiato",
 		background = {
 			light = "latte",
 			dark = "macchiato",
