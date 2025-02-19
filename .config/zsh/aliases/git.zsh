@@ -13,7 +13,6 @@ if check_install git; then
 	alias gAcapf='gAca && gpf'
 	alias gAcm='gA && gcm'
 	alias gArc='gA && grc'
-	alias gArcne='gA && grcne'
 	alias gb='g branch'
 	alias gba='gb -a'
 	alias gbm='gb -m'
@@ -43,7 +42,6 @@ if check_install git; then
 	alias gr='g rebase'
 	alias gra='gr --abort'
 	alias grc='gr --continue'
-	alias grcne='grc --no-edit'
 	alias grest='g restore'
 	alias gri='gr -i'
 	alias grst='g reset'
@@ -70,5 +68,4 @@ if check_install git; then
 	alias gucapf='guca && gpf'
 	alias gucm='gu && gcm'
 	alias gurc='gu && grc'
-	alias gurcne='gu && grcne'
 fi
