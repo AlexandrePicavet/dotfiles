@@ -47,6 +47,7 @@ if check_install git; then
 	alias grest='g restore'
 	alias gri='gr -i'
 	alias grst='g reset'
+	alias grsth='grst --hard'
 	alias gs='gsl -sb'
 	alias gsh='g show'
 	alias gsl='g status'
