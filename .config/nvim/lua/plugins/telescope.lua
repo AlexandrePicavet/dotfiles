@@ -73,10 +73,13 @@ return {
 			},
 			{
 				desc = "Find in project",
-				cmd = function ()
-					require("telescope").extensions.live_grep_args.live_grep_args()
-				end,
+				cmd = "<CMD>Telescope live_grep<CR>",
 				keys = { "n", "<LEADER>pg", { noremap = true } },
+			},
+			{
+				desc = "Find in project extended",
+				cmd = "<CMD>Telescope live_grep_args<CR>",
+				keys = { "n", "<LEADER>pG", { noremap = true } },
 			},
 			{
 				desc = "Find file in project",
