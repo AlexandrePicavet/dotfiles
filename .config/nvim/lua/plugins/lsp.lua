@@ -71,6 +71,8 @@ return {
 				"astro",
 				"lemminx",
 				"yamlls",
+				"pylsp",
+				"ruff",
 			},
 		},
 		config = true,
@@ -170,6 +172,8 @@ return {
 					},
 				},
 			})
+			lspconfig.pylsp.setup({})
+			lspconfig.ruff.setup({})
 		end,
 		commander = {
 			{
