@@ -73,6 +73,7 @@ return {
 				"yamlls",
 				"pylsp",
 				"ruff",
+				"denols",
 			},
 		},
 		config = true,
@@ -174,6 +175,7 @@ return {
 			})
 			lspconfig.pylsp.setup({})
 			lspconfig.ruff.setup({})
+			lspconfig.denols.setup({})
 		end,
 		commander = {
 			{
