@@ -3,6 +3,7 @@
 (include "./widgets/date.yuck")
 (include "./widgets/power-button.yuck")
 (include "./widgets/battery.yuck")
+(include "./widgets/network/networks.yuck")
 
 (defwindow topbar [monitor]
 	:monitor monitor
@@ -33,6 +34,7 @@
 			:halign "end"
 			:spacing 5
 			:space-evenly false
+			(networks)
 			(battery)
 			(power-button
 				:monitor monitor

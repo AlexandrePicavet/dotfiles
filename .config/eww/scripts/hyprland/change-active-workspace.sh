@@ -1,6 +1,8 @@
 #!/bin/bash
 # https://wiki.hyprland.org/Useful-Utilities/Status-Bars/#configewwscriptschange-active-workspace
 
+set -euo pipefail
+
 function clamp {
 	min=$1
 	max=$2

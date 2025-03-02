@@ -1,0 +1,37 @@
+(include "./utils/nmcli/connected-wifi.yuck");
+(include "./utils/nmcli/connected-wireguard.yuck");
+
+(defwidget networks
+	[]
+	(button
+		:class "networks__button_open"
+		:onclick "notify-send 'test'"
+		(box
+			:spacing 10
+			:space-evenly false
+			(label
+				:class "networks__wireguard"
+				:text "${
+					strlength(connected-wireguard) > 0
+						? '󰌆'
+						: ''
+				}"
+				:tooltip `${jq(connected-wireguard, "join(\" & \")", "r")}`
+			)
+			(label
+				:class "networks__wifi"
+				;; :text "󰤟 󰤢 󰤥 󰤨 "
+				:text "${
+					arraylength(connected-wifi) > 0
+						? '󰤨'
+						: ''
+				}"
+				:tooltip `${jq(connected-wifi, "join(\" & \")", "r")}`
+			)
+			;; (label
+			;; 	:class "networks__ethernet"
+			;; 	:text ""
+			;; )
+		)
+	)
+)

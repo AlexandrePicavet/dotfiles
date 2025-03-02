@@ -1,0 +1,5 @@
+(defpoll connected-wifi
+	:interval "15s"
+	:initial "[]"
+	`bash ~/.config/eww/scripts/nmcli/status.sh | jq -r '[.[] | select(.type == "wifi" and .state == "connected") | .connection]'`
+)
