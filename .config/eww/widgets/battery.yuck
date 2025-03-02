@@ -8,11 +8,7 @@
 )
 (defvar
 	battery-icon
-	'.BAT1.capacity | tostring | .[:-1] | tonumber | ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"].[.]'
-)
-(defvar
-	battery-status-icon
-	'if .BAT1.status == "Charging" then "󱐋" else "" end'
+	'if .BAT1.status == "Charging" then "󱐋" else .BAT1.capacity | tostring | .[:-1] | tonumber | ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"].[.] end'
 )
 
 (defwidget battery []
@@ -22,10 +18,6 @@
 		:class "battery level-${jq(EWW_BATTERY, battery-level-rounded, "r")}"
 		(box
 			:space-evenly false
-			(label
-				:class "icon--battery-status"
-				:text "${jq(EWW_BATTERY, battery-status-icon, "r")}"
-			)
 			(label
 				:class "icon--battery-level"
 				:text "${jq(EWW_BATTERY, battery-icon, "r")}"

@@ -1,37 +1,41 @@
-(include "./utils/nmcli/connected-wifi.yuck");
-(include "./utils/nmcli/connected-wireguard.yuck");
+(include "./utils/nmcli/watch-connected-devices.yuck");
 
 (defwidget networks
 	[]
 	(button
-		:class "networks__button_open"
+		:class "networks ${watch-connected-devices}"
 		:onclick "notify-send 'test'"
 		(box
-			:spacing 10
+			:spacing 0
 			:space-evenly false
 			(label
-				:class "networks__wireguard"
+				:class "networks__wireguard ${arraylength(devices-wireguard) > 0 ? 'connected' : ''}"
 				:text "${
-					strlength(connected-wireguard) > 0
+					arraylength(devices-wireguard) > 0
 						? '󰌆'
 						: ''
 				}"
-				:tooltip `${jq(connected-wireguard, "join(\" & \")", "r")}`
+				:tooltip `${jq(devices-wireguard, 'map(.connection) | join(" & ")', "r")}`
 			)
 			(label
-				:class "networks__wifi"
-				;; :text "󰤟 󰤢 󰤥 󰤨 "
+				:class "networks__wifi ${arraylength(devices-wifi) > 0 ? 'connected' : ''}"
+				;; TODO select icon according to the strength "󰤟 󰤢 󰤥 󰤨 "
 				:text "${
-					arraylength(connected-wifi) > 0
+					arraylength(devices-wifi) > 0
 						? '󰤨'
 						: ''
 				}"
-				:tooltip `${jq(connected-wifi, "join(\" & \")", "r")}`
+				:tooltip `${jq(devices-wifi, 'map(.connection) | join(" & ")', "r")}`
 			)
-			;; (label
-			;; 	:class "networks__ethernet"
-			;; 	:text ""
-			;; )
+			(label
+				:class "networks__ethernet ${arraylength(devices-ethernet) > 0 ? 'connected' : ''}"
+				:text "${
+					arraylength(devices-ethernet) > 0
+						? ''
+						: ''
+				}"
+				:tooltip `${jq(devices-ethernet, 'map(.connection) | join(" & ")', "r")}`
+			)
 		)
 	)
 )
