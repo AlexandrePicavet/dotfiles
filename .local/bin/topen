@@ -1,0 +1,16 @@
+#!/bin/bash
+
+case "${1}" in
+btop)
+	ghostty --class=resource.monitor -e btop &>/dev/null &
+	;;
+wireless)
+	ghostty --class=connectivity.wireless -e 'nmcli d w l --rescan yes && nmtui-connect' &>/dev/null &
+	;;
+nmtui)
+	ghostty --class=connectivity.wireless -e 'sleep 0.1 && nmtui-connect' &>/dev/null &
+	;;
+bluetooth)
+	ghostty --class=connectivity.bluetooth -e bluetooth-helper &>/dev/null &
+	;;
+esac
