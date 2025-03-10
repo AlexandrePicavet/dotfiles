@@ -6,7 +6,12 @@ local home = os.getenv("HOME")
 local nvim_dir = home .. "/.local/share/nvim"
 local workspace_path = nvim_dir .. "/jdtls-workspace/"
 local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
+local project_dir = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h")
 local workspace_dir = workspace_path .. project_name
+
+local global_formatter = home .. "/.config/nvim/assets/java/formatter.xml"
+local project_formatter = project_dir .. "/formatter.xml"
+local formatter = vim.fn.filereadable(project_formatter) and project_formatter or global_formatter
 
 local jdtls = require("jdtls")
 local jdtls_dir = nvim_dir .. "/mason/packages/jdtls"
@@ -40,29 +45,32 @@ local config = {
 	},
 	root_dir = require("jdtls.setup").find_root({ ".git", "mvnw", "gradlew", "pom.xml", "build.gradle" }),
 	settings = {
-		capabilities = require('blink.cmp').get_lsp_capabilities(),
+		capabilities = require("blink.cmp").get_lsp_capabilities(),
 		java = {
 			eclipse = {
-				downloadSources = true
+				downloadSources = true,
 			},
 			recommendataions = {
 				dependency = {
 					analytics = {
-						show = true;
-					}
-				}
+						show = true,
+					},
+				},
 			},
 			symbols = {
-				includeSourceMethodDeclarations = true
+				includeSourceMethodDeclarations = true,
 			},
 			format = {
 				enable = true,
-				commends = {
-					enabled = false
+				comments = {
+					enabled = false,
 				},
 				onType = {
-					enabled = false
-				}
+					enabled = false,
+				},
+				settings = {
+					url = formatter,
+				},
 			},
 			signatureHelp = { enabled = true },
 			extendedClientCapabilities = jdtls.extendedClientCapabilities,
@@ -78,23 +86,23 @@ local config = {
 				},
 			},
 			referencesCodeLens = {
-				enabled = true
+				enabled = true,
 			},
 			implementationsCodeLens = {
-				enabled = true
+				enabled = true,
 			},
 			completion = {
 				enabled = true,
 				chain = { enabled = true },
 				overwrite = false,
 				guessMethodArguments = "insertBestGuessedArguments",
-				matchCase = "off"
+				matchCase = "off",
 			},
 			compile = {
 				nullAnalysis = {
 					enabled = true,
-					mode = "automatic"
-				}
+					mode = "automatic",
+				},
 			},
 			configuration = {
 				updateBuildConfiguration = "automatic",
