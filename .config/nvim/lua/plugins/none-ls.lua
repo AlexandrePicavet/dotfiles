@@ -44,7 +44,7 @@ return {
 			{
 				desc = "Format File",
 				cmd = vim.lsp.buf.format,
-				keys = { "n", "<LEADER>ff", { noremap = true } },
+				keys = { { "n", "v" }, "<LEADER>ff", { noremap = true } },
 			},
 		},
 	},
