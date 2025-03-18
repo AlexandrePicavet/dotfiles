@@ -28,6 +28,26 @@ require("commander").add({
 		end,
 		keys = { "n", "<leader>fp", { noremap = true } },
 	},
+	{
+		desc = "Quickfix open",
+		cmd = "<CMD>copen<CR>",
+		keys = { "n", "<LEADER>co", { noremap = true, silent = true } },
+	},
+	{
+		desc = "Quickfix next",
+		cmd = "<CMD>cnext<CR>",
+		keys = { "n", "<LEADER>cn", { noremap = true, silent = true } },
+	},
+	{
+		desc = "Quickfix previous",
+		cmd = "<CMD>cprevious<CR>",
+		keys = { "n", "<LEADER>cp", { noremap = true, silent = true } },
+	},
+	{
+		desc = "Quickfix close",
+		cmd = "<CMD>cclose<CR>",
+		keys = { "n", "<LEADER>cc", { noremap = true, silent = true } },
+	},
 })
 
 vim.keymap.set("t", "<C-Space>", [[<C-\><C-n>]])
