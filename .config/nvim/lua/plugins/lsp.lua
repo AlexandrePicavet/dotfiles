@@ -98,6 +98,7 @@ return {
 			local capabilities = require("blink.cmp").get_lsp_capabilities()
 
 			local lspconfig = require("lspconfig")
+			local util = require("lspconfig.util")
 
 			lspconfig.lua_ls.setup({
 				capabilities = capabilities,
@@ -173,9 +174,16 @@ return {
 					},
 				},
 			})
+
+			-- Python
 			lspconfig.pylsp.setup({})
 			lspconfig.ruff.setup({})
-			lspconfig.denols.setup({})
+
+			-- Deno
+			vim.g.markdown_fenced_languages = { "ts=typescript" }
+			lspconfig.denols.setup({
+				root_dir = util.root_pattern("deno.json", "deno.jsonc"),
+			})
 		end,
 		commander = {
 			{
