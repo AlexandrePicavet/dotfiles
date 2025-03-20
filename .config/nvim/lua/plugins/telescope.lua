@@ -96,7 +96,11 @@ return {
 				cmd = "<CMD>Telescope filetypes<CR>",
 				keys = { "n", "<LEADER>bf", { noremap = true } },
 			},
+			{
+				desc = "List buffer symbols",
+				cmd = "<CMD>Telescope lsp_document_symbols<CR>",
+				keys = { "n", "<LEADER>bs", { noremap = true } },
+			},
 		},
-	}
-	,
+	},
 }
