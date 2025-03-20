@@ -1,12 +1,18 @@
 return {
 	"tomasky/bookmarks.nvim",
 	opts = {
-		save_file = vim.fn.expand("$HOME/.nvim_bookmarks"),
+		save_file = (function()
+			local bookmark_directory = os.getenv("HOME") .. "/.local/share/nvim/bookmarks/"
+			vim.fn.mkdir(bookmark_directory, "p", "0o700")
+
+			local bookmark_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
+			return bookmark_directory .. bookmark_name
+		end)(),
 		keywords = {
-			["@t"] = "󰄲 ",
-			["@w"] = " ",
-			["@f"] = "󰢷 ",
-			["@n"] = "󰎞 ",
+			["TODO"] = "󰄲 ",
+			["WARN"] = " ",
+			["FIX"] = "󰢷 ",
+			["NOTE"] = "󰎞 ",
 		},
 	},
 	commander = {
