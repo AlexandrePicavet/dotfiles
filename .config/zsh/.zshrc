@@ -3,6 +3,8 @@ setopt autocd extendedglob notify
 ZPROFILE="/etc/zsh/zprofile"
 [ -f "${ZPROFILE}" ] && source "${ZPROFILE}"
 
+path+=("${HOME}/.local/bin")
+
 for script in "${ZDOTDIR}/helpers/"*.zsh; do
 	source "${script}";
 done
