@@ -13,7 +13,6 @@ vim.opt.rtp:prepend(lazypath)
 
 require("vim-options")
 require("lazy").setup("plugins")
-require("keymap")
 
 
 vim.api.nvim_create_autocmd({'BufEnter', 'BufWinEnter'}, {
