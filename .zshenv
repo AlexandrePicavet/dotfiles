@@ -1,4 +1,4 @@
-readonly ZDOTDIR="${HOME}/.config/zsh"
+ZDOTDIR="${HOME}/.config/zsh"
 
 declare -a IGNORED_MISSING_PACKAGES
 IGNORED_MISSING_PACKAGES=()
