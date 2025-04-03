@@ -61,7 +61,7 @@ return {
 			},
 			packages = { enable = true },
 			project = {
-				enable = true,
+				enable = false,
 				limit = 10,
 				icon = " ",
 				label = "Projects",
