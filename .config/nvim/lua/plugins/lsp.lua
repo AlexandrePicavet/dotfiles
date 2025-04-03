@@ -197,11 +197,11 @@ return {
 				keys = { "n", "<LEADER>gD", { noremap = true } },
 			},
 			{
-				desc = "Go to type definition",
+				desc = "Find type definitions",
 				cmd = function()
 					require("telescope.builtin").lsp_type_definitions()
 				end,
-				keys = { "n", "<LEADER>gt", { noremap = true } },
+				keys = { "n", "<LEADER>ft", { noremap = true } },
 			},
 			{
 				desc = "Find implementations",
