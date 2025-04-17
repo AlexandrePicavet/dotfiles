@@ -3,14 +3,6 @@ return {
 	dependencies = {
 		"neovim/nvim-lspconfig",
 	},
-	init = function()
-		vim.diagnostic.config({
-			virtual_text = false,
-			virtual_lines = {
-				highlight_whole_line = true,
-			},
-		})
-	end,
 	config = true,
 	commander = {
 		{
