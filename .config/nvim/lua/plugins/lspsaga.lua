@@ -7,7 +7,14 @@ return {
 	},
 	opts = {
 		symbol_in_winbar = {
-			enable = false,
+			enable = true,
+			separator = "  ",
+			hide_keyword = false,
+			ignore_patterns = nil,
+			show_file = true,
+			folder_level = 1,
+			color_mode = true,
+			delay = 300,
 		},
 		lightbulb = {
 			enable = false,

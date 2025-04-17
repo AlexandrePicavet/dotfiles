@@ -1,3 +1,4 @@
+-- TODO update the configuration to match Neovim v0.11
 return {
 	{
 		"williamboman/mason.nvim",

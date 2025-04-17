@@ -3,11 +3,15 @@ return {
 	dependencies = {
 		"neovim/nvim-lspconfig",
 	},
-	config = function()
-		require("lsp_lines").setup()
-
-		vim.diagnostic.config({ virtual_text = false })
+	init = function()
+		vim.diagnostic.config({
+			virtual_text = false,
+			virtual_lines = {
+				highlight_whole_line = true,
+			},
+		})
 	end,
+	config = true,
 	commander = {
 		{
 			desc = "Toggle LSP Lines",

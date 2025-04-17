@@ -18,13 +18,6 @@ return {
 					end,
 				},
 			},
-			lualine_x = {
-				{
-					function()
-						return require("pomodoro").get_pomodoro_status("󰔞", "󱎫", "󱫟")
-					end,
-				},
-			},
 		},
 	},
 }
