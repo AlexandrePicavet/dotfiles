@@ -1,20 +1,24 @@
 return {
 	{
 		"L3MON4D3/luaSnip",
+		lazy = true,
 		version = "v2.*",
-		build = "make install_jsregexp",
 		dependencies = {
-			"rafamadriz/friendly-snippets",
+			{
+				"rafamadriz/friendly-snippets",
+				config = function()
+					require("luasnip.loaders.from_lua").lazy_load({ paths = { "./snippets" } })
+					require("luasnip.loaders.from_vscode").lazy_load({})
+				end,
+			},
 		},
-		config = function(_, _)
-			require("luasnip.loaders.from_lua").load({ paths = { "./snippets" } })
-			require("luasnip.loaders.from_vscode").load({})
-
-			local ls = require("luasnip")
+		build = "make install_jsregexp",
+		init = function()
 			require("commander").add({
 				{
 					desc = "Change snippet choice",
 					cmd = function()
+						local ls = require("luasnip")
 						if ls.choice_active() then
 							ls.change_choice(1)
 						end
@@ -26,11 +30,12 @@ return {
 	},
 	{
 		"saghen/blink.cmp",
+		version = "*",
 		dependencies = {
 			"rafamadriz/friendly-snippets",
 			{ "L3MON4D3/LuaSnip", version = "v2.*" },
 		},
-		version = "*",
+		event = "VeryLazy",
 		---@module 'blink.cmp'
 		---@type blink.cmp.Config
 		opts = {

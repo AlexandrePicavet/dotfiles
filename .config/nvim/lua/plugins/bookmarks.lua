@@ -1,5 +1,6 @@
 return {
 	"tomasky/bookmarks.nvim",
+	event = "VeryLazy",
 	opts = {
 		save_file = (function()
 			local bookmark_directory = os.getenv("HOME") .. "/.local/share/nvim/bookmarks/"

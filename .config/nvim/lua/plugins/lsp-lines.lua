@@ -3,6 +3,7 @@ return {
 	dependencies = {
 		"neovim/nvim-lspconfig",
 	},
+	event = "VeryLazy",
 	config = true,
 	commander = {
 		{

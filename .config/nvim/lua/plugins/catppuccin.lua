@@ -1,10 +1,8 @@
 return {
 	"catppuccin/nvim",
 	name = "catppuccin",
-	priority = 1000,
+	priority = 999,
 	init = function()
-		vim.cmd.colorscheme("catppuccin")
-
 		vim.diagnostic.config({
 			signs = {
 				linehl = {
@@ -36,13 +34,28 @@ return {
 			notify = true,
 		},
 		custom_highlights = function(colors)
+			local Color = require("lua-color")
+			local crust_color = Color(colors.crust)
+
 			return {
-				DiagnosticErrorLn = { bg = colors.red, fg = colors.crust },
-				DiagnosticWarnLn = { bg = colors.yellow, fg = colors.crust },
-				DiagnosticInfoLn = { bg = colors.green, fg = colors.crust },
-				DiagnosticHintLn = { bg = colors.blue, fg = colors.crust },
+				DiagnosticErrorLn = {
+					bg = Color(crust_color):mix(Color(colors.red), 0.125):tostring(),
+				},
+				DiagnosticWarnLn = {
+					bg = Color(crust_color):mix(Color(colors.yellow), 0.125):tostring(),
+				},
+				DiagnosticInfoLn = {
+					bg = Color(crust_color):mix(Color(colors.green), 0.25):tostring(),
+				},
+				DiagnosticHintLn = {
+					bg = Color(crust_color):mix(Color(colors.blue), 0.25):tostring(),
+				},
 			}
 		end,
 	},
-	config = true,
+	config = function(_, opts)
+		require("catppuccin").setup(opts)
+
+		vim.cmd.colorscheme("catppuccin")
+	end,
 }

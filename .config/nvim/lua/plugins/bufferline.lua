@@ -64,7 +64,7 @@ return {
 		},
 		{
 			desc = "Move buffer to next",
-			cmd = "<CMD>BufferLineCycleNext<CR>",
+			cmd = "<CMD>BufferLineMoveNext<CR>",
 			keys = { "n", "<LEADER>bL", { noremap = true } },
 		},
 		{

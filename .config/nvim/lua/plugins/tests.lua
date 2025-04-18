@@ -18,6 +18,7 @@ return {
 				},
 			},
 		},
+		event = "VeryLazy",
 		opts = function()
 			return {
 				adapters = {

@@ -1,6 +1,7 @@
 return {
 	{
 		"tpope/vim-fugitive",
+		event = "VeryLazy",
 		commander = {
 			{
 				desc = "Git add all",
