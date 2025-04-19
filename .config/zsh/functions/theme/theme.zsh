@@ -7,4 +7,5 @@ function theme() {
 	hyprland-theme "${THEME}"
 	dunst-theme "${THEME}"
 	eww-theme "${THEME}"
+	gtk-theme "${THEME}"
 }

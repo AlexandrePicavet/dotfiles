@@ -10,6 +10,5 @@ function terminal-theme() {
 	fzf-theme "${THEME}"
 	git-delta-theme "${THEME}"
 	btop-theme "${THEME}"
-	ghostty-theme "${THEME}"
 	nvim-theme "${THEME}"
 }
