@@ -1,22 +1,22 @@
 if check_install systemctl; then
-	alias sysctl='systemctl'
+	alias sys='systemctl'
 
-	alias syssus='sysctl suspend'
-	alias syshib='sysctl hibernate'
-	alias sysrb='sysctl reboot'
-	alias syspo='sysctl poweroff'
+	alias syssus='sys suspend'
+	alias syshib='sys hibernate'
+	alias sysrb='sys reboot'
+	alias syspo='sys poweroff'
 
-	alias sysst='sysctl status'
+	alias sysst='sys status'
 	if check_install sudo; then
-		alias sysstart='sudo sysctl start'
-		alias sysstop='sudo sysctl stop'
-		alias sysrs='sudo sysctl restart'
+		alias sysstart='sudo sys start'
+		alias sysstop='sudo sys stop'
+		alias sysrs='sudo sys restart'
 	fi
 
-	alias usysctl='sysctl --user'
+	alias usys='sys --user'
 
-	alias usysst='usysctl status'
-	alias usysstart='usysctl start'
-	alias usysstop='usysctl stop'
-	alias usysrs='usysctl restart'
+	alias usysst='usys status'
+	alias usysstart='usys start'
+	alias usysstop='usys stop'
+	alias usysrs='usys restart'
 fi
