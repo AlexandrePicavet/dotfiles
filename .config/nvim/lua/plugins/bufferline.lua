@@ -69,7 +69,7 @@ return {
 		},
 		{
 			desc = "Close buffer",
-			cmd = "<CMD>bd<CR>",
+			cmd = "<CMD>bp<BAR>sp<BAR>bn<BAR>bd<CR>",
 			keys = { "n", "<LEADER>bc", { noremap = true } },
 		},
 		{
