@@ -10,9 +10,9 @@ SAVEHIST=9223372036854775807
 # Beeps if attempting to access a history entry which isn't there
 # setopt HIST_BEEP
 # Does not save if command is a duplicate of the previous one
-# setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_DUPS
 # Does not save if line starts with space
-# setopt HIST_IGNORE_SPACE
+setopt HIST_IGNORE_SPACE
 # Strips superfluous blanks
 # setopt HIST_REDUCE_BLANKS
 # Expands the line without executing it
