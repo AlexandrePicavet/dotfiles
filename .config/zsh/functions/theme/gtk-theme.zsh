@@ -1,4 +1,6 @@
 function gtk-theme() {
+	which gsettings &>/dev/null || return 0
+
 	local THEME
 	THEME="${1}"
 	readonly THEME
