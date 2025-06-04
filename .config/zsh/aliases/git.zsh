@@ -28,6 +28,8 @@ if check_install git; then
 	alias gcpf='gc && gpf'
 	alias gd='g diff --color=always'
 	alias gdh='gd HEAD'
+	alias gdt='g difftool'
+	alias gdth="gdt HEAD"
 	alias gf='g fetch'
 	alias gfr='gf && gr'
 	alias gg='g log --graph --abbrev-commit --decorate --format=format:"%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(auto)%d%C(reset)%n""          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)"'
@@ -37,6 +39,7 @@ if check_install git; then
 	alias gm='g merge'
 	alias gma='gm --abort'
 	alias gmc='gm --continue'
+	alias gmt='g mergetool'
 	alias gp='g push'
 	alias gpf='gp --force-with-lease'
 	alias gr='g rebase'

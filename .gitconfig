@@ -1,23 +1,27 @@
 [include]
 	path = .config/delta/theme.gitconfig
 	path = .user.gitconfig
+
 [core]
 	pager = delta
+
 [commit]
 	gpgsign = true
+
 [pull]
 	rebase = true
 [push]
 	autoSetupRemote = true
-[merge]
-	conflictstyle = diff3
-	tool = nvimdiff
-[mergetool]
-	prompt = false
-[rerere]
-	enabled = true
+
 [diff]
 	colorMoved = default
+	tool = nvimdiff
+	guitool = nvimdiff
+[difftool]
+	prompt = false
+	guiDefault = false
+[difftool "nvimdiff"]
+	cmd = "nvim -d \"$LOCAL\" \"$REMOTE\" -c \"wincmd w\" -c \"wincmd L\""
 [interactive]
 	diffFilter = delta --color-only
 [delta]
@@ -30,3 +34,14 @@
 	hyperlinks = true
 	hyperlinks-file-link-format = "file:///{path}"
 	tabs = 2
+
+[merge]
+	conflictstyle = diff3
+	tool = nvimdiff
+[mergetool]
+	prompt = false
+[mergetool "nvimdiff"]
+	cmd = "nvim -d \"$LOCAL\" \"$MERGED\" \"$BASE\" \"$REMOTE\" -c \"wincmd w\" -c \"wincmd J\""
+
+[rerere]
+	enabled = true
