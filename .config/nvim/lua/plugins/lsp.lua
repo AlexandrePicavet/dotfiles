@@ -75,6 +75,7 @@ return {
 				"pylsp",
 				"ruff",
 				"denols",
+				"gopls",
 			},
 		},
 		config = true,
