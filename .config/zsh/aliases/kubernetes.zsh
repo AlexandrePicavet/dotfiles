@@ -60,6 +60,7 @@ if check_install kubectl; then
 	alias kgsc="kg sc"
 	alias kgwn="kg -o wide node"
 	alias kl="k logs"
+	alias klf="kl -f"
 	alias krr="k rollout restart"
 	alias ks="k scale --replicas"
 	alias ksd="k scale deployment --replicas"
