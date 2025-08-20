@@ -46,5 +46,9 @@ return {
 
 		local configs = require("nvim-treesitter.configs")
 		configs.setup(opts)
+
+		vim.opt.foldmethod = "expr"
+		vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+		vim.opt.foldlevelstart = 99
 	end,
 }
