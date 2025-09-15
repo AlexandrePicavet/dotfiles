@@ -57,7 +57,6 @@ return {
 				"prettier",
 				"eslint_d",
 				"nixpkgs-fmt",
-				"explainshell",
 				"shellcheck",
 				"shfmt",
 			},
