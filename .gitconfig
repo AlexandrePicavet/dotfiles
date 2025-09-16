@@ -1,7 +1,3 @@
-[include]
-	path = .config/delta/theme.gitconfig
-	path = .user.gitconfig
-
 [core]
 	pager = delta
 
@@ -45,3 +41,7 @@
 
 [rerere]
 	enabled = true
+
+[include]
+	path = .config/delta/theme.gitconfig
+	path = .user.gitconfig
