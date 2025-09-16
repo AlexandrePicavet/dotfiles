@@ -34,7 +34,15 @@ return {
 			notify = true,
 		},
 		custom_highlights = function(colors)
-			local Color = require("lua-color")
+			local success, Color = pcall(function()
+				return require("lua-color")
+			end)
+
+			if success == false then
+				require("notify")("lua-color not installed.", vim.log.levels.WARN)
+				return {}
+			end
+
 			local crust_color = Color(colors.crust)
 
 			return {
