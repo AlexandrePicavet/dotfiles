@@ -11,7 +11,7 @@ local workspace_dir = workspace_path .. project_name
 
 local global_formatter = home .. "/.config/nvim/assets/java/formatter.xml"
 local project_formatter = project_dir .. "/formatter.xml"
-local formatter = vim.fn.filereadable(project_formatter) and project_formatter or global_formatter
+local formatter = vim.fn.filereadable(project_formatter) > 0 and project_formatter or global_formatter
 
 local jdtls = require("jdtls")
 local jdtls_dir = nvim_dir .. "/mason/packages/jdtls"
