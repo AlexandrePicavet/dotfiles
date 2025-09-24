@@ -1,9 +1,8 @@
 function dunst-theme() {
 	which dunst &>/dev/null || return 0
 
-	readonly DUNSTRC_D="${HOME}/.config/dunst/dunstrc.d"
-	readonly THEME_LINK_TARGET="${DUNSTRC_D}/theme.conf"
-	readonly THEMES_PATH="${DUNSTRC_D}/themes"
+	readonly THEME_LINK_TARGET="${HOME}/.config/dunst/dunstrc.d/theme.conf"
+	readonly THEMES_PATH="themes"
 	readonly LIGHT_THEME_PATH="${THEMES_PATH}/latte.conf"
 	readonly DARK_THEME_PATH="${THEMES_PATH}/macchiato.conf"
 
