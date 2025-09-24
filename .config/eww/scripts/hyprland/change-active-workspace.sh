@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # https://wiki.hyprland.org/Useful-Utilities/Status-Bars/#configewwscriptschange-active-workspace
 
 set -euo pipefail

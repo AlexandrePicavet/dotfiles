@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # https://wiki.hyprland.org/Useful-Utilities/Status-Bars/#configewwscriptsget-workspaces
 
 set -euo pipefail
