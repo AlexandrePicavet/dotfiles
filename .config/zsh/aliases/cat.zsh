@@ -1,7 +1,6 @@
 if check_install bat; then
-	alias cat='bat'
+	alias b='bat'
+	alias c='bat -p'
+else
+	alias c='cat'
 fi
-
-alias c='/usr/bin/cat'
-alias b='cat'
-
