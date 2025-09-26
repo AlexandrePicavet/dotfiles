@@ -1,14 +1,14 @@
 (defvar
 	battery-level
-	'.BAT1.capacity'
+	'to_entries | first | .value.capacity'
 )
 (defvar
 	battery-level-rounded
-	'.BAT1.capacity | tostring | .[:-1] + "0"'
+	'to_entries | first | .value.capacity | tostring | .[:-1] + "0"'
 )
 (defvar
 	battery-icon
-	'if .BAT1.status == "Charging" then "󱐋" else .BAT1.capacity | tostring | .[:-1] | tonumber | ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"].[.] end'
+	'if to_entries | first | .value.status == "Charging" then "󱐋" else to_entries | first | .value.capacity | tostring | .[:-1] | tonumber | ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"].[.] end'
 )
 
 (defwidget battery []
