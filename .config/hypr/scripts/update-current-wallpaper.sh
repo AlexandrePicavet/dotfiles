@@ -6,7 +6,7 @@ readonly BASEDIR="${HOME}/.config/hypr/user/wallpapers"
 readonly CURRENT="${BASEDIR}/current"
 
 declare current_wallpaper
-current_wallpaper="$(readlink "${CURRENT}")"
+current_wallpaper="$(readlink "${CURRENT}" || echo "")"
 readonly current_wallpaper
 
 declare new_wallpaper
