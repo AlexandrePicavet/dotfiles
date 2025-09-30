@@ -27,6 +27,8 @@ if check_install git; then
 	alias gcp='gc && gp'
 	alias gcpf='gc && gpf'
 	alias gd='g diff --color=always'
+	alias gdi='gd --ignore-all-space'
+	alias gdih='gdi HEAD'
 	alias gdh='gd HEAD'
 	alias gdt='g difftool'
 	alias gdth="gdt HEAD"
