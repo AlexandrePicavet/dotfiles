@@ -5,10 +5,10 @@ btop)
 	ghostty --class=resource.monitor -e btop &>/dev/null &
 	;;
 wireless)
-	ghostty --class=connectivity.wireless -e 'nmcli d w l --rescan yes &>/dev/null && nmtui-connect' &>/dev/null &
+	ghostty --class=connectivity.wireless -e sh -c 'nmcli d w l --rescan yes &>/dev/null && nmtui-connect' &>/dev/null &
 	;;
 nmtui)
-	ghostty --class=connectivity.wireless -e 'sleep 0.1 && nmtui-connect' &>/dev/null &
+	ghostty --class=connectivity.wireless -e sh -c 'sleep 0.1 && nmtui-connect' &>/dev/null &
 	;;
 bluetooth)
 	ghostty --class=connectivity.bluetooth -e bluetooth-helper &>/dev/null &
