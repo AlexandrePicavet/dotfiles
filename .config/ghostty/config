@@ -11,7 +11,7 @@ font-family-bold-italic = Cascadia Code NF
 font-style-bold-italic = SemiBold Italic
 
 window-decoration = false
-background-opacity = 0.95
+# background-opacity = 0.95
 background-blur-radius = 20
 confirm-close-surface = false
 
