@@ -1,10 +1,13 @@
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.signcolumn = "yes"
+vim.opt.cursorline = true
+vim.opt.winborder = "rounded"
 vim.g.have_nerd_font = true
 
 vim.opt.smartindent = false
 vim.g.mapleader = " "
+vim.g.maplocalleader = "\\"
 vim.g.editorconfig = false
 
 vim.opt.exrc = true

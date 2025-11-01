@@ -1,14 +1,4 @@
-require("vim-options")
-require("lazy-nvim")
+require("config.options")
+require("config.lazy")
+require("config.keymap")
 
-vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
-	pattern = { "*.hl", "hypr*.conf" },
-	callback = function(event)
-		print(string.format("starting hyprls for %s", vim.inspect(event)))
-		vim.lsp.start({
-			name = "hyprlang",
-			cmd = { "hyprls" },
-			root_dir = vim.fn.getcwd(),
-		})
-	end,
-})

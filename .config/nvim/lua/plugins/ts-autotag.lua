@@ -1,6 +1,5 @@
 return {
 	"windwp/nvim-ts-autotag",
-	config = true,
 	opts = {
 		opts = {
 			enable_close = true,

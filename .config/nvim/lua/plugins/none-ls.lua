@@ -1,45 +1,22 @@
 return {
 	{
 		"nvimtools/none-ls.nvim",
-		dependencies = {
-			"nvimtools/none-ls-extras.nvim",
-		},
-		opts = function()
-			local null_ls = require("null-ls")
+		opts = function(_, opts)
+			opts = vim.tbl_deep_extend("force", opts or {}, {
+				debug = false,
+			})
 
-			local formatting = null_ls.builtins.formatting
+			opts.sources = opts.sources or {}
 
-			local function has_eslint_config(params)
-				-- https://eslint.org/docs/latest/use/configure/configuration-files#configuration-file
-				return params.root_has_file({
-					"eslint.config.cjs",
-					"eslint.config.js",
-					"eslint.config.mjs",
-					"eslint.config.cts",
-					"eslint.config.ts",
-					"eslint.config.mts",
-				})
-			end
-
-			return {
-				debug = true,
-				sources = {
-					formatting.stylua,
-					formatting.prettier,
-					formatting.nixpkgs_fmt,
-					formatting.shfmt,
-					require("none-ls.diagnostics.eslint_d").with({ condition = has_eslint_config }),
-					require("none-ls.formatting.eslint_d").with({ condition = has_eslint_config }),
-					require("none-ls.code_actions.eslint_d").with({ condition = has_eslint_config }),
-				},
-			}
+			return opts
 		end,
 		config = true,
-		commander = {
+		keys = {
 			{
+				"<C-f>",
+				mode = { "i", "n", "v" },
+				vim.lsp.buf.format,
 				desc = "Format File",
-				cmd = vim.lsp.buf.format,
-				keys = { { "n", "v" }, "<LEADER>ff", { noremap = true } },
 			},
 		},
 	},
@@ -47,20 +24,18 @@ return {
 		"jay-babu/mason-null-ls.nvim",
 		event = { "BufReadPre", "BufNewFile" },
 		dependencies = {
-			"williamboman/mason.nvim",
+			"mason-org/mason.nvim",
 			"nvimtools/none-ls.nvim",
 		},
-		opts = {
-			automatic_installation = true,
-			ensure_installed = {
-				"stylua",
-				"prettier",
-				"eslint_d",
-				"nixpkgs-fmt",
-				"shellcheck",
-				"shfmt",
-			},
-		},
+		opts = function(_, opts)
+			opts = vim.tbl_deep_extend("force", opts or {}, {
+				automatic_installation = true,
+			})
+
+			opts.ensure_installed = opts.ensure_installed or {}
+
+			return opts
+		end,
 		config = true,
 	},
 }

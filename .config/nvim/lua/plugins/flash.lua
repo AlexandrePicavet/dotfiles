@@ -3,7 +3,6 @@ return {
 	event = "VeryLazy",
 	---@type Flash.Config
 	opts = {},
-	-- TODO use commander
 	keys = {
 		{
 			"s",

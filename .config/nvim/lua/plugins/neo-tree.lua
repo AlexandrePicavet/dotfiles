@@ -3,23 +3,22 @@ return {
 	branch = "v3.x",
 	dependencies = {
 		"nvim-lua/plenary.nvim",
-		"nvim-tree/nvim-web-devicons",
 		"MunifTanjim/nui.nvim",
+		"nvim-tree/nvim-web-devicons",
+	},
+	keys = {
+		{ "<leader><C-e>", mode = "n", "<cmd>Neotree filesystem toggle left<cr>", desc = "Toggle Neotree" },
 	},
 	opts = {
 		filesystem = {
+			filtered_items = {
+				hide_dotfiles = false,
+			},
 			follow_current_file = {
 				enabled = true,
+				leave_dirs_open = true,
 			},
 		},
-		use_libuv_file_watcher = true,
+		use_libuv_file_watcher = false,
 	},
-	config = true,
-	commander = {
-			{
-				desc = "Toggle file tree (Left)",
-				cmd = "<CMD>Neotree filesystem toggle left<CR>",
-				keys = { "n", "<LEADER><C-e>", { noremap = true } },
-			},
-		}
 }

@@ -91,14 +91,7 @@ return {
 	},
 	config = function(_, opts)
 		require("dashboard").setup(opts)
-
+		-- Cannot be moved in the init
 		vim.api.nvim_set_hl(0, "DashboardHeader", { link = "@markup.heading.3.markdown" })
 	end,
-	commander = {
-		{
-			desc = "Project Dashboard",
-			cmd = "<CMD>Dashboard<CR>",
-			keys = { "n", "<LEADER>pd", { noremap = true } },
-		},
-	},
 }

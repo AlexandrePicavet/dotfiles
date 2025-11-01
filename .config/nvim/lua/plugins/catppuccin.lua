@@ -1,7 +1,8 @@
 return {
 	"catppuccin/nvim",
 	name = "catppuccin",
-	priority = 999,
+	lazy = false,
+	priority = 1000, -- Very high, cappuccin should run right after luarocks is installed.
 	init = function()
 		vim.diagnostic.config({
 			signs = {
@@ -13,6 +14,8 @@ return {
 				},
 			},
 		})
+
+		vim.cmd.colorscheme("catppuccin")
 	end,
 	---@type CatppuccinOptions
 	opts = {
@@ -21,49 +24,40 @@ return {
 			light = "latte",
 			dark = "macchiato",
 		},
-		transparent_background = true,
 		show_end_of_buffer = true,
-		dim_inactive = {
-			enabled = false,
-			share = "dark",
-			percentage = 0.15,
-		},
-		default_integration = true,
-		integrations = {
-			blink_cmp = true,
-			notify = true,
-		},
+		dim_inactive = { enabled = true },
+		auto_integrations = true,
 		custom_highlights = function(colors)
-			local success, Color = pcall(function()
-				return require("lua-color")
-			end)
-
-			if success == false then
-				require("notify")("lua-color not installed.", vim.log.levels.WARN)
-				return {}
-			end
-
-			local crust_color = Color(colors.crust)
+			local utils = require("catppuccin.utils.colors")
 
 			return {
 				DiagnosticErrorLn = {
-					bg = Color(crust_color):mix(Color(colors.red), 0.125):tostring(),
+					bg = utils.blend(colors.red, colors.crust, 0.125),
 				},
 				DiagnosticWarnLn = {
-					bg = Color(crust_color):mix(Color(colors.yellow), 0.125):tostring(),
+					bg = utils.blend(colors.yellow, colors.crust, 0.125),
 				},
 				DiagnosticInfoLn = {
-					bg = Color(crust_color):mix(Color(colors.green), 0.25):tostring(),
+					bg = utils.blend(colors.green, colors.crust, 0.25),
 				},
 				DiagnosticHintLn = {
-					bg = Color(crust_color):mix(Color(colors.blue), 0.25):tostring(),
+					bg = utils.blend(colors.blue, colors.crust, 0.25),
 				},
+				BlinkCmpMenuSelection = {
+					bg = colors.blue,
+					fg = colors.crust
+				},
+				RainbowGreen = { fg = colors.green },
+				RainbowTeal = { fg = colors.teal },
+				RainbowBlue = { fg = colors.blue },
+				RainbowRosewater = { fg = colors.rosewater },
+				RainbowYellow = { fg = colors.yellow },
+				RainbowPeach = { fg = colors.peach },
+				RainbowPink = { fg = colors.pink },
+				RainbowMaroon = { fg = colors.maroon },
+				RainbowRed = { fg = colors.red },
+				RainbowMauve = { fg = colors.mauve },
 			}
 		end,
 	},
-	config = function(_, opts)
-		require("catppuccin").setup(opts)
-
-		vim.cmd.colorscheme("catppuccin")
-	end,
 }

@@ -1,10 +1,11 @@
 return {
 	"mbbill/undotree",
-	commander = {
+	keys = {
 		{
+			"<leader>u",
+			"<cmd>UndotreeToggle<cr><cmd>UndotreeFocus<cr>",
+			mode = "n",
 			desc = "Undo Tree",
-			cmd = "<CMD>UndotreeToggle<CR><CMD>UndotreeFocus<CR>",
-			keys = { "n", "<leader>u", { noremap = true } },
 		},
 	},
 }
