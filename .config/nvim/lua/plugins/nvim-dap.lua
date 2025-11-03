@@ -1,10 +1,53 @@
+local function toggle_special_breakpoint()
+	local condition_type = "Condition"
+	local hit_condition_type = "Hit condition"
+	local log_type = "Log"
+	vim.ui.select({
+		condition_type,
+		hit_condition_type,
+		log_type,
+	}, {
+		prompt = "Select a breakpoint type: ",
+	}, function(type)
+		local dap = require("dap")
+		if type == condition_type then
+			vim.ui.input({ prompt = "Condition: " }, function(condition)
+				if condition == nil then
+					return
+				end
+
+				dap.set_breakpoint(condition)
+			end)
+		elseif type == hit_condition_type then
+			vim.ui.input({ prompt = "How often should be visited to stop: " }, function(hit_condition)
+				if hit_condition == nil then
+					return
+				elseif tonumber(hit_condition, 10) == nil then
+					print("The Hit condition must be a number but got: " .. hit_condition)
+					return
+				end
+
+				dap.set_breakpoint(nil, hit_condition)
+			end)
+		elseif type == log_type then
+			vim.ui.input({ prompt = "Log message: " }, function(log)
+				if log == nil then
+					return
+				end
+
+				dap.set_breakpoint(nil, nil, log)
+			end)
+		end
+	end)
+end
+
 return {
 	{
 		"jay-babu/mason-nvim-dap.nvim",
 		opts = function(_, opts)
-			opts.automatic_installation = true;
+			opts.automatic_installation = true
 
-			return opts;
+			return opts
 		end,
 	},
 	{
@@ -13,6 +56,25 @@ return {
 			"rcarriga/nvim-dap-ui",
 			"theHamsta/nvim-dap-virtual-text",
 		},
+		keys = function()
+			local dap = require("dap")
+
+			return {
+				{ "<leader>dbt", mode = "n", "<cmd>DapToggleBreakpoint<cr>", desc = "[Debugger] Toggle breakpoint" },
+				{ "<leader>dbs", mode = "n", toggle_special_breakpoint, desc = "[Debugger] Toggle special breakpoint" },
+				{ "<leader>dbl", mode = "n", dap.list_breakpoints, desc = "[Debugger] List breakpoints" },
+				{ "<leader>dbc", mode = "n", "<cmd>DapClearBreakpoints<cr>", desc = "[Debugger] Clear breakpoints" },
+				{ "<leader>dc", mode = "n", "<cmd>DapContinue<cr>", desc = "[Debugger] Continue" },
+				{ "<leader>drc", mode = "n", dap.reverse_continue, desc = "[Debugger] Reverse Continue" },
+				{ "<leader>dso", mode = "n", "<cmd>DapStepOver<cr>", desc = "[Debugger] Step over" },
+				{ "<leader>dsi", mode = "n", "<cmd>DapStepInto<cr>", desc = "[Debugger] Step into" },
+				{ "<leader>dsu", mode = "n", "<cmd>DapStepOut<cr>", desc = "[Debugger] Step out" },
+				{ "<leader>dsb", mode = "n", dap.step_back, desc = "[Debugger] Step back" },
+				{ "<leader>dtc", mode = "n", dap.run_to_cursor, desc = "[Debugger] Run to cursor" },
+				{ "<leader>dq", mode = "n", dap.close, desc = "[Debugger] Close" },
+				{ "<leader>dk", mode = "n", dap.terminate, desc = "[Debugger] Terminate" },
+			}
+		end,
 		config = function()
 			local dap = require("dap")
 			local dapui = require("dapui")
@@ -61,139 +123,6 @@ return {
 				numhl = "DapStopped",
 			})
 		end,
-		-- TODO migrate to keys
-		-- commander = {
-		-- 	{
-		-- 		desc = "Debugger - Toggle breakpoint",
-		-- 		cmd = function()
-		-- 			require("dap").toggle_breakpoint()
-		-- 		end,
-		-- 		keys = { "n", "<leader>dbt", { noremap = true } },
-		-- 	},
-		-- 	{
-		-- 		desc = "Debugger - Toggle special breakpoint",
-		-- 		cmd = function()
-		-- 			local condition_type = "Condition"
-		-- 			local hit_condition_type = "Hit condition"
-		-- 			local log_type = "Log"
-		-- 			vim.ui.select({
-		-- 				condition_type,
-		-- 				hit_condition_type,
-		-- 				log_type,
-		-- 			}, {
-		-- 				prompt = "Select a breakpoint type: ",
-		-- 			}, function(type)
-		-- 				local dap = require("dap")
-		-- 				if type == condition_type then
-		-- 					vim.ui.input({ prompt = "Condition: " }, function(condition)
-		-- 						if condition == nil then
-		-- 							return
-		-- 						end
-		--
-		-- 						dap.set_breakpoint(condition)
-		-- 					end)
-		-- 				elseif type == hit_condition_type then
-		-- 					vim.ui.input({ prompt = "How often should be visited to stop: " }, function(hit_condition)
-		-- 						if hit_condition == nil then
-		-- 							return
-		-- 						elseif tonumber(hit_condition, 10) == nil then
-		-- 							print("The Hit condition must be a number but got: " .. hit_condition)
-		-- 							return
-		-- 						end
-		--
-		-- 						dap.set_breakpoint(nil, hit_condition)
-		-- 					end)
-		-- 				elseif type == log_type then
-		-- 					vim.ui.input({ prompt = "Log message: " }, function(log)
-		-- 						if log == nil then
-		-- 							return
-		-- 						end
-		--
-		-- 						dap.set_breakpoint(nil, nil, log)
-		-- 					end)
-		-- 				end
-		-- 			end)
-		-- 		end,
-		-- 		keys = { "n", "<leader>dbs", { noremap = true } },
-		-- 	},
-		-- 	{
-		-- 		desc = "Debugger - List breakpoints",
-		-- 		cmd = function()
-		-- 			require("dap").list_breakpoints()
-		-- 		end,
-		-- 		keys = { "n", "<leader>dbl", { noremap = true } },
-		-- 	},
-		-- 	{
-		-- 		desc = "Debugger - Clear breakpoints",
-		-- 		cmd = function()
-		-- 			require("dap").clear_breakpoints()
-		-- 		end,
-		-- 		keys = { "n", "<leader>dbc", { noremap = true } },
-		-- 	},
-		-- 	{
-		-- 		desc = "Debugger - Continue",
-		-- 		cmd = function()
-		-- 			require("dap").continue()
-		-- 		end,
-		-- 		keys = { "n", "<leader>dc", { noremap = true } },
-		-- 	},
-		-- 	{
-		-- 		desc = "Debugger - Reverse Continue",
-		-- 		cmd = function()
-		-- 			require("dap").reverse_continue()
-		-- 		end,
-		-- 		keys = { "n", "<leader>drc", { noremap = true } },
-		-- 	},
-		-- 	{
-		-- 		desc = "Debugger - Step over",
-		-- 		cmd = function()
-		-- 			require("dap").step_over()
-		-- 		end,
-		-- 		keys = { "n", "<leader>dso", { noremap = true } },
-		-- 	},
-		-- 	{
-		-- 		desc = "Debugger - Step into",
-		-- 		cmd = function()
-		-- 			require("dap").step_into()
-		-- 		end,
-		-- 		keys = { "n", "<leader>dsi", { noremap = true } },
-		-- 	},
-		-- 	{
-		-- 		desc = "Debugger - Step out",
-		-- 		cmd = function()
-		-- 			require("dap").step_out()
-		-- 		end,
-		-- 		keys = { "n", "<leader>dsu", { noremap = true } },
-		-- 	},
-		-- 	{
-		-- 		desc = "Debugger - Step back",
-		-- 		cmd = function()
-		-- 			require("dap").step_back()
-		-- 		end,
-		-- 		keys = { "n", "<leader>dsb", { noremap = true } },
-		-- 	},
-		-- 	{
-		-- 		desc = "Debugger - To cursor",
-		-- 		cmd = function()
-		-- 			require("dap").run_to_cursor()
-		-- 		end,
-		-- 		keys = { "n", "<leader>dtc", { noremap = true } },
-		-- 	},
-		-- 	{
-		-- 		desc = "Debugger - Close",
-		-- 		cmd = function()
-		-- 			require("dap").close()
-		-- 		end,
-		-- 		keys = { "n", "<leader>dq", { noremap = true } },
-		-- 	},
-		-- 	{
-		-- 		desc = "Debugger - Terminate",
-		-- 		cmd = function()
-		-- 			require("dap").terminate()
-		-- 		end,
-		-- 		keys = { "n", "<leader>dk", { noremap = true } },
-		-- 	},
-		-- },
 	},
 	{
 		"rcarriga/nvim-dap-ui",
@@ -203,37 +132,17 @@ return {
 		},
 		opts = {},
 		config = true,
-		-- Migrate to keys
-		-- commander = {
-		-- 	{
-		-- 		desc = "Debugger - Toggle dap-ui",
-		-- 		cmd = function()
-		-- 			require("dapui").toggle()
-		-- 		end,
-		-- 		keys = { "n", "<leader>dut", { noremap = true } },
-		-- 	},
-		-- 	{
-		-- 		desc = "Debugger - Toggle Floating Element",
-		-- 		cmd = function()
-		-- 			require("dapui").float_element()
-		-- 		end,
-		-- 		keys = { "n", "<leader>df", { noremap = true } },
-		-- 	},
-		-- 	{
-		-- 		desc = "Debugger - Evaluate",
-		-- 		cmd = function()
-		-- 			require("dapui").eval()
-		-- 		end,
-		-- 		keys = { "v", "<leader>de", { noremap = true } },
-		-- 	},
-		-- 	{
-		-- 		desc = "Debugger - Add watch",
-		-- 		cmd = function()
-		-- 			require("dapui").elements.watches.add()
-		-- 		end,
-		-- 		keys = { "n", "<leader>dwa", { noremap = true } },
-		-- 	},
-		-- },
+		keys = function()
+			local dapui = require("dapui");
+			return {
+				{ "<leader>dut", mode = "n", dapui.toggle, desc = "[Debugger] Toggle dap-ui" },
+				{ "<leader>df", mode = "n", dapui.float_element, desc = "[Debugger] Toggle Floating Element" },
+				{ "<leader>de", mode = "v", dapui.eval, desc = "[Debugger] Evaluate" },
+				{ "<leader>dwa", mode = "n", function()
+					dapui.elements.watches.add()
+				end, desc = "[Debugger] Add watch" },
+			}
+		end,
 	},
 	{
 		"theHamsta/nvim-dap-virtual-text",
