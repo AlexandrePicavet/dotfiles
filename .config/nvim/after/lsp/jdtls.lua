@@ -24,6 +24,17 @@ local jdtls_launcher = vim.fn.glob(jdtls_dir .. "/plugins/org.eclipse.equinox.la
 local jdtls_configuration = jdtls_dir .. "/config_linux"
 local java_debug_adapter_path = nvim_data .. "/mason/share/java-debug-adapter/com.microsoft.java.debug.plugin.jar"
 
+local dap = require("dap")
+
+dap.configurations.java = {
+	{
+		type = "java",
+		request = "attach",
+		name = "Debug (Attach) - Remote",
+		hostName = "127.0.0.1",
+		port = 5005,
+	},
+}
 
 ---@type vim.lsp.Config
 return {
