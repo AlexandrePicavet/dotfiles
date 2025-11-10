@@ -36,9 +36,11 @@ dap.configurations.java = {
 	},
 }
 
+vim.cmd("NeotestJava setup")
+
 ---@type vim.lsp.Config
 return {
-	filetypes = {"java"},
+	filetypes = { "java" },
 	cmd = {
 		"java",
 		"-Declipse.application=org.eclipse.jdt.ls.core.id1",
@@ -108,4 +110,3 @@ return {
 		})
 	end,
 }
-

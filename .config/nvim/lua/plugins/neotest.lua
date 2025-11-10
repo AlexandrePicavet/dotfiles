@@ -6,12 +6,7 @@ return {
 		"antoinemadec/FixCursorHold.nvim",
 		"nvim-treesitter/nvim-treesitter",
 		"thenbe/neotest-playwright",
-		{
-			"rcasia/neotest-java",
-			config = function()
-				vim.cmd("NeotestJava setup")
-			end,
-		},
+		"rcasia/neotest-java",
 	},
 	keys = function()
 		local neotest = require("neotest")
