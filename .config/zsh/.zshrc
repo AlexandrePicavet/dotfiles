@@ -11,11 +11,11 @@ done
 
 export_text_helper
 
-source "${ZDOTDIR}/history.zsh"
+source "${ZDOTDIR}/atuin.zsh"
 source "${ZDOTDIR}/binds.zsh"
 source "${ZDOTDIR}/completion.zsh"
-source "${ZDOTDIR}/starship.zsh"
 source "${ZDOTDIR}/fzf.zsh"
+source "${ZDOTDIR}/starship.zsh"
 
 source "${ZDOTDIR}/plugins/plugins-manager.zsh"
 

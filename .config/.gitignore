@@ -1,15 +1,17 @@
 /*
 
 !.gitignore
-!starship.toml
-!/zsh
-!/nvim
-!/bat
-!/delta
+
 !/alacritty
-!/kitty
-!/hypr
+!/atuin
+!/bat
+!/btop
+!/delta
 !/dunst
 !/eww
 !/ghostty
-!/btop
+!/hypr
+!/kitty
+!/nvim
+!starship.toml
+!/zsh
