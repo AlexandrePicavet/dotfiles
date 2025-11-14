@@ -3,9 +3,11 @@ function theme() {
 	THEME="${1}"
 	readonly THEME
 
-	terminal-theme "${THEME}"
-	hyprland-theme "${THEME}"
-	dunst-theme "${THEME}"
-	eww-theme "${THEME}"
-	gtk-theme "${THEME}"
+	(
+		ashell-theme "${THEME}" &
+		dunst-theme "${THEME}" &
+		gtk-theme "${THEME}" &
+		hyprland-theme "${THEME}" &
+		terminal-theme "${THEME}" &
+	)
 }

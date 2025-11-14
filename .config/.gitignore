@@ -3,12 +3,12 @@
 !.gitignore
 
 !/alacritty
+!/ashell
 !/atuin
 !/bat
 !/btop
 !/delta
 !/dunst
-!/eww
 !/ghostty
 !/hypr
 !/kitty

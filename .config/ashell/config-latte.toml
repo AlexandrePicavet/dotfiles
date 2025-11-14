@@ -1,0 +1,83 @@
+log_level = "warn"
+
+outputs = "All"
+
+position = "Top"
+
+enable_esc_key = true
+
+[modules]
+left = [ "Workspaces", "WindowTitle" ]
+center = [ "Clock" ]
+right = [ "MediaPlayer", "SystemInfo", "Privacy", [ "Tray", "Settings" ] ]
+
+[workspaces]
+visibility_mode = "All"
+enable_workspace_filling = true
+max_workspaces = 10
+workspace_names = ["","","","","","","","","","",]
+
+[media_player]
+max_title_length = 50
+
+[window_title]
+mode = "Title"
+truncate_title_after_length = 100
+
+[system_info]
+indicators = [ "Cpu", "Memory", "Temperature" ]
+
+[system_info.memory]
+warn_threshold = 80
+alert_threshold = 95
+
+[system_info.temperature]
+warn_threshold = 75
+alert_threshold = 90
+
+[clock]
+format = "%A %d %B - %H:%M"
+
+[settings]
+audio_sinks_more_cmd = "pavucontrol -t 3"
+audio_sources_more_cmd = "pavucontrol -t 4"
+bluetooth_more_cmd = "blueberry"
+lock_cmd = "playerctl --all-players pause; hyprlock &"
+vpn_more_cmd = "nm-connection-editor"
+wifi_more_cmd = "nm-connection-editor"
+
+[appearance]
+font_name = "FiraCode Nerd Font Regular"
+scale_factor = 1.02
+style = "Islands"
+opacity = 0.7
+
+# TODO light theme
+# Catppuccin Theme
+[appearance.menu]
+opacity = 0.9
+backdrop = 0
+
+[appearance.background_color]
+base = "#eff1f5" # Base
+strong = "#dce0e8" # Crust
+weak = "#ccd0da" # Surface 0
+
+[appearance.primary_color]
+base = "#1e66f5" # blue
+
+[appearance.secondary_color]
+base = "#7287fd" # Lavender
+strong = "#e6e9ef" # Mantle
+
+[appearance.success_color]
+base = "#40a02b" # Green
+weak = "#179299" # Teal
+
+[appearance.danger_color]
+base = "#d20f39" # Red
+weak = "#fe640b" # Peach
+
+[appearance.text_color]
+base = "#4c4f69" # Text
+strong = "#6c6f85" # Subtext 0
