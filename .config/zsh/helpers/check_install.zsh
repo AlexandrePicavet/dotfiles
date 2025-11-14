@@ -2,15 +2,25 @@ declare -aU MISSING_PACKAGES;
 MISSING_PACKAGES=()
 
 check_install() {
-	readonly package="${1}"
-
-	if which "${package}" &>/dev/null
-	then
-		return 0
-	else
-		MISSING_PACKAGES+="${package}"
-		return 1
+	local optional=false
+	if [ "${1}" = "-o" ]; then
+		optional=true
+		shift
 	fi
+	readonly optional
+
+	local success=true
+	for package in "${@}"; do
+		if ! which "${package}" &>/dev/null; then
+			success=false
+
+			if ! "${optional}" || ${SHOW_OPTIONAL_PACKAGES:-false}; then
+				MISSING_PACKAGES+="${package}"
+			fi
+		fi
+	done
+
+	return "${success}"
 }
 
 print_missing_packages() {

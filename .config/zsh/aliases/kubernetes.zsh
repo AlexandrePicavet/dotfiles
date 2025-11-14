@@ -1,9 +1,9 @@
-if check_install kubens; then
+if check_install -o kubens; then
 	alias kns='kubens'
 	alias kctx='kubectx'
 fi
 
-if check_install kubectl; then
+if check_install -o kubectl; then
 	alias k="kubectl"
 	alias kd="k describe"
 	alias kda="kd all"

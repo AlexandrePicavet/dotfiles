@@ -1,8 +1,10 @@
 # https://github.com/zsh-users/zsh-autosuggestions?tab=readme-ov-file#configuration
 
-if check_install atuin; then
-	ZSH_AUTOSUGGEST_STRATEGY=(atuin completion)
-else
-	ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+ZSH_AUTOSUGGEST_STRATEGY=()
+
+if check_install -o atuin; then
+	ZSH_AUTOSUGGEST_STRATEGY+="atuin"
 fi
+
+ZSH_AUTOSUGGEST_STRATEGY+=(history completion)
 

@@ -18,10 +18,16 @@ bindkey '^H' backward-kill-line
 bindkey '^U' kill-whole-line
 
 # Vim
-bindkey -r '^[' # Unbind vi normal mode key bind
+if "${VIM_MODE:-false}"; then
+	bindkey '^P' up-history
+	bindkey '^N' down-history
+else
+	bindkey -r '^[' # Unbind vi normal mode key bind
+fi
+
 
 # Pet snippets - https://github.com/knqyf263/pet?tab=readme-ov-file
-if check_install pet; then
+if check_install -o pet; then
 	zle -N pet-select
 	stty -ixon
 	bindkey '^s' pet-select

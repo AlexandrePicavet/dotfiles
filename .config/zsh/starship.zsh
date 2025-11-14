@@ -1,4 +1,4 @@
-if check_install starship; then
+if check_install -o starship; then
 	eval "$(starship init zsh)"
 fi
 

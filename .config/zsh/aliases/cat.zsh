@@ -1,4 +1,4 @@
-if check_install bat; then
+if check_install -o bat; then
 	alias b='bat'
 	alias c='bat -p'
 else

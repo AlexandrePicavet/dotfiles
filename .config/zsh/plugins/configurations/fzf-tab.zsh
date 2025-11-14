@@ -1,13 +1,13 @@
 # https://github.com/Aloxaf/fzf-tab?tab=readme-ov-file#configure
 
-if check_install fzf; then
+if check_install -o fzf; then
 	zstyle ':completion:*:descriptions' format '[%d]'
 	zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 	zstyle ':completion:*' menu no
 	zstyle ':fzf-tab:*' switch-group '<' '>'
 	zstyle ':fzf-tab:*' fzf-flags --color="${FZF_COLOR}" --multi
 
-	if check_install tmux; then
+	if check_install -o tmux; then
 		zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
 		zstyle ':fzf-tab:*' popup-min-size 100 10
 	fi

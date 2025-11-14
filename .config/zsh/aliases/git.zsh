@@ -1,5 +1,6 @@
-check_install delta
-if check_install git; then
+if check_install -o git; then
+	check_install delta
+
 	alias g='git'
 	alias ga='git add'
 	alias gap='ga -p'

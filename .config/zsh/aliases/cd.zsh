@@ -1,4 +1,4 @@
-if check_install z; then
+if check_install -o z; then
 	alias cd='z'
 fi
 alias -- -='cd -'

@@ -1,4 +1,4 @@
-if check_install systemctl; then
+if check_install -o systemctl; then
 	alias sys='systemctl'
 
 	alias syssus='sys suspend'
@@ -7,7 +7,7 @@ if check_install systemctl; then
 	alias syspo='sys poweroff'
 
 	alias sysst='sys status'
-	if check_install sudo; then
+	if check_install -o sudo; then
 		alias sysstart='sudo sys start'
 		alias sysstop='sudo sys stop'
 		alias sysrs='sudo sys restart'
