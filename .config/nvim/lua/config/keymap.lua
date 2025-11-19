@@ -29,7 +29,13 @@ require("which-key").add({
 	{
 		"<leader>bc",
 		mode = "n",
-		"<cmd>bd<cr>",
+		"<cmd>bp<bar>sp<bar>bn<bar>bd<cr>",
+		desc = "Buffer close",
+	},
+	{
+		"<leader>bC",
+		mode = "n",
+		"<cmd>bp<bar>sp<bar>bn<bar>bd!<cr>",
 		desc = "Buffer close",
 	},
 
