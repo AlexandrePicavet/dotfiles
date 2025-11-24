@@ -17,8 +17,8 @@ function nvim-theme() {
 	# Update existing nvim instances colorscheme
 	for pipe in $(find "/run/user/$(id -u)" -maxdepth 1 -name "nvim-*.pipe"); do
 		_custom_theme_helper \
-			"/usr/bin/nvim --server '${pipe}' --remote-send ':Catppuccin latte<CR>' &>/dev/null" \
-			"/usr/bin/nvim --server '${pipe}' --remote-send ':Catppuccin macchiato<CR>' &>/dev/null" \
+			"nvim --server '${pipe}' --remote-send ':Catppuccin latte<CR>' &>/dev/null" \
+			"nvim --server '${pipe}' --remote-send ':Catppuccin macchiato<CR>' &>/dev/null" \
 			"${THEME}"
 	done
 }
