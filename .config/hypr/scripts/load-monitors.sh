@@ -37,6 +37,8 @@ for monitor_config in "${BASEDIR}"/*; do
 
 	isSubset 'config_monitors' 'connected_monitors' || continue
 
+	echo "Matches monitor config: ${monitor_config}"
+
 	hyprctl keyword source "${monitor_config}"
 done
 
