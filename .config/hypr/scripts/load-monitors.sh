@@ -12,7 +12,7 @@ function isSubset() {
 		local found=false
 
 		for set_element in "${set[@]}"; do
-			if [[ "${subset_element}" == "${set_element}" ]]; then
+			if [[ "${set_element}" =~ ^"${subset_element}" ]]; then
 				found=true
 				break
 			fi
@@ -34,12 +34,13 @@ readonly connected_monitors
 for monitor_config in "${BASEDIR}"/*; do
 	# shellcheck disable=SC2034 # Passed by reference to the isSubset function
 	readarray -t config_monitors <<<"$(sed -nE 's/^[^#]*desc:([^,#]*).*$/\1/gp' "${monitor_config}")"
+	echo "$monitor_config: ${config_monitors[*]}"
 
 	isSubset 'config_monitors' 'connected_monitors' || continue
 
 	echo "Matches monitor config: ${monitor_config}"
 
-	hyprctl keyword source "${monitor_config}"
+	hyprctl keyword source "${monitor_config}" &>/dev/null
 done
 
-hyprctl keyword source ~/.config/hypr/wallpaper.conf
+hyprctl keyword source ~/.config/hypr/wallpaper.conf &>/dev/null
