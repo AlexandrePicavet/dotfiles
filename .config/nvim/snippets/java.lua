@@ -1,16 +1,22 @@
 local ls = require("luasnip")
 local snippet = ls.snippet
+local snippet_node = ls.snippet_node
 local function_node = ls.function_node
 local choice_node = ls.choice_node
 local text_node = ls.text_node
 local insert_node = ls.insert_node
+
+local function filename_base()
+	return vim.fn.expand("%:t:r")
+end
 
 ls.add_snippets("java", {
 	snippet("nf", {
 		function_node(function(_, snip)
 			return "package "
 				.. snip.env.RELATIVE_FILEPATH
-					:gsub("^[a-zA-Z]+/[a-zA-Z]+/[a-zA-Z]+/(.+)/[a-zA-Z]+.java", "%1")
+					:gsub("^.*/main/java/(.+)/[a-zA-Z0-9]+.java", "%1")
+					:gsub("^.*/test/java/(.+)/[a-zA-Z0-9]+.java", "%1")
 					:gsub("/", ".")
 				.. ";"
 		end, {}),
@@ -23,10 +29,20 @@ ls.add_snippets("java", {
 			text_node("abstract class"),
 			text_node("final class"),
 		}),
-		function_node(function(_, snip)
-			return " " .. snip.env.TM_FILENAME_BASE .. " {"
-		end, {}),
-		text_node({ "", "" }),
+		text_node(" "),
+		function_node(filename_base, {}),
+		choice_node(2, {
+			text_node(""),
+			snippet_node("implements", {
+				text_node(" implements "),
+				insert_node(1),
+			}),
+			snippet_node("extends", {
+				text_node(" extends "),
+				insert_node(1),
+			}),
+		}),
+		text_node({ " {", "" }),
 		text_node("\t"),
 		insert_node(0),
 		text_node({ "", "" }),
@@ -36,19 +52,25 @@ ls.add_snippets("java", {
 		function_node(function(_, snip)
 			return "package "
 				.. snip.env.RELATIVE_FILEPATH
-					:gsub("^[a-zA-Z]+/[a-zA-Z]+/[a-zA-Z]+/(.+)/[a-zA-Z]+.java", "%1")
+					:gsub("^.*/main/java/(.+)/[a-zA-Z0-9]+.java", "%1")
+					:gsub("^.*/test/java/(.+)/[a-zA-Z0-9]+.java", "%1")
 					:gsub("/", ".")
 				.. ";"
 		end, {}),
 		text_node({ "", "", "" }),
-		text_node("public record"),
-		function_node(function(_, snip)
-			return " " .. snip.env.TM_FILENAME_BASE .. " ("
-		end, {}),
-		text_node({ "", "" }),
+		text_node("public record "),
+		function_node(filename_base, {}),
+		text_node({ " {", "" }),
 		text_node("\t"),
 		insert_node(0),
-		text_node({ "", "" }),
-		text_node(") {}"),
+		text_node({ "", ")" }),
+		choice_node(1, {
+			text_node(""),
+			snippet_node("implements", {
+				text_node(" implements "),
+				insert_node(1),
+			}),
+		}),
+		text_node(" {}")
 	}),
 })
