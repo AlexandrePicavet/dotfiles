@@ -78,6 +78,9 @@ return {
 		},
 		sources = {
 			default = { "npm", "lazydev", "lsp", "copilot", "path", "snippets", "emoji", "buffer", "ripgrep" },
+			per_filetype = {
+				codecompanion = { "codecompanion" },
+			},
 			providers = {
 				lazydev = {
 					name = "LazyDev",
