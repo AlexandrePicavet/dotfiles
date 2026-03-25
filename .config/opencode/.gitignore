@@ -3,4 +3,6 @@
 !.gitignore
 
 !/plugins
+!/rules
 !/skills
+!/opencode.json
