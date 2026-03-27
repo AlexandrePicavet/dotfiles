@@ -2,11 +2,6 @@
 
 set -euo pipefail
 
-which stow &>/dev/null || {
-	error "You'll need GNU stow to run this script."
-	exit 1
-}
-
 SCRIPT_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
 SCRIPT_NAME=$(basename -- "${BASH_SOURCE[0]}")
 
@@ -157,6 +152,11 @@ while [ $# -gt 0 ]; do
 	esac
 	shift
 done
+
+which stow &>/dev/null || {
+	error "You'll need GNU stow to run this script."
+	exit 1
+}
 
 if [ "${#packages[@]}" -eq 0 ]; then
 	link
