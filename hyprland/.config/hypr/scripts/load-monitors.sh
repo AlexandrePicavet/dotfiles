@@ -2,7 +2,9 @@
 
 set -euo pipefail
 
-readonly BASEDIR="${HOME}/.config/hypr/user/monitors"
+readonly BASEDIR="${HOME}/.local/share/hypr/monitors"
+
+mkdir -p "${BASEDIR}"
 
 function isSubset() {
 	local -n subset="${1}"
@@ -32,15 +34,13 @@ readarray -t connected_monitors <<<"$(hyprctl monitors | sed -n 's/^.*descriptio
 readonly connected_monitors
 
 for monitor_config in "${BASEDIR}"/*; do
+	monitor_config_file="$(basename "${monitor_config}")"
 	# shellcheck disable=SC2034 # Passed by reference to the isSubset function
 	readarray -t config_monitors <<<"$(sed -nE 's/^[^#]*desc:([^,#]*).*$/\1/gp' "${monitor_config}")"
-	echo "$monitor_config: ${config_monitors[*]}"
 
 	isSubset 'config_monitors' 'connected_monitors' || continue
 
-	echo "Matches monitor config: ${monitor_config}"
+	echo "Matches monitor config: ${monitor_config_file}"
 
 	hyprctl keyword source "${monitor_config}" &>/dev/null
 done
-
-hyprctl keyword source ~/.config/hypr/wallpaper.conf &>/dev/null
