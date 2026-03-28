@@ -26,4 +26,5 @@ require("lazy").setup({
 		{ import = "plugins" },
 		{ import = "plugins.languages" },
 	},
+	change_detection = { notify = false },
 })

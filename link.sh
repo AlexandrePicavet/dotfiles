@@ -57,6 +57,10 @@ function list() {
 	find . -maxdepth 1 -mindepth 1 -type d ! -name '.git' -printf "%f\n"
 }
 
+function prepare() {
+	mkdir -p ~/.local/share/zsh/theming # Create themes directory to link each package's theme switching logic to
+}
+
 function link() {
 	local -i failed=0
 	for package_path in "${SCRIPT_DIR}"/*; do
@@ -157,6 +161,8 @@ which stow &>/dev/null || {
 	error "You'll need GNU stow to run this script."
 	exit 1
 }
+
+prepare
 
 if [ "${#packages[@]}" -eq 0 ]; then
 	link

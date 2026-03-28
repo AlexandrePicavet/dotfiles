@@ -1,3 +1,5 @@
+#shellcheck disable=1090,1091,1094
+
 setopt autocd extendedglob notify
 
 ZPROFILE="/etc/zsh/zprofile"
@@ -6,7 +8,7 @@ ZPROFILE="/etc/zsh/zprofile"
 path+=("${HOME}/.local/bin")
 
 for script in "${ZDOTDIR}/helpers/"*.zsh; do
-	source "${script}";
+	source "${script}"
 done
 
 export_text_helper
