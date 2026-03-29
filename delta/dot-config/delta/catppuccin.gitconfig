@@ -59,4 +59,3 @@
 		bold yellow => syntax "#575253"
 	# Should match the name of the bat theme
 	syntax-theme = Catppuccin-macchiato
-

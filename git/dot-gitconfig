@@ -18,18 +18,6 @@
 	guiDefault = false
 [difftool "nvimdiff"]
 	cmd = "nvim -d \"$LOCAL\" \"$REMOTE\" -c \"wincmd w\" -c \"wincmd L\""
-[interactive]
-	diffFilter = delta --color-only
-[delta]
-	navigate = true
-	light = false
-	features = catppuccin-macchiato
-	side-by-side = true
-	line-numbers = true
-	true-colors = always
-	hyperlinks = true
-	hyperlinks-file-link-format = "file:///{path}"
-	tabs = 2
 
 [merge]
 	conflictstyle = diff3
@@ -43,5 +31,5 @@
 	enabled = true
 
 [include]
-	path = .config/delta/theme.gitconfig
-	path = .user.gitconfig
+	path = ~/.config/delta/delta.gitconfig
+	path = ~/.user.gitconfig
