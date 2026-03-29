@@ -5,6 +5,10 @@ set -euo pipefail
 SCRIPT_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
 SCRIPT_NAME=$(basename -- "${BASH_SOURCE[0]}")
 
+function info() {
+	echo -e "\e[34m${*}\e[0m"
+}
+
 function success() {
 	echo -e "\e[32m${*}\e[0m"
 }
@@ -57,57 +61,16 @@ function list() {
 	find . -maxdepth 1 -mindepth 1 -type d ! -name '.git' -printf "%f\n"
 }
 
-function prepare() {
-	mkdir -p ~/.local/share/zsh/theming # Create themes directory to link each package's theme switching logic to
-}
-
-function link() {
-	local -i failed=0
-	for package_path in "${SCRIPT_DIR}"/*; do
-		[ -d "${package_path}" ] || continue # skip non directories
-
-		if satisfies_dependencies "${package_path}"; then
-			stowit "$(basename "${package_path}")" || {
-				((failed++)) || true
-			}
-		fi
-	done
-
-	# shellcheck disable=SC2046
-	return $([ "${failed}" -eq 0 ])
-}
-
-function link_given() {
-	local -ra packages=("$@")
-	local -i failed=0
-	for package in "${packages[@]}"; do
-		package_path="${SCRIPT_DIR}/${package}"
-
-		[ -d "${package_path}" ] || {
-			warn "${package}: skipped: does not exist"
-			continue
-		}
-
-		if satisfies_dependencies "${package_path}"; then
-			stowit "$(basename "${package_path}")" || {
-				((failed++)) || true
-			}
-		fi
-	done
-
-	return $((failed > 0))
-}
-
 function satisfies_dependencies() {
-	package_path="$1"
-	required_packages_file="${package_path}/.#required-packages"
+	local -r package_path="$1"
+	local -r required_package_file="${package_path}/.#required-packages"
 
 	# required_packages_file does not exist, assume no dependencies
-	[ -f "${required_packages_file}" ] || return 0
+	[ -f "${required_package_file}" ] || return 0
 
 	local -a missing_packages=()
 	# shellcheck disable=SC2013
-	for required_package in $(cat "${required_packages_file}"); do
+	for required_package in $(cat "${required_package_file}"); do
 		which "${required_package}" &>/dev/null || {
 			missing_packages+=("${required_package}")
 		}
@@ -121,20 +84,46 @@ function satisfies_dependencies() {
 	return 0
 }
 
+function setup() {
+	local -r package_path="$1"
+	local -r package_setup_file="${package_path}/.#setup.sh"
+
+	[ -f "${package_setup_file}" ] || return 0
+
+	# shellcheck disable=SC1090
+	source "${package_setup_file}"
+	success "$(basename "${package_path}"): Ok"
+}
+
+function link() {
+	local -ra packages_paths=("$@")
+	local -i failed=0
+
+	for package_path in "${packages_paths[@]}"; do
+		stowit "$(basename "${package_path}")" || {
+			((failed++)) || true
+		}
+	done
+
+	return $((failed > 0))
+}
+
 function stowit() {
 	package_path="$1"
 
 	stow --dotfiles -Rt "${HOME}" "${package_path}" || {
-		error "$(basename "${package_path}"): failed"
+		error "$(basename "${package_path}"): Error"
 		return 1
 	} && {
-		success "$(basename "${package_path}"): linked"
+		success "$(basename "${package_path}"): Ok"
 		return 0
 	}
 }
 
-declare -a packages=()
+###############################################################################
 
+# Handle cli arguments
+declare -a PACKAGES=()
 while [ $# -gt 0 ]; do
 	case "$1" in
 	-h | --help)
@@ -151,21 +140,61 @@ while [ $# -gt 0 ]; do
 		exit 1
 		;;
 	*)
-		packages+=("$1")
+		PACKAGES+=("$1")
 		;;
 	esac
 	shift
 done
+readonly PACKAGES
 
+# Check if stow is installed
 which stow &>/dev/null || {
 	error "You'll need GNU stow to run this script."
 	exit 1
 }
 
-prepare
+# Gather packages paths to link
+declare -a PACKAGES_PATH_TO_LINK
+if [ "${#PACKAGES[@]}" -eq 0 ]; then
+	for package_path in "${SCRIPT_DIR}"/*; do
+		[ -d "${package_path}" ] || continue
 
-if [ "${#packages[@]}" -eq 0 ]; then
-	link
+		satisfies_dependencies "${package_path}" || continue
+
+		PACKAGES_PATH_TO_LINK+=("${package_path}")
+	done
 else
-	link_given "${packages[@]}"
+	for package in "${PACKAGES[@]}"; do
+		package_path="${SCRIPT_DIR}/${package}"
+
+		[ -d "${package_path}" ] || {
+			warn "${package}: skipped, does not exist"
+			continue
+		}
+
+		satisfies_dependencies "${package_path}" || continue
+
+		PACKAGES_PATH_TO_LINK+=("${package_path}")
+	done
 fi
+readonly PACKAGES_PATH_TO_LINK
+
+# Execute all packages setup
+info "Setting up packages..."
+for package_path in "${PACKAGES_PATH_TO_LINK[@]}"; do
+	setup "${package_path}" || {
+		declare -ri code=$?
+		error "\n$(basename "${package_path}"): Error"
+		exit ${code}
+	}
+done
+info "Setup complete."
+
+# Link all packages
+info "\nLinking packages..."
+link "${PACKAGES_PATH_TO_LINK[@]}" || {
+	declare -ri code=$?
+	warn "Some packages failed to link. Check the error messages above for details."
+	exit ${code}
+}
+info "All packages linked."
