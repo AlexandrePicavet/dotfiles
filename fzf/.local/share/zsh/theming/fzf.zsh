@@ -1,4 +1,3 @@
-# TODO Fix this theming
 function _fzf_theme() {
 	which fzf &>/dev/null || return 0
 

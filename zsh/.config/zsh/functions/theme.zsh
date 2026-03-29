@@ -35,11 +35,9 @@ function theme() {
 	THEME="${1}"
 	readonly THEME
 
-	(
-		for theme_function in "${THEMES[@]}"; do
-			"${theme_function}" "${THEME}" &
-		done
-	)
+	for theme_function in "${THEMES[@]}"; do
+		"${theme_function}" "${THEME}"
+	done
 }
 
 for theme_file in "${ZTHEMEDIR}"/*; do
