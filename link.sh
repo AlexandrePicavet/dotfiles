@@ -124,7 +124,7 @@ function satisfies_dependencies() {
 function stowit() {
 	package_path="$1"
 
-	stow -Rt "${HOME}" "${package_path}" || {
+	stow --dotfiles -Rt "${HOME}" "${package_path}" || {
 		error "$(basename "${package_path}"): failed"
 		return 1
 	} && {
