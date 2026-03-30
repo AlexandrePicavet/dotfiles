@@ -1,8 +1,8 @@
 # shellcheck disable=SC2034
 
 export ZDOTDIR="${HOME}/.config/zsh"
-ZSHAREDIR="${HOME}/.local/share/zsh"
-ZTHEMEDIR="${ZSHAREDIR}/theming"
+export ZSHAREDIR="${HOME}/.local/share/zsh"
+export ZTHEMEDIR="${ZSHAREDIR}/theming"
 
 declare -a IGNORED_MISSING_PACKAGES=()
 
