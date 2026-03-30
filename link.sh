@@ -91,7 +91,7 @@ function setup() {
 	[ -f "${package_setup_file}" ] || return 0
 
 	# shellcheck disable=SC1090
-	source "${package_setup_file}"
+	source "${package_setup_file}" || return $?
 	success "$(basename "${package_path}"): Ok"
 }
 
