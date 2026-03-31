@@ -1,1 +1,3 @@
---theme="Catppuccin-macchiato"
+--theme=auto:always
+--theme-dark='Catppuccin Macchiato'
+--theme-light='Catppuccin Latte'
