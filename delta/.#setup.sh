@@ -8,5 +8,5 @@ mkdir -p ~/.local/share/delta || {
 
 cat <<'EOF' > ~/.local/share/delta/theme.gitconfig
 [delta]
-	features = catppuccin-macchiato
+	syntax-theme = Catppuccin Macchiato
 EOF

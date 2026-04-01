@@ -2,8 +2,8 @@ function _delta_theme() {
 	which delta &>/dev/null || return 0
 
 	local -r CONFIG_FILE=~/.local/share/delta/theme.gitconfig
-	local -r LIGHT_THEME_MATCH='catppuccin-latte'
-	local -r DARK_THEME_MATCH='catppuccin-macchiato'
+	local -r LIGHT_THEME_MATCH='Catppuccin Latte'
+	local -r DARK_THEME_MATCH='Catppuccin Macchiato'
 
 	local THEME
 	THEME="${1}"

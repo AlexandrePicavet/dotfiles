@@ -12,5 +12,4 @@
 	diffFilter = delta --color-only
 
 [include]
-	path = ~/.config/delta/catppuccin.gitconfig
 	path = ~/.local/share/delta/theme.gitconfig
