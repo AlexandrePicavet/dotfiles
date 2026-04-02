@@ -25,6 +25,8 @@ if check_install -o git; then
 	alias gcdf='g clean -df'
 	alias gcl='g clone'
 	alias gcm='gc -m'
+	alias gco='g checkout'
+	alias gcob='gco -b'
 	alias gcp='gc && gp'
 	alias gcpf='gc && gpf'
 	alias gd='g diff --color=always'
@@ -74,4 +76,13 @@ if check_install -o git; then
 	alias gucapf='guca && gpf'
 	alias gucm='gu && gcm'
 	alias gurc='gu && grc'
+	alias gw='g worktree'
+	alias gwa='gw add'
+	alias gwl='gw list'
+	alias gwL='gw lock'
+	alias gwp='gw prune --dry-run'
+	alias gwpf="gwp --no-dry-run"
+	alias gwr='gw remove'
+	alias gwrf="gwr -f"
+	alias gwu='gw unlock'
 fi
