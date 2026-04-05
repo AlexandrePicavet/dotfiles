@@ -1,7 +1,7 @@
 function _tmux_theme() {
 	which tmux &>/dev/null || return 0
 
-	local -r CONFIG_FILE=~/.config/tmux/tmux.conf
+	local -r CONFIG_FILE=~/.local/share/tmux/theme.conf
 	local -r LIGHT_THEME_MATCH='latte'
 	local -r DARK_THEME_MATCH='macchiato'
 
