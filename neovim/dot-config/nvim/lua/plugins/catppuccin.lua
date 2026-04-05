@@ -19,7 +19,16 @@ return {
 	end,
 	---@type CatppuccinOptions
 	opts = {
-		flavour = "macchiato",
+		flavour = (function()
+			local ok, theme = pcall(function()
+				return dofile(vim.fn.expand("~/.local/share/nvim/theme.lua"))
+			end)
+			if ok then
+				return theme or "macchiato"
+			else
+				return "macchiato"
+			end
+		end)(),
 		background = {
 			light = "latte",
 			dark = "macchiato",
@@ -45,7 +54,7 @@ return {
 				},
 				BlinkCmpMenuSelection = {
 					bg = colors.blue,
-					fg = colors.crust
+					fg = colors.crust,
 				},
 				RainbowGreen = { fg = colors.green },
 				RainbowTeal = { fg = colors.teal },

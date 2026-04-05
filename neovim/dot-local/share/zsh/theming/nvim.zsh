@@ -1,12 +1,9 @@
 function _nvim_theme() {
 	which nvim &>/dev/null || return 0
 
-	local -r LIGHT_THEME='latte'
-	local -r DARK_THEME="macchiato"
-
-	local -r CONFIG_FILE=~/.config/nvim/lua/plugins/catppuccin.lua
-	local -r LIGHT_THEME_MATCH="flavour = \"${LIGHT_THEME}\""
-	local -r DARK_THEME_MATCH="flavour = \"${DARK_THEME}\""
+	local -r CONFIG_FILE=~/.local/share/nvim/theme.lua
+	local -r LIGHT_THEME_MATCH="latte"
+	local -r DARK_THEME_MATCH="macchiato"
 
 	local THEME
 	THEME="${1}"
