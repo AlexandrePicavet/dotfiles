@@ -1,9 +1,9 @@
 function _kitty_theme() {
 	which kitty &>/dev/null || return 0
 
-	local -r CONFIG_FILE=~/.config/kitty/kitty.conf
-	local -r LIGHT_THEME_MATCH='include themes\/catppuccin-latte.conf'
-	local -r DARK_THEME_MATCH='include themes\/catppuccin-macchiato.conf'
+	local -r CONFIG_FILE=~/.local/share/kitty/theme.conf
+	local -r LIGHT_THEME_MATCH='latte'
+	local -r DARK_THEME_MATCH='macchiato'
 
 	local THEME
 	THEME="${1}"
