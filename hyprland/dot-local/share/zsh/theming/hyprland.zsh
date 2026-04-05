@@ -1,7 +1,7 @@
 function _hyprland_theme() {
 	which hyprctl &>/dev/null || return 0
 
-	local -r CONFIG_FILE=~/.config/hypr/theme.conf
+	local -r CONFIG_FILE=~/.local/share/hypr/theme.conf
 	#shellcheck disable=SC2016
 	local -r LIGHT_THEME_MATCH='$THEME = light'
 	#shellcheck disable=SC2016
