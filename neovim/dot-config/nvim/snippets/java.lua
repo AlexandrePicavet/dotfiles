@@ -50,4 +50,7 @@ ls.add_snippets("java", {
 		}),
 		t(" {}"),
 	}),
+	s("serial", {
+		t("public static final long serialVersionUID = 1L;")
+	})
 })
