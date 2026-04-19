@@ -2,6 +2,8 @@ return {
 	"lukas-reineke/indent-blankline.nvim",
 	main = "ibl",
 	event = { "BufReadPost", "BufNewFile" },
+	---@module "ibl"
+	---@type ibl.config
 	opts = {
 		indent = {
 			char = "│",
@@ -11,7 +13,7 @@ return {
 			highlight = require("config.rainbow-highlight"),
 			-- can lead to weird behavior, see :h ibl.config.scope.include.node_type
 			-- https://github.com/lukas-reineke/indent-blankline.nvim/blob/master/lua/ibl/scope_languages.lua
-			include = { node_type = { ["*"] = {"*"} } }
+			include = { node_type = { ["*"] = { "*" } } },
 		},
 	},
 }

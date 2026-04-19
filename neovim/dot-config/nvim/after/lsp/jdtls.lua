@@ -36,7 +36,13 @@ dap.configurations.java = {
 	},
 }
 
-vim.cmd("NeotestJava setup")
+
+vim.api.nvim_create_autocmd("BufReadPost", {
+	pattern = "*.java",
+	callback = function()
+		vim.cmd("silent! NeotestJava setup")
+	end,
+})
 
 ---@type vim.lsp.Config
 return {

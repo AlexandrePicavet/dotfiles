@@ -1,3 +1,4 @@
+-- Catppuccin Colors
 return {
 	"RainbowGreen",
 	"RainbowTeal",

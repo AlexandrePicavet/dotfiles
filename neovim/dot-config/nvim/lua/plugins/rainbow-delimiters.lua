@@ -10,7 +10,7 @@ return {
 			query = {
 				[""] = "rainbow-delimiters",
 			},
-			highlight = require('config.rainbow-highlight'),
+			highlight = require("config.rainbow-highlight"),
 		}
 	end,
 }

@@ -5,7 +5,8 @@ return {
 	opts = {
 		providers = {
 			"lsp",
-			"treesitter",
+			-- https://github.com/RRethy/vim-illuminate/issues/247
+			-- "treesitter",
 		},
 		delay = 0,
 		under_cursor = true,
