@@ -13,12 +13,17 @@ return {
 		filesystem = {
 			filtered_items = {
 				hide_dotfiles = false,
+				hide_gitignored = false,
+				hide_ignored = false,
+				ignore_files = { ".git" },
 			},
 			follow_current_file = {
 				enabled = true,
 				leave_dirs_open = true,
 			},
 		},
-		use_libuv_file_watcher = false,
+		use_libuv_file_watcher = true,
+		enable_git_status = false,
+		enable_diagnostics = false,
 	},
 }
