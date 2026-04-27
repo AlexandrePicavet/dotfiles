@@ -10,7 +10,69 @@
       }
     }
   },
-  "instructions": [
-    "~/.config/opencode/rules/*.md"
-  ]
+  "instructions": ["~/.config/opencode/rules/*.md"],
+  "permission": {
+    "*": "ask",
+    "read": {
+      "*": "allow",
+      ".*": "ask",
+      "*.env*": "deny",
+      "*.pem": "deny",
+      "*.key": "deny",
+      "*.p12": "deny",
+      "*.pfx": "deny",
+      "*.jks": "deny",
+      "*credentials*": "deny",
+      "*secret*": "deny",
+      "*.keystore": "deny",
+      ".git/config": "deny",
+      "~/.*": "ask",
+      "**/secrets/**": "deny",
+      "**/private/**": "deny",
+      "**/.ssh/**": "deny",
+      "**/.gnupg/**": "deny",
+      "*docker-compose*.yml": "ask"
+    },
+    "edit": {
+      "*": "allow",
+      ".*": "ask",
+      "*.env*": "deny",
+      "*.pem": "deny",
+      "*.key": "deny",
+      "*credentials*": "deny",
+      "*secret*": "deny",
+      "*docker-compose*.yml": "ask"
+    },
+    "glob": "allow",
+    "grep": "allow",
+    "bash": {
+      "*": "ask",
+      "git status *": "allow",
+      "git diff *": "allow",
+      "git log *": "allow",
+      "git commit *": "deny",
+      "git stash *": "deny",
+      "grep *": "allow",
+      "cat *.env*": "deny",
+      "cat *secret*": "deny",
+      "cat *credential*": "deny",
+      "cat *.pem": "deny",
+      "cat *.key": "deny",
+      "printenv *": "deny",
+      "env": "deny",
+      "rm *": "deny"
+    },
+    "task": "allow",
+    "skill": "allow",
+    "lsp": "allow",
+    "question": "allow",
+    "webfetch": "ask",
+    "websearch": "ask",
+    "codesearch": "allow",
+    "external_directory": {
+      "*": "ask",
+      "/tmp/opencode/*": "allow"
+    },
+    "doom_loop": "ask"
+  }
 }
