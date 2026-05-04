@@ -2,7 +2,7 @@
 
 return {
 	"nvim-treesitter/nvim-treesitter",
-	branch = "master",
+	branch = "main",
 	lazy = false,
 	build = ":TSUpdate",
 	opts = function(_, opts)
@@ -44,11 +44,14 @@ return {
 		return opts
 	end,
 	config = function(_, opts)
-		local configs = require("nvim-treesitter.configs")
-		configs.setup(opts)
+		local treesitter = require("nvim-treesitter")
+		treesitter.setup(opts)
+		treesitter.install(opts.ensure_installed)
 
-		vim.opt.foldmethod = "expr"
-		vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+		vim.wo[0][0].foldexpr = "v:lua.vim.treesitter#foldexpr()"
+		vim.wo[0][0].foldmethod = "expr"
+		vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+
 		vim.opt.foldlevelstart = 99 -- Open all folds by default when editing a buffer
 	end,
 }

@@ -11,8 +11,6 @@ return {
 				"javascript",
 				"jsdoc",
 				"json5",
-				"jsonc",
-				"robots", -- robots.txt
 				"scss",
 				"svelte",
 				"tsx",
