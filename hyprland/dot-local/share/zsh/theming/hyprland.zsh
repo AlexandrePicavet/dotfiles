@@ -14,6 +14,7 @@ function _hyprland_theme() {
 	_theme_helper "${CONFIG_FILE}" "${LIGHT_THEME_MATCH}" "${DARK_THEME_MATCH}" "${THEME}"
 
 	hyprctl reload >/dev/null
+	systemctl --user restart hyprpaper
 }
 
 THEMES+=(_hyprland_theme)
