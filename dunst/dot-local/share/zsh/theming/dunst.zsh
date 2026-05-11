@@ -22,7 +22,7 @@ function _dunst_theme() {
 
 	ln -sf "${CHOOSEN_THEME_PATH}" "${THEME_LINK_TARGET}"
 
-	dunstctl reload 2>/dev/null
+	systemctl --user restart dunst
 }
 
 THEMES+=(_dunst_theme)
