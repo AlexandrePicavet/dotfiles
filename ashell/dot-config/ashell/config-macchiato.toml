@@ -8,7 +8,7 @@ enable_esc_key = true
 
 [modules]
 left = [ "Workspaces", "WindowTitle" ]
-center = [ "Clock" ]
+center = [ "Tempo" ]
 right = [ "MediaPlayer", "SystemInfo", "Privacy", [ "Tray", "Settings" ] ]
 
 [workspaces]
@@ -35,8 +35,8 @@ alert_threshold = 95
 warn_threshold = 75
 alert_threshold = 90
 
-[clock]
-format = "%A %d %B - %H:%M"
+[tempo]
+clock_format = "%A %d %B - %H:%M:%S"
 
 [settings]
 audio_sinks_more_cmd = "pavucontrol -t 3"

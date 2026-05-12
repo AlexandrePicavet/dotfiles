@@ -1,5 +1,3 @@
-# TODO use custom theme helper
-
 function _ashell_theme() {
 	which ashell &>/dev/null || return 0
 
@@ -11,15 +9,10 @@ function _ashell_theme() {
 	THEME="${1}"
 	readonly THEME
 
-	local CHOOSEN_THEME_PATH
-	if [[ "${THEME}" == 'light' ]]; then
-		CHOOSEN_THEME_PATH="${LIGHT_THEME_PATH}"
-	elif [[ "${THEME}" == 'dark' ]]; then
-		CHOOSEN_THEME_PATH="${DARK_THEME_PATH}"
-	fi
-	readonly CHOOSEN_THEME_PATH
-
-	ln -sf "${CHOOSEN_THEME_PATH}" "${THEME_LINK_TARGET}"
+	_custom_theme_helper \
+		"ln -sf '${LIGHT_THEME_PATH}' '${THEME_LINK_TARGET}'" \
+		"ln -sf '${DARK_THEME_PATH}' '${THEME_LINK_TARGET}'" \
+		"${THEME}"
 }
 
 THEMES+=(_ashell_theme)
