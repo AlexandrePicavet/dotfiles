@@ -1,2 +1,3 @@
 [global]
-font = FiraCode Nerd Font
+	font = FiraCode Nerd Font
+	timeout = 0
