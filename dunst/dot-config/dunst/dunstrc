@@ -1,3 +1,9 @@
 [global]
 	font = FiraCode Nerd Font
 	timeout = 0
+	format = "<b>%s</b>\n%b"
+	gap_size = 5
+	corner_radius = 10
+	show_age_threshold = 15
+	show_indicators = true
+	dmenu = "wofi --dmenu -p dunst"
