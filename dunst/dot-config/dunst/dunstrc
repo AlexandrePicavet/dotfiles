@@ -7,3 +7,8 @@
 	show_age_threshold = 15
 	show_indicators = true
 	dmenu = "wofi --dmenu -p dunst"
+
+# Disable transient behavior for all notifications
+[transient_disable]
+	match_transient = yes
+	set_transient = no
