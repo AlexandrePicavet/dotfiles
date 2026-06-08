@@ -3,26 +3,24 @@
 
 local nvim_data = vim.fn.stdpath("data")
 
-function get_workspace_dir()
-	local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
-
-	return vim.fn.stdpath("cache") .. "/jdtls/" .. project_name
-end
-
-function get_formatter()
+local root_dir = require("jdtls.setup").find_root({ "pom.xml", "build.gradle", "mvnw", "gradlew", ".git" })
+local formatter = (function()
 	local global_formatter = vim.fn.stdpath("config") .. "/assets/java/formatter.xml"
+	local local_formatter = root_dir .. "/formatter.xml"
 
-	local project_dir = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h")
-	local project_formatter = project_dir .. "/formatter.xml"
+	if vim.fn.filereadable(local_formatter) == 1 then
+		return local_formatter
+	end
 
-	return vim.fn.filereadable(project_formatter) > 0 and project_formatter or global_formatter
-end
-
+	return global_formatter
+end)()
+local workspace_dir = vim.fn.stdpath("cache") .. "/jdtls/" .. vim.fn.sha256(root_dir)
 local jdtls_dir = vim.fn.expand("$MASON/packages/jdtls")
 local lombok_path = jdtls_dir .. "/lombok.jar"
 local jdtls_launcher = vim.fn.glob(jdtls_dir .. "/plugins/org.eclipse.equinox.launcher_*jar")
 local jdtls_configuration = jdtls_dir .. "/config_linux"
 local java_debug_adapter_path = nvim_data .. "/mason/share/java-debug-adapter/com.microsoft.java.debug.plugin.jar"
+assert(vim.fn.filereadable(java_debug_adapter_path) == 1)
 
 local dap = require("dap")
 
@@ -36,13 +34,17 @@ dap.configurations.java = {
 	},
 }
 
-
 vim.api.nvim_create_autocmd("BufReadPost", {
 	pattern = "*.java",
 	callback = function()
 		vim.cmd("silent! NeotestJava setup")
 	end,
 })
+
+local jdtls = require("jdtls")
+jdtls.extendedClientCapabilities.resolveAdditionalTextEditsSupport = true
+
+local dap_setup_done = false
 
 ---@type vim.lsp.Config
 return {
@@ -52,25 +54,22 @@ return {
 		"-Declipse.application=org.eclipse.jdt.ls.core.id1",
 		"-Dosgi.bundles.defaultStartLevel=4",
 		"-Declipse.product=org.eclipse.jdt.ls.core.product",
-		"-Dlog.protocol=true",
-		"-Dlog.level=ALL",
-		"-Xmx1g",
-		"--add-modules=ALL-SYSTEM",
+		"-Dlog.level=WARN",
 		"--add-opens",
 		"java.base/java.util=ALL-UNNAMED",
 		"--add-opens",
 		"java.base/java.lang=ALL-UNNAMED",
-		"-javaagent:" .. jdtls_dir .. "/lombok.jar",
+		"-javaagent:" .. lombok_path,
 		"-jar",
 		jdtls_launcher,
 		"-configuration",
 		jdtls_configuration,
 		"-data",
-		get_workspace_dir(),
+		workspace_dir,
 	},
-	root_dir = require("jdtls.setup").find_root({ ".git", "mvnw", "gradlew", "pom.xml", "build.gradle" }),
+	root_dir = root_dir,
+	capabilities = require("blink.cmp").get_lsp_capabilities(),
 	settings = {
-		capabilities = require("blink.cmp").get_lsp_capabilities(),
 		redhat = { telemetry = { enabled = false } },
 		java = {
 			eclipse = { downloadSources = true },
@@ -80,10 +79,9 @@ return {
 				enabled = true,
 				comments = { enabled = false },
 				onType = { enabled = false },
-				settings = { url = get_formatter() },
+				settings = { url = formatter },
 			},
 			signatureHelp = { enabled = true },
-			extendedClientCapabilities = require("jdtls").extendedClientCapabilities,
 			maven = { downloadSources = true },
 			references = { includeDecompiledSources = true },
 			inlayHints = { parameterNames = { enabled = "all" } },
@@ -108,11 +106,17 @@ return {
 			},
 		},
 	},
-	init_options = { bundles = { java_debug_adapter_path, lombok_path } },
+	init_options = {
+		bundles = { java_debug_adapter_path },
+		extendedClientCapabilities = jdtls.extendedClientCapabilities,
+	},
 	on_attach = function(_, _)
-		require("jdtls").setup_dap({
-			hotcodereplace = "auto",
-			config_overrides = {},
-		})
+		if not dap_setup_done then
+			require("jdtls").setup_dap({
+				hotcodereplace = "auto",
+				config_overrides = {},
+			})
+			dap_setup_done = true
+		end
 	end,
 }
