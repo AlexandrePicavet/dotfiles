@@ -13,12 +13,12 @@ done
 
 export_text_helper
 
+source "${ZDOTDIR}/binds.zsh"
+source "${ZDOTDIR}/completion.zsh"
+
 for autoconf in "${ZDOTDIR}/auto-configurations/"*.zsh; do
 	source "${autoconf}"
 done
-
-source "${ZDOTDIR}/binds.zsh"
-source "${ZDOTDIR}/completion.zsh"
 
 source "${ZDOTDIR}/plugins/plugins-manager.zsh"
 
