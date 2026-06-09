@@ -24,11 +24,3 @@ if "${VIM_MODE:-false}"; then
 else
 	bindkey -r '^[' # Unbind vi normal mode key bind
 fi
-
-
-# Pet snippets - https://github.com/knqyf263/pet?tab=readme-ov-file
-if check_install -o pet; then
-	zle -N pet-select
-	stty -ixon
-	bindkey '^s' pet-select
-fi
