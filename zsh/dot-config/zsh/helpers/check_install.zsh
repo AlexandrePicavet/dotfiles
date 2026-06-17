@@ -9,10 +9,10 @@ check_install() {
 	fi
 	readonly optional
 
-	local success=true
+	local success=0
 	for package in "${@}"; do
 		if ! which "${package}" &>/dev/null; then
-			success=false
+			success=1
 
 			if ! "${optional}" || ${SHOW_OPTIONAL_PACKAGES:-false}; then
 				MISSING_PACKAGES+="${package}"
