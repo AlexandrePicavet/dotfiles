@@ -1,7 +1,7 @@
 function _fzf_theme() {
 	which fzf &>/dev/null || return 0
 
-	local -r CONFIG_FILE=~/.config/zsh/fzf.zsh
+	local -r CONFIG_FILE=~/.config/zsh/auto-configurations/fzf.zsh
 	#shellcheck disable=2016
 	local -r LIGHT_THEME_MATCH='FZF_COLOR="${FZF_LIGHT_COLOR}"'
 	#shellcheck disable=2016
