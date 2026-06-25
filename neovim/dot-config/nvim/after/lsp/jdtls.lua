@@ -4,6 +4,11 @@
 local nvim_data = vim.fn.stdpath("data")
 
 local root_dir = require("jdtls.setup").find_root({ "pom.xml", "build.gradle", "mvnw", "gradlew", ".git" })
+if root_dir == nil then
+	-- If not in a java project stop configuring jdtls
+	return {}
+end
+
 local formatter = (function()
 	local global_formatter = vim.fn.stdpath("config") .. "/assets/java/formatter.xml"
 	local local_formatter = root_dir .. "/formatter.xml"
