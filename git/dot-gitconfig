@@ -27,9 +27,6 @@
 [mergetool "nvimdiff"]
 	cmd = "nvim -d \"$LOCAL\" \"$MERGED\" \"$BASE\" \"$REMOTE\" -c \"wincmd w\" -c \"wincmd J\""
 
-[rerere]
-	enabled = true
-
 [include]
 	path = ~/.config/delta/delta.gitconfig
 	path = ~/.config/difftastic/difftastic.gitconfig
