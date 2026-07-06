@@ -56,30 +56,20 @@ return {
 		fuzzy = {
 			implementation = "prefer_rust_with_warning",
 			sorts = {
+				"exact",
 				"score",
 				"sort_text",
 				"label",
 			},
 		},
-		snippets = {
-			preset = "luasnip",
-			expand = function(snippet)
-				require("luasnip").lsp_expand(snippet)
-			end,
-			active = function(filter)
-				if filter and filter.direction then
-					return require("luasnip").jumpable(filter.direction)
-				end
-				return require("luasnip").in_snippet() or false
-			end,
-			jump = function(direction)
-				require("luasnip").jump(direction)
-			end,
-		},
+		snippets = { preset = "luasnip" },
 		sources = {
-			default = { "npm", "lazydev", "lsp", "copilot", "path", "snippets", "emoji", "buffer", "ripgrep" },
+			default = { "lsp", "snippets", "copilot", "path", "emoji", "buffer", "ripgrep" },
 			per_filetype = {
 				codecompanion = { "codecompanion" },
+				lua = { inherit_defaults = true, "lazydev" },
+				vim = { inherit_defaults = true, "cmdline" },
+				json = { inherit_defaults = true, "npm" },
 			},
 			providers = {
 				lazydev = {
@@ -93,14 +83,11 @@ return {
 					async = true,
 					score_offset = 300,
 				},
-				lsp = {
-					score_offset = 200,
-				},
 				copilot = {
 					name = "copilot",
 					module = "blink-copilot",
-					score_offset = 150,
 					async = true,
+					score_offset = -1000,
 				},
 				emoji = {
 					module = "blink-emoji",
@@ -117,7 +104,6 @@ return {
 							use = "gitgrep-or-ripgrep",
 						},
 					},
-					score_offset = 0,
 				},
 			},
 		},
