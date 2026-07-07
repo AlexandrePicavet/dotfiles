@@ -72,6 +72,12 @@ return {
 				json = { inherit_defaults = true, "npm" },
 			},
 			providers = {
+				lsp = {
+					score_offset = 200,
+				},
+				snippets = {
+					score_offset = 200,
+				},
 				lazydev = {
 					name = "LazyDev",
 					module = "lazydev.integrations.blink",
