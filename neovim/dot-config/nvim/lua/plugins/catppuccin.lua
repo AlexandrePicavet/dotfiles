@@ -33,8 +33,9 @@ return {
 			light = "latte",
 			dark = "macchiato",
 		},
+		transparent_background = true,
 		show_end_of_buffer = true,
-		dim_inactive = { enabled = true },
+		dim_inactive = { enabled = false },
 		auto_integrations = true,
 		custom_highlights = function(colors)
 			local utils = require("catppuccin.utils.colors")
