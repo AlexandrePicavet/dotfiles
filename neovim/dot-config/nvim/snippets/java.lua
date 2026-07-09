@@ -41,7 +41,7 @@ ls.add_snippets("java", {
 		f(package, {}),
 		t({ "", "", "public record " }),
 		f(classname, {}),
-		t({ " (", "\t" }),
+		t({ "(", "\t" }),
 		i(0),
 		t({ "", ")" }),
 		c(1, {
