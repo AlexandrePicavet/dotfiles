@@ -2,7 +2,6 @@ return {
 	"saghen/blink.cmp",
 	version = "1.*",
 	dependencies = {
-		"rafamadriz/friendly-snippets",
 		"folke/lazydev.nvim",
 		"L3MON4D3/LuaSnip",
 		"fang2hou/blink-copilot",
@@ -118,4 +117,9 @@ return {
 		},
 	},
 	opts_extend = { "sources.default" },
+	config = function(_, opts)
+		require("luasnip.loaders.from_lua").lazy_load({ paths = { "./snippets" } })
+		require("luasnip.loaders.from_vscode").lazy_load({})
+		require("blink.cmp").setup(opts)
+	end
 }
