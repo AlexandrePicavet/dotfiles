@@ -5,8 +5,7 @@ return {
 	cmd = "Copilot",
 	event = "InsertEnter",
 	dependencies = {
-		"copilotlsp-nvim/copilot-lsp", -- (optional) for NES functionality
-		"giuxtaposition/blink-cmp-copilot",
+		"copilotlsp-nvim/copilot-lsp", -- (optional) for NES (Next Edit Suggestion) functionality
 	},
 	opts = {
 		suggestion = { enabled = false },
