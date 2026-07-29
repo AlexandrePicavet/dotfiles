@@ -2,6 +2,9 @@ vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.signcolumn = "yes"
 vim.opt.cursorline = true
+vim.opt.guicursor = "a:block-blinkwait300-blinkon200-blinkoff200,"
+	.. "i-ci:ver35-blinkwait300-blinkon200-blinkoff200,"
+	.. "r-cr:hor20-blinkwait300-blinkon200-blinkoff200"
 vim.opt.winborder = "rounded"
 vim.g.have_nerd_font = true
 
