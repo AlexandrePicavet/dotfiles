@@ -1,9 +1,16 @@
 readonly HYPR_LOCAL_SHARE_DIR="${HOME}/.local/share/hypr"
 readonly HYPR_THEME_CONFIG="${HYPR_LOCAL_SHARE_DIR}/theme.conf"
+readonly HYPR_USER_CONFIG_DIR="${HYPR_LOCAL_SHARE_DIR}/user"
 
 mkdir -p "${HYPR_LOCAL_SHARE_DIR}" || {
 	declare -ri code=$?
 	error "Failed to create the ${HYPR_LOCAL_SHARE_DIR} directory"
+	return ${code}
+}
+
+mkdir -p "${HYPR_USER_CONFIG_DIR}" || {
+	declare -ri code=$?
+	error "Failed to create the ${HYPR_USER_CONFIG_DIR} directory"
 	return ${code}
 }
 
