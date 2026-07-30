@@ -3,9 +3,8 @@
 palette = 'catppuccin_macchiato'
 
 format = '''
-$username$java$nodejs$fill$memory_usage$kubernetes
-$git_state$git_branch $git_commit$git_status$fill$time$cmd_duration$battery
-$directory $character
+$git_state$git_branch $git_commit$git_status$fill$java$maven$nodejs$rust$dart$cmd_duration$kubernetes$memory_usage
+$username$nix_shell$directory $character
 '''
 
 [character]
@@ -27,7 +26,6 @@ style_user = 'green'
 style_root = 'bold red'
 format = '[ $user]($style) '
 disabled = false
-show_always = true
 
 [fill]
 symbol = '⋅'
@@ -35,12 +33,6 @@ style = 'bold surface0'
 
 [line_break]
 disabled = true
-
-[time]
-disabled = false
-time_format = '%F %T'
-format = ' [ $time]($style) '
-style = 'bold text'
 
 [cmd_duration]
 disabled = false
@@ -75,7 +67,7 @@ untracked = '[?$count](subtext0) '
 [kubernetes]
 disabled = false
 symbol = '⎈ '
-format = '[$symbol$context (\($namespace\))]($style)'
+format = '[$symbol$context (\($namespace\))]($style) '
 
 [memory_usage]
 disabled = false
@@ -84,78 +76,25 @@ threshold = -1
 symbol = ''
 style = 'overlay0'
 
+[nix_shell]
+format = '[$state]($style) '
+impure_msg = '[](bold red)'
+pure_msg = '[](bold blue)'
+
+[maven]
+format = '[$symbol($version)]($style) '
+
 [java]
 format = '[$symbol($version)]($style) '
-version_format = 'v$raw'
 
 [nodejs]
-disabled = false
 format = '[$symbol($version$engines_version)]($style) '
-version_format = 'v$raw'
 
-[battery]
-disabled = false
-format = '[$symbol$percentage]($style)'
+[rust]
+format = '[$symbol($version)]($style) '
 
-[[battery.display]]
-threshold = 10
-charging_symbol = '󰢜 '
-discharging_symbol = '󰁺 '
-style = 'bold mauve'
-
-[[battery.display]]
-threshold = 20
-charging_symbol = '󰂆 '
-discharging_symbol = '󰁻 '
-style = 'bold red'
-
-[[battery.display]]
-threshold = 30
-charging_symbol = '󰂇 '
-discharging_symbol = '󰁼 '
-style = 'bold maroon'
-
-[[battery.display]]
-threshold = 40
-charging_symbol = '󰂈 '
-discharging_symbol = '󰁽 '
-style = 'bold peach'
-
-[[battery.display]]
-threshold = 50
-charging_symbol = '󰢝 '
-discharging_symbol = '󰁾 '
-style = 'bold yellow'
-
-[[battery.display]]
-threshold = 60
-charging_symbol = '󰂉 '
-discharging_symbol = '󰁿 '
-style = 'bold green'
-
-[[battery.display]]
-threshold = 70
-charging_symbol = '󰢞 '
-discharging_symbol = '󰂀 '
-style = 'bold teal'
-
-[[battery.display]]
-threshold = 80
-charging_symbol = '󰂊 '
-discharging_symbol = '󰂁 '
-style = 'bold sky'
-
-[[battery.display]]
-threshold = 90
-charging_symbol = '󰂋 '
-discharging_symbol = '󰂂 '
-style = 'bold sapphire'
-
-[[battery.display]]
-threshold = 100
-charging_symbol = '󰂅 '
-discharging_symbol = '󰁹 '
-style = 'bold blue'
+[dart]
+format = '[$symbol($version)]($style) '
 
 [palettes.catppuccin_macchiato]
 rosewater = '#f4dbd6'
