@@ -95,6 +95,7 @@ format = '[$symbol($version)]($style) '
 
 [dart]
 format = '[$symbol($version)]($style) '
+symbol = ' '
 
 [palettes.catppuccin_macchiato]
 rosewater = '#f4dbd6'
