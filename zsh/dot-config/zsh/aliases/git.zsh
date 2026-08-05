@@ -24,6 +24,7 @@ if check_install -o git; then
 	alias gcapf='gca && gpf'
 	alias gcdf='g clean -df'
 	alias gcl='g clone'
+	alias gclb='gcl --bare'
 	alias gcm='gc -m'
 	alias gco='g checkout'
 	alias gcob='gco -b'
