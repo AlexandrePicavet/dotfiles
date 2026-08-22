@@ -11,5 +11,5 @@ touch ~/.local/share/tmux/theme.conf || {
 }
 
 cat <<'EOF' > ~/.local/share/tmux/theme.conf
-set -g @catppuccin_flavour 'macchiato'
+set -g @catppuccin_flavor 'macchiato'
 EOF
