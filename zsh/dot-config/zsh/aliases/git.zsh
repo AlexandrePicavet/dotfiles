@@ -83,7 +83,7 @@ if check_install -o git; then
 	alias gucm='gu && gcm'
 	alias gurc='gu && grc'
 	alias gw='g worktree'
-	alias gwa='gw add --guess-remote --track'
+	alias gwa='gw add'
 	alias gwac='gwa -b'
 	alias gwl='gw list'
 	alias gwL='gw lock'
