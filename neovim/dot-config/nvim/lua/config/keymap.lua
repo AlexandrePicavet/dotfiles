@@ -36,9 +36,20 @@ require("which-key").add({
 		"<leader>bC",
 		mode = "n",
 		"<cmd>bp<bar>sp<bar>bn<bar>bd!<cr>",
-		desc = "Buffer close",
+		desc = "Buffer close without saving",
 	},
-
+	{
+		"<leader>bp",
+		mode = "n",
+		"<cmd>bufdo bd<cr>",
+		desc = "Buffer close all",
+	},
+	{
+		"<leader>bP",
+		mode = "n",
+		"<cmd>bufdo bd!<cr>",
+		desc = "Buffer close all without saving",
+	},
 	-- Add quickfix keymaps
 	{
 		"<leader>qo",
