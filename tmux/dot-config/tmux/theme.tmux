@@ -9,25 +9,18 @@ set -g @catppuccin_window_status_style "custom"
 set -g @catppuccin_window_left_separator "#[bg=default,fg=#{@thm_surface_0}]"
 set -g @catppuccin_window_text "#W"
 set -g @catppuccin_window_text_color "#{@thm_surface_0}"
-set -g @catppuccin_window_middle_separator ""
+set -g @catppuccin_window_middle_separator " "
 set -g @catppuccin_window_number_color "#{@thm_blue}"
 set -g @catppuccin_window_right_separator "#[bg=default,fg=#{@thm_blue}]"
 
 set -g @catppuccin_window_current_left_separator "#[bg=default,fg=#{@thm_surface_1}]"
 set -g @catppuccin_window_current_text "#W"
 set -g @catppuccin_window_current_text_color "#{@thm_surface_1}"
-set -g @catppuccin_window_current_middle_separator ""
+set -g @catppuccin_window_current_middle_separator " "
 set -g @catppuccin_window_current_number_color "#{@thm_peach}"
 set -g @catppuccin_window_current_right_separator "#[bg=default,fg=#{@thm_peach}]"
 
-set -g @catppuccin_window_flags "icon" # none, icon, or text
-set -g @catppuccin_window_flags_icon_last ""
-set -g @catppuccin_window_flags_icon_current ""
-set -g @catppuccin_window_flags_icon_zoom ""
-set -g @catppuccin_window_flags_icon_mark " " # M
-set -g @catppuccin_window_flags_icon_silent ""
-set -g @catppuccin_window_flags_icon_activity " "
-set -g @catppuccin_window_flags_icon_bell " "
+set -g @catppuccin_window_flags "none"
 
 set -g @catppuccin_pane_left_separator ""
 set -g @catppuccin_pane_middle_separator "█"
