@@ -21,7 +21,7 @@ return {
 			opts.ensure_installed = opts.ensure_installed or {}
 
 			vim.list_extend(opts.ensure_installed, {
-				"kotlin_language_server",
+				"kotlin_lsp",
 				"sqls",
 				"hyprls",
 				"lemminx",
