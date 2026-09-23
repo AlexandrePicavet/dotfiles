@@ -1,11 +1,15 @@
 set which-key
 set notimeout
+set NERDTree
 
 let mapleader=" "
 
 " Sidebar
 nnoremap <leader><C-S-e> :action HideSideWindows<CR>
 nnoremap <leader><C-e> :action ActivateProjectToolWindow<CR>
+
+" File
+nnoremap <leader>a :action NewElement<CR>
 
 " Find
 nnoremap <leader>ff :action GotoFile<CR>
