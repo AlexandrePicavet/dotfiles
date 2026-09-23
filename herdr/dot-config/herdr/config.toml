@@ -1,0 +1,87 @@
+onboarding = false
+
+[terminal]
+new_cwd = "follow"
+kitty_graphics = true
+
+[ui]
+mouse_capture = true
+mouse_scroll_lines = 3
+copy_on_select = false
+prompt_new_tab_name = false
+pane_gaps = false
+tab_bar_position = "top"
+status_indicators = "symbols"
+
+[session]
+resume_agents_on_restore = true
+
+[ui.toast]
+delivery = "system"
+delay_seconds = 1
+
+[ui.sound]
+enabled = false
+
+[keys]
+prefix = "ctrl+b"
+
+focus_pane_left = "prefix+h"
+focus_pane_down = "prefix+j"
+focus_pane_up = "prefix+k"
+focus_pane_right = "prefix+l"
+
+split_vertical = ["prefix+%", "prefix+v"]
+split_horizontal = ['prefix+"', "prefix+minus"]
+
+resize_mode = "prefix+shift+r"
+
+reload_config = "prefix+r"
+settings = "prefix+."
+goto = "prefix+s"
+
+# Popup
+[[keys.command]]
+key = "prefix+f"
+type = "popup"
+command = "$SHELL"
+description = "Shell popup"
+width = "80%"
+height = "80%"
+
+[[ui.tab_bar_right]]
+type = "datetime"
+format = "%Y-%m-%d %H:%M:%S"
+
+[[ui.tab_bar_right]]
+type = "command"
+command = "printf '%s%%󰁹' \"$(cat /sys/class/power_supply/BAT?/capacity)\""
+interval_seconds = 30
+timeout_seconds = 2
+
+[theme]
+auto_switch = true
+light_name = "catppuccin-latte"
+dark_name = "catppuccin"
+
+# Use macchiato instead of mocha for dark mode theme
+[theme.custom.dark]
+panel_bg = "#24273a"
+sidebar_bg = "#1e2030"
+surface_dim = "#1e2030"
+surface0 = "#363a4f"
+surface1 = "#494d64"
+active_row_bg = "#363a4f"
+selection_bg = "#494d64"
+overlay0 = "#6e738d"
+overlay1 = "#8087a2"
+text = "#cad3f5"
+subtext0 = "#a5adcb"
+accent = "#f5a97f"
+peach = "#f5a97f"
+blue = "#8aadf4"
+mauve = "#c6a0f6"
+green = "#a6da95"
+yellow = "#eed49f"
+red = "#ed8796"
+teal = "#8bd5ca"
