@@ -29,7 +29,7 @@ function isSubset() {
 }
 
 declare -a connected_monitors
-readarray -t connected_monitors <<<"$(hyprctl monitors | sed -n 's/^.*description: //gp')"
+readarray -t connected_monitors <<<"$(hyprctl monitors -j | jq -r '.[].description')"
 # shellcheck disable=SC2034 # Passed by reference to the isSubset function
 readonly connected_monitors
 
