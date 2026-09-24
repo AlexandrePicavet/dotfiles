@@ -39,6 +39,7 @@ resize_mode = "prefix+shift+r"
 reload_config = "prefix+r"
 settings = "prefix+."
 goto = "prefix+s"
+detach = "prefix+d"
 
 # Popup
 [[keys.command]]
@@ -48,6 +49,15 @@ command = "$SHELL"
 description = "Shell popup"
 width = "80%"
 height = "80%"
+
+# Quit & stop the current session
+[[keys.command]]
+key = "prefix+q"
+type = "popup"
+command = 'printf "Stop session \"%s\" and quit ? [y/N] " "${HERDR_SESSION:-default}"; read -r reply; case "$reply" in [yY]*) herdr session stop "${HERDR_SESSION:-default}" ;; esac'
+description = "Quit and stop session"
+width = 50
+height = 3
 
 [[ui.tab_bar_right]]
 type = "datetime"
