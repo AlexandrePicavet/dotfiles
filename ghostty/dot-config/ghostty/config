@@ -22,5 +22,7 @@ cursor-style-blink = true
 shell-integration = zsh
 shell-integration-features = cursor, sudo, title
 
+keybind = ctrl+shift+c=copy_to_clipboard:mixed
+
 window-inherit-working-directory = false
 working-directory = home
