@@ -20,7 +20,7 @@ return {
 	{
 		"nvim-flutter/flutter-tools.nvim",
 		lazy = false,
-		dependencies = { "nvim-lua/plenary.nvim", "L3MON4D3/luaSnip" },
+		dependencies = { "nvim-lua/plenary.nvim", "L3MON4D3/LuaSnip" },
 		opts = {
 			lsp = {
 				settings = {

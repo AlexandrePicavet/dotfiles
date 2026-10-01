@@ -1,5 +1,5 @@
 return {
-	"L3MON4D3/luaSnip",
+	"L3MON4D3/LuaSnip",
 	lazy = true,
 	version = "v2.*",
 	dependencies = { "rafamadriz/friendly-snippets" },
