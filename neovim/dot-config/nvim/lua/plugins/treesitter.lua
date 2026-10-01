@@ -36,7 +36,6 @@ return {
 			"sql",
 			"ssh_config",
 			"templ", -- Go templ
-			"tmux",
 			"toml",
 			"yaml",
 		})
