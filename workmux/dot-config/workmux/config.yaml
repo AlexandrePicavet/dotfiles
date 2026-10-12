@@ -1,0 +1,41 @@
+merge_keep: true
+merge_strategy: merge
+
+nerdfont: true
+
+window_placement: rightmost
+
+worktree_dir: ".." # Use in bare repositories
+worktree_naming: full
+
+mode: window
+
+agent: wrapped-pi
+
+agents:
+  wrapped-pi:
+    type: pi
+    command: sh
+    args:
+      - -c
+      - ~/.config/workmux/scripts/pi-wrapper.sh
+
+
+panes:
+  - name: nvim
+    command: nvim
+  - name: shell
+    split: vertical
+    percentage: 25
+  - name: agent
+    command: <agent>
+    focus: true
+    split: horizontal
+    target: 0
+    percentage: 65
+
+layouts:
+  research:
+    panes:
+      - command: <agent>
+        focus: true
