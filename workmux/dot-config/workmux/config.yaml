@@ -10,15 +10,41 @@ worktree_naming: full
 
 mode: window
 
-agent: wrapped-pi
+agent: vibe
 
 agents:
-  wrapped-pi:
+  claude:
+    type: claude
+    command: sh
+    args:
+      - -c
+      - ~/.config/workmux/scripts/agent-wrapper.sh
+    env:
+      WORKMUX_AGENT: claude
+  opencode:
+    type: opencode
+    command: sh
+    args:
+      - -c
+      - ~/.config/workmux/scripts/agent-wrapper.sh
+    env:
+      WORKMUX_AGENT: opencode
+  pi:
     type: pi
     command: sh
     args:
       - -c
-      - ~/.config/workmux/scripts/pi-wrapper.sh
+      - ~/.config/workmux/scripts/agent-wrapper.sh
+    env:
+      WORKMUX_AGENT: pi
+  vibe:
+    type: vibe
+    command: sh
+    args:
+      - -c
+      - ~/.config/workmux/scripts/agent-wrapper.sh
+    env:
+      WORKMUX_AGENT: vibe
 
 
 panes:
