@@ -12,7 +12,7 @@ font-style-bold-italic = SemiBold Italic
 
 window-decoration = false
 background-opacity = 0.3
-background-blur-radius = 20
+background-blur = true
 confirm-close-surface = false
 
 cursor-invert-fg-bg = true
