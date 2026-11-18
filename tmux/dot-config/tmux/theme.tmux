@@ -46,9 +46,9 @@ set -g @large-threshold 120
 set -g status-right-length 100
 set -g status-left-length 100
 set -g status-left " #{E:@catppuccin_status_session}"
-set -ag status-left "#{?#{e|>=:#{client_width},#{@large-threshold}},#{E:@catppuccin_status_directory},}"
+set -ag status-left "#{?#{e|>=:#{client_width},#{@large-threshold}},}"
 
-set -g status-right "#{?#{e|>=:#{client_width},#{@large-threshold}},#{E:@catppuccin_status_date_time},}"
+set -g status-right " #{?#{e|>=:#{client_width},#{@large-threshold}},}"
 set -agF status-right "#{E:@catppuccin_status_cpu}"
 set -agF status-right "#{E:@catppuccin_status_ram}"
 set -agF status-right "#{E:@catppuccin_status_battery}"
