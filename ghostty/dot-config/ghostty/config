@@ -10,6 +10,8 @@ font-style-italic = Italic
 font-family-bold-italic = Cascadia Code NF
 font-style-bold-italic = SemiBold Italic
 
+copy-on-select = false
+
 window-decoration = false
 background-opacity = 0.3
 background-blur = true
