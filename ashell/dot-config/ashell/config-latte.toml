@@ -9,7 +9,7 @@ enable_esc_key = true
 [modules]
 left = [ "Workspaces", "WindowTitle" ]
 center = [ "Tempo" ]
-right = [ "MediaPlayer", "SystemInfo", "Privacy", [ "Tray", "Settings" ] ]
+right = [ "SystemInfo", "Privacy", [ "Tray", "Settings" ] ]
 
 [workspaces]
 visibility_mode = "All"
